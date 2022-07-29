@@ -1,18 +1,35 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<!-- Bootstrap core CSS -->
-	    <link href="css/bootstrap.min.css" rel="stylesheet" >
-	    <!-- Bootstrap theme -->
-	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+		<link href="css/homeDos.css" rel="stylesheet" />
+<%--		<link href="<c:url value="/resources/css/homeDos.css"/>" rel="stylesheet" />--%>
+		<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+		<%--	Icono	--%>
+		<link rel="icon" type="image/png" href="<c:url value="/images/logo.png"/>">
 	</head>
-	<body>
-		<div class = "container">
-			<h1>Bienvenidos a Taller Web 1</h1>
+	<body class="sb-nav-fixed">
+		<%@include file="partial/navBar.jsp"%>
+		<%-- ------------------------ --%>
+		<%-- ------------------------ --%>
+		<div id="layoutSidenav">
+			<%@include file="partial/sidebar.jsp"%>
+
+			<div id="layoutSidenav_content">
+				<main>
+					<div class="container-fluid px-4">
+						<h1 class="mt-4">Bienvenidos al sistema</h1>
+<%--						<img src="<c:url value="/images/runway_192834344.jpg" />" style="width: 100%">--%>
+					</div>
+				</main>
+			</div>
 		</div>
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
-		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-		<script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+		<script src="js/homeDos.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 	</body>
 </html>
