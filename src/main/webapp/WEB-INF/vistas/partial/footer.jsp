@@ -1,4 +1,4 @@
-<footer class="bg-dark text-center text-white" style="margin-top: 318px;">
+<footer class="bg-dark text-center text-white" style="margin-top: 312px;">
     <div class="container p-5 pb-0">
         <section class="mb-4">
             <!-- Facebook -->
@@ -34,7 +34,7 @@
 
     <!-- Copyright -->
     <div class="text-center p-3 text-white" >
-        © 2022 Copyright:
+        &copy; 2022 Copyright:
         <!--        <a class="text-white" href="http://localhost/GauchoRocket/">GauchoRocket.com</a>-->
         <a class="text-white" href="https://www.youtube.com/watch?v=TUVcZfQe-Kw">nombre-a-completar.com</a>
     </div>
