@@ -9,6 +9,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<%--	Icono	--%>
 	<link rel="icon" type="image/png" href="<c:url value="/images/logo.png"/>">
+	<title>Knock Out!</title>
 </head>
 <body>
 <img src="<c:url value="/images/fondo_login_registro.gif" />" style="width: 100%">
@@ -20,7 +21,7 @@
 				<div class="d-flex align-items-center">
 					<img src="<c:url value="/images/logo.png" />" style="width: 14%; margin-right: 4%;">
 					<h3 class="form-signin-heading">
-						Bienvenido a "nombre"
+						Bienvenido a Knock Out!
 					</h3>
 				</div>
 				<hr class="colorgraph">

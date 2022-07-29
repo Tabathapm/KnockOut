@@ -9,6 +9,7 @@
 		<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 		<%--	Icono	--%>
 		<link rel="icon" type="image/png" href="<c:url value="/images/logo.png"/>">
+		<title>Knock Out!</title>
 	</head>
 	<body class="sb-nav-fixed">
 		<%@include file="partial/navBar.jsp"%>
@@ -20,7 +21,7 @@
 			<div id="layoutSidenav_content">
 				<main>
 					<div class="container-fluid px-4">
-						<h1 class="mt-4">Bienvenidos al sistema</h1>
+						<h1 class="mt-4">Bienvenidos a Knock Out!</h1>
 <%--						<img src="<c:url value="/images/runway_192834344.jpg" />" style="width: 100%">--%>
 					</div>
 				</main>
