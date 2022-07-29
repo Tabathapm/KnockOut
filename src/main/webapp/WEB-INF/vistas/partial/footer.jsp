@@ -35,8 +35,7 @@
     <!-- Copyright -->
     <div class="text-center p-3 text-white" >
         &copy; 2022 Copyright:
-        <!--        <a class="text-white" href="http://localhost/GauchoRocket/">GauchoRocket.com</a>-->
-        <a class="text-white" href="https://www.youtube.com/watch?v=TUVcZfQe-Kw">nombre-a-completar.com</a>
+        <a class="text-white" href="https://www.youtube.com/watch?v=TUVcZfQe-Kw">KnockOut.com</a>
     </div>
 </footer>
 
