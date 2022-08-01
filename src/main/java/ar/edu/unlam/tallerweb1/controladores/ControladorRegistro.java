@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioRegistro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,10 +29,19 @@ public class ControladorRegistro {
     @RequestMapping(path = "/registrarUsuario")
     public ModelAndView registrarUsuario(@ModelAttribute("usuario") DatosRegistro datosRegistro){
         ModelMap model = new ModelMap();
+        Usuario usuarioEmail = servicioRegistro.consultarUsuarioPorEmail(datosRegistro.getEmail());
+        if(usuarioEmail==null){
+            servicioRegistro.addUsuario(datosRegistro);
+            return new ModelAndView("redirect:/login");
+        }
+        else{
+            model.put("error","No se puede registrar con un email ya registrado");
+        }
 
-        servicioRegistro.addUsuario(datosRegistro);
 
-        return new ModelAndView("home",model);
+//        servicioRegistro.addUsuario(datosRegistro);
+
+        return new ModelAndView("registro",model);
 
     }
 
