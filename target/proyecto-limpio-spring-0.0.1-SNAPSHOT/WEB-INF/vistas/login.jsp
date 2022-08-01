@@ -12,7 +12,7 @@
 		<title>Knock Out!</title>
 	</head>
 	<body>
-		<img src="<c:url value="/images/fondo_login_registro.gif" />" style="width: 100%">
+		<img src="<c:url value="/images/fondo_login.gif" />" style="width: 100%">
 
 		<section class="container-fluid w-100 d-flex justify-content-center align-items-center home" style="margin: -714px 0 310px 0;">
 			<div class="d-flex justify-content-center d-flex flex-row mt-4 botones">
