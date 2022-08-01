@@ -30,5 +30,10 @@ public class ServicioRegistroImpl implements ServicioRegistro {
 
     }
 
+    @Override
+    public Usuario consultarUsuarioPorEmail(String email) {
+        return repositorioRegistro.buscarUsuarioPorEmail(email);
+    }
+
 
 }
