@@ -21,7 +21,7 @@
                     <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
                     <li><a class="dropdown-item" href="#">Modificar</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
+                    <li><a class="dropdown-item" href="logout">Cerrar sesion</a></li>
                 </ul>
             </li>
         </ul>
