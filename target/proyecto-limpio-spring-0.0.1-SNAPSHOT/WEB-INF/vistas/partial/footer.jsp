@@ -1,4 +1,4 @@
-<footer class="bg-dark text-center text-white" style="margin-top: 312px;">
+<footer class="bg-dark text-center text-white" style="margin-top: 310px;">
     <div class="container p-5 pb-0">
         <section class="mb-4">
             <!-- Facebook -->
