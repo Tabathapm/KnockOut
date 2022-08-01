@@ -20,9 +20,19 @@
 
 			<div id="layoutSidenav_content">
 				<main>
-					<div class="container-fluid px-4">
-						<h1 class="mt-4">Bienvenidos a Knock Out!</h1>
-<%--						<img src="<c:url value="/images/runway_192834344.jpg" />" style="width: 100%">--%>
+					<div>
+						<div class="container position-absolute top-0 start-0" style="margin: 3% 0 0  18%">
+<%--							<h1 class="mt-4">Bienvenidos a Knock Out!</h1>--%>
+							<h1>
+								<span class="badge badge-secondary" style="background-color: white;color: black;">
+									Bienvenidos a Knock Out!
+								</span>
+							</h1>
+						</div>
+
+<%--						<img src="/Super_war_exploded/images/img1.webp" style="width: 100%">--%>
+						<img src="<c:url value="/images/img1.webp" />" style="width: 100%">
+
 					</div>
 				</main>
 			</div>
