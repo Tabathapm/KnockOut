@@ -30,7 +30,6 @@
 							</h1>
 						</div>
 
-<%--						<img src="/Super_war_exploded/images/img1.webp" style="width: 100%">--%>
 						<img src="<c:url value="/images/img1.webp" />" style="width: 100%">
 
 					</div>
