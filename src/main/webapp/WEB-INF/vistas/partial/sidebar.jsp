@@ -9,7 +9,7 @@
                     </div>
                 </a>
                 <%-- ------------------------ --%>
-                <a class="nav-link " href="#">
+                <a class="nav-link " href="miColeccion">
                     Mi Colecci&oacute;n
                 </a>
                 <%-- ------------------------ --%>
