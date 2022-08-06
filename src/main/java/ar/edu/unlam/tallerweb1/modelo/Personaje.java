@@ -12,6 +12,7 @@ public class Personaje {
 
     private String nombre;
     private String descripcion;
+    private String imagen;
 
     @ManyToMany
     private List<Caracteristica> caracteristica;
@@ -34,6 +35,14 @@ public class Personaje {
 
     public String getDescripcion() {
         return descripcion;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     public void setDescripcion(String descripcion) {
