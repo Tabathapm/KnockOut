@@ -42,3 +42,48 @@ VALUES
 'Mercenario y antiheroe, mentalmente inestable y desfigurado'),
 ('Duende Verde', 'duende_verde.jpg', 
 'Supervillano con temática de Halloween cuyas armas se asemejan a murciélagos, fantasmas y linternas de calabaza. Es estrambótico, bocazas y políticamente incorrecto.');
+
+
+-- insert leandro--
+
+insert into personaje(nombre,imagen,descripcion)
+values('Ermac','ermac.jpg',
+       'Ermac es una entidad compuesta de legiones de almas de los muertos, que se enviaron a guerras sin sentido, la manera en que las almas fueron fusionados en Ermac es desconocida.');
+
+
+
+insert into personaje(nombre,imagen,descripcion)
+values('Johnny Cage','johnny.jpg',
+       'Una superestrella de las artes marciales entrenado por grandes maestros de todo el mundo.');
+
+insert into personaje(nombre,imagen,descripcion)
+values('Kitana','kitana.jpg',
+       'Princesa del místico reino de Edenia,el arma de Kitana es un par de abanicos de acero con puntas afiladas');
+
+insert into personaje(nombre,imagen,descripcion)
+values('Liu Kang','liukang.jpg',
+       'Liu Kang sigue las enseñanzas de la Sociedad del Loto Blanco del Shaolin y fue enviado por el Templo de la Luz a derrotar al hechicero Shang Tsung.');
+
+insert into personaje(nombre,imagen,descripcion)
+values('Mileena','milena.jpg',
+       ' Mileena es un clon de Kitana. Su odio hacia Kitana consume sus pensamientos; desea matarla para tomar el trono de Edenia.');
+
+
+insert into personaje(nombre,imagen,descripcion)
+values('Reptile','reptile.jpg',
+       'Un general del ejército de la oscuridad de Shinnok, Reptile pertenece a una raza extinta de criaturas reptilianas. Fue desterrado al Netherrealm acusado del genocidio contra su propia especie.');
+
+insert into personaje(nombre,imagen,descripcion)
+values('Scorpion','scorpion.jpg','Espectro Ninja no muerto que busca venganza por su propia muerte a manos de Sub-Zero.');
+
+insert into personaje(nombre,imagen,descripcion)
+values('Shang Tsung','shang.jpg','Es un poderoso hechicero con la capacidad de absorber almas y cambiar de forma. Bajo el mando de Shao Kahn buscara conquistar la tierra.');
+
+insert into personaje(nombre,imagen,descripcion)
+values('Shao Kahn','shao.jpg','Emperador del Reino del Outworld.Lo conocen por su divina fuerza, la insensibilidad, extrema brutalidad y su afición por las ejecuciones personales, intentara conquistar la tierra mandando a Shang Tsung.');
+
+insert into personaje(nombre,imagen,descripcion)
+values('Sonya Blade','sonya.jpg','miembro de una unidad superior de las Fuerzas Especiales de los Estados Unidos. Sonya representa a una mujer muy emancipada y testaruda, con obstinación y orgullo, ella se preocupa por las vidas de sus amigos y compañeros.');
+
+insert into personaje(nombre,imagen,descripcion)
+values('Sub-Zero','sub.jpg','Un asesino del clan Lin Kuei. Que asumió el mando, cuando su hermano fue asesinado por el espectro ninja Scorpion en el mismo torneo de Mortal Kombat');
