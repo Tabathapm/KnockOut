@@ -23,4 +23,14 @@ public class ServicioPersonajeImpl implements ServicioPersonaje {
     public List<Personaje> listaDePersonajes() {
         return repoPersonaje.listaDePersonajes();
     }
+
+    @Override
+    public List<Personaje> listaDePersonajesEnVenta() {
+        return repoPersonaje.listaDePersonajesEnVenta();
+    }
+
+    @Override
+    public List<Personaje> listaDePersonajesEnMiColeccion() {
+        return repoPersonaje.listaDePersonajesEnMiColeccion();
+    }
 }

@@ -13,6 +13,9 @@ public class Personaje {
     private String nombre;
     private String descripcion;
     private String imagen;
+    private Float monto;
+    private Boolean enVenta;
+    private Boolean enMiColeccion;
 
     @ManyToMany
     private List<Caracteristica> caracteristica;
@@ -55,5 +58,29 @@ public class Personaje {
 
     public void setCaracteristica(List<Caracteristica> caracteristica) {
         this.caracteristica = caracteristica;
+    }
+
+    public Float getMonto() {
+        return monto;
+    }
+
+    public void setMonto(Float monto) {
+        this.monto = monto;
+    }
+
+    public Boolean getEnVenta() {
+        return enVenta;
+    }
+
+    public void setEnVenta(Boolean enVenta) {
+        this.enVenta = enVenta;
+    }
+
+    public Boolean getEnMiColeccion() {
+        return enMiColeccion;
+    }
+
+    public void setEnMiColeccion(Boolean enMiColeccion) {
+        this.enMiColeccion = enMiColeccion;
     }
 }

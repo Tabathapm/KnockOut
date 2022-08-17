@@ -25,10 +25,15 @@ public class ControladorMiColeccion {
 //      --------------------------------
         ModelMap model = new ModelMap();
 //      --------------------------------
-        List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajes();
+        List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion();
 //      --------------------------------
         model.put("personajes", listaPersonajes);
 //      --------------------------------
         return new ModelAndView("miColeccion", model);
+    }
+
+    @RequestMapping("/venderPersonaje")
+    public ModelAndView venderPersonaje(){
+        return null;
     }
 }
