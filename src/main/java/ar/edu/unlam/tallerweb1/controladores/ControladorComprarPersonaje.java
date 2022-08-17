@@ -25,7 +25,7 @@ public class ControladorComprarPersonaje {
 //      --------------------------------
         ModelMap model = new ModelMap();
 //      --------------------------------
-        List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajes();
+        List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnVenta();
 //      --------------------------------
         model.put("personajes", listaPersonajes);
 //      --------------------------------

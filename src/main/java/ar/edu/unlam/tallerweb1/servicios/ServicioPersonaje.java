@@ -7,4 +7,6 @@ import java.util.List;
 public interface ServicioPersonaje {
 
     List<Personaje> listaDePersonajes();
+    List<Personaje> listaDePersonajesEnVenta();
+    List<Personaje> listaDePersonajesEnMiColeccion();
 }

@@ -8,6 +8,8 @@
     <link href="css/miColeccion.css" rel="stylesheet" />
     <%--		<link href="<c:url value="/resources/css/homeDos.css"/>" rel="stylesheet" />--%>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <%--	Icono	--%>
     <link rel="icon" type="image/png" href="<c:url value="/images/logo.png"/>">
     <title>Knock Out!</title>
@@ -60,7 +62,7 @@
                                         <br>
                                         <div style="display: flex; justify-content: space-evenly;">
                                             <button type="button" class="btn btn-success">Ver m&aacute;s</button>
-                                            <button type="button" class="btn btn-danger">Vender</button>
+                                            <a href="#myModal" role="button" class="btn btn-danger" data-bs-toggle="modal">Vender</a>
                                         </div>
                                     </div>
                                 </div>
@@ -69,6 +71,29 @@
                     </c:forEach>
                 </div>
             </div>
+
+            <%--   MODAL     --%>
+                <div id="myModal" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center">Confirmaci&oacute;n de venta</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="text-center">&iquest;Seguro que quer&eacute;s vender a NOMBRE?</p>
+                                <p class="text-center">$montoDelPersonaje</p>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-around">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <a href="venderPersonaje" role="button" class="btn btn-danger">Vender</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
         </main>
     </div>
 </div>

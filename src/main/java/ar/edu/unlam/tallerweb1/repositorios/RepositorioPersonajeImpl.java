@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.repositorios;
 
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -20,6 +21,22 @@ public class RepositorioPersonajeImpl implements RepositorioPersonaje {
     @Override
     public List<Personaje> listaDePersonajes(){
         List<Personaje> personajes = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
+                .list();
+        return personajes;
+    }
+
+    @Override
+    public List<Personaje> listaDePersonajesEnVenta(){
+        List<Personaje> personajes = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
+                .add(Restrictions.eq("enVenta", true))
+                .list();
+        return personajes;
+    }
+
+    @Override
+    public List<Personaje> listaDePersonajesEnMiColeccion(){
+        List<Personaje> personajes = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
+                .add(Restrictions.eq("enMiColeccion", true))
                 .list();
         return personajes;
     }
