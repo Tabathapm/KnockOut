@@ -34,6 +34,8 @@ public class ControladorMiColeccion {
 
     @RequestMapping("/venderPersonaje")
     public ModelAndView venderPersonaje(){
+
+
         return null;
     }
 }

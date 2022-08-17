@@ -81,8 +81,11 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
-                                <p class="text-center">&iquest;Seguro que quer&eacute;s vender a NOMBRE?</p>
-                                <p class="text-center">$montoDelPersonaje</p>
+                                <c:forEach items="${personajes}" var="personaje">
+
+                                    <p class="text-center">Seguro que queres vender a ${personaje.nombre}?</p>
+                                    <p class="text-center">${personaje.monto}</p>
+                                </c:forEach>
                             </div>
                             <div class="modal-footer d-flex justify-content-around">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
