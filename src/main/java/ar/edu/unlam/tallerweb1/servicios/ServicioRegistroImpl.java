@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 import ar.edu.unlam.tallerweb1.controladores.DatosRegistro;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioRegistro;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,10 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 public class ServicioRegistroImpl implements ServicioRegistro {
 
     private RepositorioRegistro repositorioRegistro;
+    private RepositorioUsuario repoUsuario;
 
     @Autowired
-    public ServicioRegistroImpl(RepositorioRegistro repositorioRegistro){
+    public ServicioRegistroImpl(RepositorioRegistro repositorioRegistro, RepositorioUsuario repoUsuario){
         this.repositorioRegistro = repositorioRegistro;
+        this.repoUsuario = repoUsuario;
     }
 
     @Override
@@ -33,6 +36,11 @@ public class ServicioRegistroImpl implements ServicioRegistro {
     @Override
     public Usuario consultarUsuarioPorEmail(String email) {
         return repositorioRegistro.buscarUsuarioPorEmail(email);
+    }
+
+    @Override
+    public void agregarBilletera(Usuario usuario) {
+        repoUsuario.agregarBilletera(usuario);
     }
 
 

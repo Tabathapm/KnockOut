@@ -40,4 +40,12 @@ public class RepositorioPersonajeImpl implements RepositorioPersonaje {
                 .list();
         return personajes;
     }
+
+    @Override
+    public Personaje buscarPorId(Integer id){
+        Personaje personaje = (Personaje) sessionFactory.getCurrentSession().createCriteria(Personaje.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
+        return personaje;
+    }
 }
