@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
+import ar.edu.unlam.tallerweb1.modelo.Billetera;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -50,6 +51,14 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	@Override
 	public void modificar(Usuario usuario) {
 		sessionFactory.getCurrentSession().update(usuario);
+	}
+
+	@Override
+	public void agregarBilletera(Usuario usuario) {
+		Billetera billetera = new Billetera();
+		billetera.setUsuario(usuario);
+		billetera.setMonto(10000.00f);
+		sessionFactory.getCurrentSession().save(billetera);
 	}
 
 }

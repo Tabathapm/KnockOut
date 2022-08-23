@@ -33,4 +33,9 @@ public class ServicioPersonajeImpl implements ServicioPersonaje {
     public List<Personaje> listaDePersonajesEnMiColeccion() {
         return repoPersonaje.listaDePersonajesEnMiColeccion();
     }
+
+    @Override
+    public Personaje buscarPorId(Integer id) {
+        return repoPersonaje.buscarPorId(id);
+    }
 }

@@ -6,5 +6,6 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 public interface ServicioRegistro {
     void addUsuario(DatosRegistro datosRegistro);
     Usuario consultarUsuarioPorEmail(String email);
+    public void agregarBilletera(Usuario usuario);
 
 }
