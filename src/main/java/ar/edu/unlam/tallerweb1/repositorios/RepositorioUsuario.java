@@ -13,4 +13,5 @@ public interface RepositorioUsuario {
 	void modificar(Usuario usuario);
 	void agregarBilletera(Usuario usuario);
 	void creacionDeColeccion(Usuario usuario);
+	Usuario buscarUsuarioPorEmail(String email);
 }

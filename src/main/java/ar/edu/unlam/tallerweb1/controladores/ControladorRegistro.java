@@ -3,10 +3,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.servicios.ServicioColeccion;
-import ar.edu.unlam.tallerweb1.servicios.ServicioColeccionImpl;
-import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
-import ar.edu.unlam.tallerweb1.servicios.ServicioRegistro;
+import ar.edu.unlam.tallerweb1.servicios.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,13 +18,13 @@ import java.util.Random;
 @Controller
 public class ControladorRegistro {
 
-    private ServicioRegistro servicioRegistro;
+    private ServicioUsuario servicioUsuario;
     private ServicioPersonaje servicioPersonaje;
     private ServicioColeccion servicioColeccion;
 
     @Autowired
-    public ControladorRegistro(ServicioRegistro servicioRegistro, ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion){
-        this.servicioRegistro=servicioRegistro;
+    public ControladorRegistro(ServicioUsuario servicioUsuario, ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion){
+        this.servicioUsuario   = servicioUsuario;
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
     }
@@ -43,16 +40,16 @@ public class ControladorRegistro {
 //      --------------------------------
         ModelMap model = new ModelMap();
 //      --------------------------------
-        Usuario usuarioEmail = servicioRegistro.consultarUsuarioPorEmail(datosRegistro.getEmail());
+        Usuario usuarioEmail = servicioUsuario.consultarUsuarioPorEmail(datosRegistro.getEmail());
 
         if(usuarioEmail==null){
-            servicioRegistro.addUsuario(datosRegistro);
+            servicioUsuario.registrarUsuario(datosRegistro);
 
-            Usuario user = servicioRegistro.consultarUsuarioPorEmail(datosRegistro.getEmail());
+            Usuario user = servicioUsuario.consultarUsuarioPorEmail(datosRegistro.getEmail());
 
 //          ------ ASIGNACION DE BILLETERA Y COLECCION ---------
-            servicioRegistro.agregarBilletera(user);
-            servicioRegistro.creacionDeColeccion(user);
+            servicioUsuario.agregarBilletera(user);
+            servicioUsuario.creacionDeColeccion(user);
 
 //          ------ ASIGNACION DE PERSONAJES --------------------
             Random preNumRandom = new Random();

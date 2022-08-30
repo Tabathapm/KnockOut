@@ -1,45 +1,44 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.controladores.DatosRegistro;
-import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioColeccion;
-import ar.edu.unlam.tallerweb1.repositorios.RepositorioRegistro;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service("ServicioRegistro")
+@Service("servicioUsuario")
 @Transactional
-public class ServicioRegistroImpl implements ServicioRegistro {
+public class ServicioUsuarioImpl implements ServicioUsuario{
 
-    private RepositorioRegistro repositorioRegistro;
     private RepositorioUsuario repoUsuario;
     private RepositorioColeccion repoColeccion;
 
     @Autowired
-    public ServicioRegistroImpl(RepositorioRegistro repositorioRegistro, RepositorioUsuario repoUsuario, RepositorioColeccion repoColeccion){
-        this.repositorioRegistro = repositorioRegistro;
+    public ServicioUsuarioImpl(RepositorioUsuario repoUsuario,RepositorioColeccion repoColeccion){
         this.repoUsuario = repoUsuario;
         this.repoColeccion = repoColeccion;
     }
 
     @Override
-    public void addUsuario(DatosRegistro datosRegistro){
+    public void registrarUsuario(DatosRegistro datosRegistro) {
         Usuario usuario = new Usuario();
 //        usuario.setId(datosRegistro.getId());
         usuario.setEmail(datosRegistro.getEmail());
         usuario.setPassword(datosRegistro.getPassword());
         usuario.setActivo(datosRegistro.getActivo());
 
-        repositorioRegistro.guardar(usuario);
-
+        repoUsuario.guardar(usuario);
     }
 
     @Override
+    public Usuario buscarUsuario (String email, String password) {
+        return repoUsuario.buscarUsuario(email, password);
+    }
+    @Override
     public Usuario consultarUsuarioPorEmail(String email) {
-        return repositorioRegistro.buscarUsuarioPorEmail(email);
+        return repoUsuario.buscarUsuarioPorEmail(email);
     }
 
     @Override
@@ -51,6 +50,4 @@ public class ServicioRegistroImpl implements ServicioRegistro {
     public void creacionDeColeccion(Usuario usuario) {
         repoUsuario.creacionDeColeccion(usuario);
     }
-
-
 }
