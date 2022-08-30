@@ -13,7 +13,7 @@
     <div class="d-flex" style="margin: 0 -54%;">
         <img src="<c:url value="/images/dollar.png" />" style="width: 6%;display: flex;align-items: center;" class="p-2">
         <div style="justify-content: center;display: flex;align-items: center;padding: 2% 2% 0% 1%;">
-            <p> $${billetera.monto} </p>
+            <p> ${billetera.monto} </p>
         </div>
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4" style="width: 9%;">
