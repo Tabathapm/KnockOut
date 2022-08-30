@@ -27,4 +27,9 @@ public class ServicioColeccionImpl implements ServicioColeccion{
     public void modificar(Coleccion coleccion){
         repoColeccion.modificar(coleccion);
     }
+
+    @Override
+    public void creacionDeColeccion(Usuario usuario) {
+        repoColeccion.creacionDeColeccion(usuario);
+    }
 }

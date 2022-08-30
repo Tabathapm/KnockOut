@@ -5,6 +5,7 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 public interface RepositorioColeccion {
 
-    public Coleccion traerColeccion(Usuario user);
+    Coleccion traerColeccion(Usuario user);
     void modificar(Coleccion coleccion);
+    void creacionDeColeccion(Usuario usuario);
 }

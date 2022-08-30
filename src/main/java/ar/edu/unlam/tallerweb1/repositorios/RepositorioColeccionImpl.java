@@ -30,4 +30,11 @@ public class RepositorioColeccionImpl implements RepositorioColeccion{
     public void modificar(Coleccion coleccion) {
         sessionFactory.getCurrentSession().update(coleccion);
     }
+
+    @Override
+    public void creacionDeColeccion(Usuario usuario) {
+        Coleccion coleccion = new Coleccion();
+        coleccion.setUsuario(usuario);
+        sessionFactory.getCurrentSession().save(coleccion);
+    }
 }

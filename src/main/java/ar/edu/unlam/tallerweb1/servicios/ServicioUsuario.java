@@ -7,7 +7,5 @@ public interface ServicioUsuario {
 
     void registrarUsuario(DatosRegistro datosRegistro);
     Usuario consultarUsuarioPorEmail(String email);
-    void agregarBilletera(Usuario usuario);
-    void creacionDeColeccion(Usuario usuario);
     Usuario buscarUsuario(String email, String password);
 }

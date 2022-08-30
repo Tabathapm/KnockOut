@@ -4,5 +4,6 @@ import ar.edu.unlam.tallerweb1.modelo.Billetera;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 public interface ServicioBilletera {
-    public Billetera traerDatosBilletera(Usuario user);
+    Billetera traerDatosBilletera(Usuario user);
+    void agregarBilletera(Usuario usuario);
 }

@@ -11,7 +11,5 @@ public interface RepositorioUsuario {
 	void guardar(Usuario usuario);
     Usuario buscar(String email);
 	void modificar(Usuario usuario);
-	void agregarBilletera(Usuario usuario);
-	void creacionDeColeccion(Usuario usuario);
 	Usuario buscarUsuarioPorEmail(String email);
 }

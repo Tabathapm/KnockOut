@@ -21,12 +21,14 @@ public class ControladorRegistro {
     private ServicioUsuario servicioUsuario;
     private ServicioPersonaje servicioPersonaje;
     private ServicioColeccion servicioColeccion;
+    private ServicioBilletera servicioBilletera;
 
     @Autowired
-    public ControladorRegistro(ServicioUsuario servicioUsuario, ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion){
+    public ControladorRegistro(ServicioUsuario servicioUsuario, ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion, ServicioBilletera servicioBilletera){
         this.servicioUsuario   = servicioUsuario;
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
+        this.servicioBilletera = servicioBilletera;
     }
 
     @RequestMapping("registro")
@@ -48,8 +50,8 @@ public class ControladorRegistro {
             Usuario user = servicioUsuario.consultarUsuarioPorEmail(datosRegistro.getEmail());
 
 //          ------ ASIGNACION DE BILLETERA Y COLECCION ---------
-            servicioUsuario.agregarBilletera(user);
-            servicioUsuario.creacionDeColeccion(user);
+            servicioBilletera.agregarBilletera(user);
+            servicioColeccion.creacionDeColeccion(user);
 
 //          ------ ASIGNACION DE PERSONAJES --------------------
             Random preNumRandom = new Random();

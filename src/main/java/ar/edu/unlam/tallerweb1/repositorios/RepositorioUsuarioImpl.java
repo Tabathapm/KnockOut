@@ -61,18 +61,4 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		sessionFactory.getCurrentSession().update(usuario);
 	}
 
-	@Override
-	public void agregarBilletera(Usuario usuario) {
-		Billetera billetera = new Billetera();
-		billetera.setUsuario(usuario);
-		billetera.setMonto(10000.00f);
-		sessionFactory.getCurrentSession().save(billetera);
-	}
-
-	@Override
-	public void creacionDeColeccion(Usuario usuario) {
-		Coleccion coleccion = new Coleccion();
-		coleccion.setUsuario(usuario);
-		sessionFactory.getCurrentSession().save(coleccion);
-	}
 }
