@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
 import ar.edu.unlam.tallerweb1.modelo.Billetera;
+import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -61,4 +62,10 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		sessionFactory.getCurrentSession().save(billetera);
 	}
 
+	@Override
+	public void creacionDeColeccion(Usuario usuario) {
+		Coleccion coleccion = new Coleccion();
+		coleccion.setUsuario(usuario);
+		sessionFactory.getCurrentSession().save(coleccion);
+	}
 }

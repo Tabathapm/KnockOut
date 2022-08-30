@@ -25,6 +25,10 @@ public class ControladorMiColeccion {
 //      --------------------------------
         ModelMap model = new ModelMap();
 //      --------------------------------
+//      MODIFICACIONES A FUTURO:
+//          - buscar la coleccion con el id del usuario
+//          - mostrar solamente los personajes que están en esa colección
+//      --------------------------------
         List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion();
 //      --------------------------------
         model.put("personajes", listaPersonajes);

@@ -10,4 +10,6 @@ public interface ServicioPersonaje {
     List<Personaje> listaDePersonajesEnVenta();
     List<Personaje> listaDePersonajesEnMiColeccion();
     Personaje buscarPorId(Integer id);
+    public Integer maxId();
+    void modificar(Personaje personaje);
 }

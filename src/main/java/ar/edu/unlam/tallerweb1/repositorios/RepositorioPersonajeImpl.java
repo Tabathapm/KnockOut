@@ -1,12 +1,18 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Properties;
 
 @Repository("repositorioPersonaje")
 public class RepositorioPersonajeImpl implements RepositorioPersonaje {
@@ -47,5 +53,19 @@ public class RepositorioPersonajeImpl implements RepositorioPersonaje {
                 .add(Restrictions.eq("id", id))
                 .uniqueResult();
         return personaje;
+    }
+
+    @Override
+    public Integer maxId(){
+        Criteria consulta = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
+                .setProjection(Projections.max("id"));
+
+        Integer idMax = (Integer) consulta.uniqueResult();
+        return idMax;
+    }
+
+    @Override
+    public void modificar(Personaje personaje) {
+        sessionFactory.getCurrentSession().update(personaje);
     }
 }

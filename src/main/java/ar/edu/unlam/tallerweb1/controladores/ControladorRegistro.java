@@ -1,6 +1,11 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import ar.edu.unlam.tallerweb1.modelo.Coleccion;
+import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioColeccion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioColeccionImpl;
+import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
 import ar.edu.unlam.tallerweb1.servicios.ServicioRegistro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,14 +14,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 @Controller
 public class ControladorRegistro {
 
     private ServicioRegistro servicioRegistro;
+    private ServicioPersonaje servicioPersonaje;
+    private ServicioColeccion servicioColeccion;
 
     @Autowired
-    public ControladorRegistro(ServicioRegistro servicioRegistro){
+    public ControladorRegistro(ServicioRegistro servicioRegistro, ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion){
         this.servicioRegistro=servicioRegistro;
+        this.servicioPersonaje = servicioPersonaje;
+        this.servicioColeccion = servicioColeccion;
     }
 
     @RequestMapping("registro")
@@ -27,12 +40,49 @@ public class ControladorRegistro {
 
     @RequestMapping(path = "/registrarUsuario")
     public ModelAndView registrarUsuario(@ModelAttribute("usuario") DatosRegistro datosRegistro){
+//      --------------------------------
         ModelMap model = new ModelMap();
+//      --------------------------------
         Usuario usuarioEmail = servicioRegistro.consultarUsuarioPorEmail(datosRegistro.getEmail());
+
         if(usuarioEmail==null){
             servicioRegistro.addUsuario(datosRegistro);
+
             Usuario user = servicioRegistro.consultarUsuarioPorEmail(datosRegistro.getEmail());
+
+//          ------ ASIGNACION DE BILLETERA Y COLECCION ---------
             servicioRegistro.agregarBilletera(user);
+            servicioRegistro.creacionDeColeccion(user);
+
+//          ------ ASIGNACION DE PERSONAJES --------------------
+            Random preNumRandom = new Random();
+            Integer maxId = servicioPersonaje.maxId();
+
+            int numRandom1  = (int) (preNumRandom.nextDouble() * maxId + 1);
+            int numRandom2  = (int) (preNumRandom.nextDouble() * maxId + 1);
+
+            Personaje personajeUno = servicioPersonaje.buscarPorId(numRandom1);
+            Personaje personajeDos = servicioPersonaje.buscarPorId(numRandom2);
+
+            List <Personaje> listaDePersonajes = new ArrayList<>();
+            listaDePersonajes.add(personajeUno);
+            listaDePersonajes.add(personajeDos);
+
+            personajeUno.setEnVenta(false);
+            personajeDos.setEnVenta(false);
+
+            personajeUno.setEnMiColeccion(true);
+            personajeDos.setEnMiColeccion(true);
+
+            servicioPersonaje.modificar(personajeUno);
+            servicioPersonaje.modificar(personajeDos);
+
+            Coleccion coleccion = servicioColeccion.traerColeccion(user);
+
+            coleccion.setPersonajes(listaDePersonajes);
+            servicioColeccion.modificar(coleccion);
+
+
             return new ModelAndView("redirect:/login");
         }
         else{
