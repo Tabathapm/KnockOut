@@ -3,7 +3,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 import ar.edu.unlam.tallerweb1.modelo.Billetera;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBilletera;
-import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
+import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,12 +22,12 @@ public class ControladorLogin {
 	// el bean correspondiente, en este caso, un objeto de una clase que implemente la interface ServicioLogin,
 	// dicha clase debe estar anotada como @Service o @Repository y debe estar en un paquete de los indicados en
 	// applicationContext.xml
-	private ServicioLogin servicioLogin;
+	private ServicioUsuario servicioUsuario;
 	private ServicioBilletera servicioBilletera;
 
 	@Autowired
-	public ControladorLogin(ServicioLogin servicioLogin, ServicioBilletera servicioBilletera){
-		this.servicioLogin = servicioLogin;
+	public ControladorLogin(ServicioUsuario servicioUsuario, ServicioBilletera servicioBilletera){
+		this.servicioUsuario   = servicioUsuario;
 		this.servicioBilletera = servicioBilletera;
 	}
 
@@ -53,7 +53,7 @@ public class ControladorLogin {
 
 		// invoca el metodo consultarUsuario del servicio y hace un redirect a la URL /home, esto es, en lugar de enviar a una vista
 		// hace una llamada a otro action a traves de la URL correspondiente a esta
-		Usuario usuarioBuscado = servicioLogin.consultarUsuario(datosLogin.getEmail(), datosLogin.getPassword());
+		Usuario usuarioBuscado = servicioUsuario.buscarUsuario(datosLogin.getEmail(), datosLogin.getPassword());
 		if (usuarioBuscado != null) {
 //			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
 			Billetera billetera = servicioBilletera.traerDatosBilletera(usuarioBuscado);
