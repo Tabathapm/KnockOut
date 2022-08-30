@@ -57,6 +57,8 @@
                   <img src="<c:url value="/images/personajes/${personaje.imagen}" />" class="w-100 card-img-top">
                   <div class="p-4">
                     <h5 class="mb-0 text-center">${personaje.nombre}</h5>
+                    <h5 class="mb-0 text-center"> <img src="images/dollar.png" style="width: 45px;"> ${personaje.monto} </h5>
+
                     <br>
                     <div style="display: flex; justify-content: space-evenly;">
                       <button type="button" class="btn btn-primary">Ver m&aacute;s</button>

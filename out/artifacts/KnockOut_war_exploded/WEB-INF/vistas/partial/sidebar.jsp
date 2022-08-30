@@ -24,7 +24,7 @@
                 <div class="collapse" id="collapseTripulacion" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="comprarPersonaje">Personajes</a>
-                        <a class="nav-link" href="#">Monedas</a>
+                        <a class="nav-link" href="comprarMonedas">Monedas</a>
                     </nav>
                 </div>
                 <%-- ------------------------ --%>

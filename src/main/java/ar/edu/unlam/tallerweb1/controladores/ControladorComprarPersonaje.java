@@ -31,4 +31,20 @@ public class ControladorComprarPersonaje {
 //      --------------------------------
         return new ModelAndView("comprarPersonaje", model);
     }
+
+
+
+    @RequestMapping("/comprarMonedas")
+    public ModelAndView irAComprarMonedas() {
+//      --------------------------------
+//        ModelMap model = new ModelMap();
+////      --------------------------------
+//        List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnVenta();
+////      --------------------------------
+//        model.put("personajes", listaPersonajes);
+////      --------------------------------
+//        return new ModelAndView("comprarPersonaje", model);
+
+        return new ModelAndView("comprarMonedas");
+    }
 }
