@@ -2,7 +2,6 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.controladores.DatosRegistro;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
-import ar.edu.unlam.tallerweb1.repositorios.RepositorioColeccion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,12 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class ServicioUsuarioImpl implements ServicioUsuario{
 
     private RepositorioUsuario repoUsuario;
-    private RepositorioColeccion repoColeccion;
 
     @Autowired
-    public ServicioUsuarioImpl(RepositorioUsuario repoUsuario,RepositorioColeccion repoColeccion){
+    public ServicioUsuarioImpl(RepositorioUsuario repoUsuario){
         this.repoUsuario = repoUsuario;
-        this.repoColeccion = repoColeccion;
     }
 
     @Override
@@ -41,13 +38,4 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
         return repoUsuario.buscarUsuarioPorEmail(email);
     }
 
-    @Override
-    public void agregarBilletera(Usuario usuario) {
-        repoUsuario.agregarBilletera(usuario);
-    }
-
-    @Override
-    public void creacionDeColeccion(Usuario usuario) {
-        repoUsuario.creacionDeColeccion(usuario);
-    }
 }

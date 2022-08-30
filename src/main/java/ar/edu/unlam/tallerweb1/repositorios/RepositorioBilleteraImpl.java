@@ -23,4 +23,12 @@ public class RepositorioBilleteraImpl implements RepositorioBilletera{
                 .uniqueResult();
         return billetera;
     }
+
+    @Override
+    public void agregarBilletera(Usuario usuario) {
+        Billetera billetera = new Billetera();
+        billetera.setUsuario(usuario);
+        billetera.setMonto(10000.00f);
+        sessionFactory.getCurrentSession().save(billetera);
+    }
 }
