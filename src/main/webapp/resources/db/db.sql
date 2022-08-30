@@ -16,7 +16,7 @@ VALUES
 ('Black Widow','black_widow.jpg', 
 'Experta espía y combatiente cuerpo a cuerpo. Convocada por Nick Fury, es miembro fundador de la Iniciativa Vengadores.' ,true, false, 10000.00),
 ('Hawkeye', 'hawkeye.jpg', 
-'Su nombre real es Clint Barton. Tirador experto y un combatiente cuerpo a cuerpo, siendo su arma preferida es un arco recurvo.' ,false, true, 5000.75),
+'Su nombre real es Clint Barton. Tirador experto y un combatiente cuerpo a cuerpo, siendo su arma preferida es un arco recurvo.' ,true, false, 5000.75),
 ('Hulk', 'hulk.jpg', 
 'Ser humanoide enorme de piel verde, corpulento y musculoso que posee una gran fortaleza física.' ,true, false, 5000.80),
 ('Kate Bishop', 'kate_bishop.jpg', 

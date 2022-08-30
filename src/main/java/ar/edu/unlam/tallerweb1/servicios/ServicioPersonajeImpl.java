@@ -38,4 +38,14 @@ public class ServicioPersonajeImpl implements ServicioPersonaje {
     public Personaje buscarPorId(Integer id) {
         return repoPersonaje.buscarPorId(id);
     }
+
+    @Override
+    public Integer maxId() {
+        return repoPersonaje.maxId();
+    }
+
+    @Override
+    public void modificar(Personaje personaje) {
+        repoPersonaje.modificar(personaje);
+    }
 }
