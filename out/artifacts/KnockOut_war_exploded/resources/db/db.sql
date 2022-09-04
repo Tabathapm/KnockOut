@@ -49,7 +49,7 @@ VALUES
 
 insert into personaje(nombre,imagen,descripcion,enVenta, enMiColeccion, monto)
 values('Ermac','ermac.jpg',
-       'Ermac es una entidad compuesta de legiones de almas de los muertos, que se enviaron a guerras sin sentido, la manera en que las almas fueron fusionados en Ermac es desconocida.',false,true,5000.00);
+       'Ermac es una entidad compuesta de legiones de almas de los muertos, que se enviaron a guerras sin sentido, la manera en que las almas fueron fusionados en Ermac es desconocida.',true,false,5000.00);
 
 
 
@@ -72,10 +72,10 @@ values('Mileena','milena.jpg',
 
 insert into personaje(nombre,imagen,descripcion,enVenta, enMiColeccion, monto)
 values('Reptile','reptile.jpg',
-       'Un general del ejército de la oscuridad de Shinnok, Reptile pertenece a una raza extinta de criaturas reptilianas. Fue desterrado al Netherrealm acusado del genocidio contra su propia especie.',false,true,8300.00);
+       'Un general del ejército de la oscuridad de Shinnok, Reptile pertenece a una raza extinta de criaturas reptilianas. Fue desterrado al Netherrealm acusado del genocidio contra su propia especie.',true,false,8300.00);
 
 insert into personaje(nombre,imagen,descripcion,enVenta, enMiColeccion, monto)
-values('Scorpion','scorpion.jpg','Espectro Ninja no muerto que busca venganza por su propia muerte a manos de Sub-Zero.',false,true,10000.00);
+values('Scorpion','scorpion.jpg','Espectro Ninja no muerto que busca venganza por su propia muerte a manos de Sub-Zero.',true, false,10000.00);
 
 insert into personaje(nombre,imagen,descripcion,enVenta, enMiColeccion, monto)
 values('Shang Tsung','shang.jpg','Es un poderoso hechicero con la capacidad de absorber almas y cambiar de forma. Bajo el mando de Shao Kahn buscara conquistar la tierra.',true,false,9200.00);
@@ -87,4 +87,4 @@ insert into personaje(nombre,imagen,descripcion,enVenta, enMiColeccion, monto)
 values('Sonya Blade','sonya.jpg','miembro de una unidad superior de las Fuerzas Especiales de los Estados Unidos. Sonya representa a una mujer muy emancipada y testaruda, con obstinación y orgullo, ella se preocupa por las vidas de sus amigos y compañeros.',true,false,7900.00);
 
 insert into personaje(nombre,imagen,descripcion,enVenta, enMiColeccion, monto)
-values('Sub-Zero','sub.jpg','Un asesino del clan Lin Kuei. Que asumió el mando, cuando su hermano fue asesinado por el espectro ninja Scorpion en el mismo torneo de Mortal Kombat',false,true,10000.0);
+values('Sub-Zero','sub.jpg','Un asesino del clan Lin Kuei. Que asumió el mando, cuando su hermano fue asesinado por el espectro ninja Scorpion en el mismo torneo de Mortal Kombat',true, false,10000.0);

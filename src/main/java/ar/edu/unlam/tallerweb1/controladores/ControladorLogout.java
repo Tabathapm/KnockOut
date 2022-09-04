@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 public class ControladorLogout {
 
     @RequestMapping("/logout")
-    public ModelAndView cerrarSesion(@ModelAttribute HttpServletRequest request){
+    public ModelAndView cerrarSesion(HttpServletRequest request){
         request.getSession().invalidate();
-        return new ModelAndView("login");
+        return new ModelAndView("redirect:/login");
     }
 }
