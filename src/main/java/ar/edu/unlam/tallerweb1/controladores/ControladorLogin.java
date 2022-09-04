@@ -55,7 +55,9 @@ public class ControladorLogin {
 		// hace una llamada a otro action a traves de la URL correspondiente a esta
 		Usuario usuarioBuscado = servicioUsuario.buscarUsuario(datosLogin.getEmail(), datosLogin.getPassword());
 		if (usuarioBuscado != null) {
-//			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
+//			-------------------------------------------------------------------------
+			request.getSession(true).setAttribute("idUsuario", usuarioBuscado.getId());
+//			-------------------------------------------------------------------------
 			Billetera billetera = servicioBilletera.traerDatosBilletera(usuarioBuscado);
 			model.put("billetera", billetera);
 			return new ModelAndView("home", model);
@@ -68,8 +70,14 @@ public class ControladorLogin {
 
 	// Escucha la URL /home por GET, y redirige a una vista.
 	@RequestMapping(path = "/home", method = RequestMethod.GET)
-	public ModelAndView irAHome() {
-		return new ModelAndView("home");
+	public ModelAndView irAHome(HttpServletRequest request) {
+		Integer idUSer = (Integer) request.getSession().getAttribute("idUsuario");
+		if (idUSer != null) {
+			return new ModelAndView("home");
+		}
+		else {
+			return new ModelAndView("redirect:/login");
+		}
 	}
 
 	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la url /login directamente.
