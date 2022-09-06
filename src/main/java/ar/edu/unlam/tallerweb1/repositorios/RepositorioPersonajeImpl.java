@@ -4,10 +4,7 @@ import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Property;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -67,5 +64,18 @@ public class RepositorioPersonajeImpl implements RepositorioPersonaje {
     @Override
     public void modificar(Personaje personaje) {
         sessionFactory.getCurrentSession().update(personaje);
+    }
+
+    @Override
+    public List<Personaje> listaDePersonajesEnMiColeccion(Integer id){
+
+//      -------------- NO FUNCIONA ----------------
+        List <Personaje> personajesEnMiColeccion = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
+                .createAlias("personaje.id", "idPersonaje")
+                .createAlias("coleccion_personaje.personajes_id", "personajes_id")
+                .add(Restrictions.eq("Coleccion_id", id))
+                .list();
+
+        return personajesEnMiColeccion;
     }
 }

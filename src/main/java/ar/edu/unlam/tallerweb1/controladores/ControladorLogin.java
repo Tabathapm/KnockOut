@@ -55,9 +55,9 @@ public class ControladorLogin {
 		// hace una llamada a otro action a traves de la URL correspondiente a esta
 		Usuario usuarioBuscado = servicioUsuario.buscarUsuario(datosLogin.getEmail(), datosLogin.getPassword());
 		if (usuarioBuscado != null) {
-//			-------------------------------------------------------------------------
-			request.getSession(true).setAttribute("idUsuario", usuarioBuscado.getId());
-//			-------------------------------------------------------------------------
+//			------ SE GUARDA EL ID DEL USUARIO EN LA SESION CON LA CLAVE "idUsuario" -------
+			request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
+//			--------------------------------------------------------------------------------
 			Billetera billetera = servicioBilletera.traerDatosBilletera(usuarioBuscado);
 			model.put("billetera", billetera);
 			return new ModelAndView("home", model);
@@ -71,6 +71,7 @@ public class ControladorLogin {
 	// Escucha la URL /home por GET, y redirige a una vista.
 	@RequestMapping(path = "/home", method = RequestMethod.GET)
 	public ModelAndView irAHome(HttpServletRequest request) {
+//		-- LLAMAMOS A AL ID DEL USUARIO QUE SE GUARDÓ EN LA SESION CON LA CLAVE QUE LE ASIGNAMOS --
 		Integer idUSer = (Integer) request.getSession().getAttribute("idUsuario");
 		if (idUSer != null) {
 			return new ModelAndView("home");

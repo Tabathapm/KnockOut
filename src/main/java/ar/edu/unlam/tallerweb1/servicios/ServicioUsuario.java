@@ -8,4 +8,5 @@ public interface ServicioUsuario {
     void registrarUsuario(DatosRegistro datosRegistro);
     Usuario consultarUsuarioPorEmail(String email);
     Usuario buscarUsuario(String email, String password);
+    Usuario buscarPorID(Integer id);
 }

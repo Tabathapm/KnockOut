@@ -33,6 +33,12 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
     public Usuario buscarUsuario (String email, String password) {
         return repoUsuario.buscarUsuario(email, password);
     }
+
+    @Override
+    public Usuario buscarPorID(Integer id) {
+        return repoUsuario.buscarPorID(id);
+    }
+
     @Override
     public Usuario consultarUsuarioPorEmail(String email) {
         return repoUsuario.buscarUsuarioPorEmail(email);
