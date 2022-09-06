@@ -48,4 +48,9 @@ public class ServicioPersonajeImpl implements ServicioPersonaje {
     public void modificar(Personaje personaje) {
         repoPersonaje.modificar(personaje);
     }
+
+    @Override
+    public List<Personaje> listaDePersonajesEnMiColeccion(Integer id) {
+        return repoPersonaje.listaDePersonajesEnMiColeccion(id);
+    }
 }
