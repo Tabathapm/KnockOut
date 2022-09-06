@@ -41,7 +41,9 @@
                                         <h5 class="card-title">500 Monedas</h5>
                                         <p class="card-text">Comprar 500 monedas a tan solo $.</p>
                                     </div>
-                                    <button type="button" class="btn btn-primary">Comprar 500 monedas</button>
+                                    <a href="pagoMonedas" class="btn btn-success" role="button" aria-pressed="true">
+                                        Comprar 500 monedas
+                                    </a>
                                 </div>
                                 <div class="card">
                                     <img src="images/dollar.png">
@@ -50,7 +52,9 @@
                                         <p class="card-text">Comprar 1000 monedas a tan solo $.</p>
                                     </div>
 
-                                        <button type="button" class="btn btn-primary">Comprar 1000 monedas</button>
+                                    <a href="pagoMonedas" class="btn btn-success" role="button" aria-pressed="true">
+                                        Comprar 1000 monedas
+                                    </a>
 
                                 </div>
                                 <div class="card">
@@ -60,7 +64,9 @@
                                         <p class="card-text">Comprar 2000 monedas a tan solo $.</p>
                                     </div>
 
-                                        <button type="button" class="btn btn-primary">Comprar 2000 monedas</button>
+                                    <a href="pagoMonedas" class="btn btn-success" role="button" aria-pressed="true">
+                                        Comprar 2000 monedas
+                                    </a>
 
                                 </div>
                             </div>
