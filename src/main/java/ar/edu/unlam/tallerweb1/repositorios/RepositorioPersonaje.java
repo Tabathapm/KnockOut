@@ -12,4 +12,5 @@ public interface RepositorioPersonaje {
     Personaje buscarPorId(Integer id);
     public Integer maxId();
     void modificar(Personaje personaje);
+    List<Personaje> listaDePersonajesEnMiColeccion(Integer id);
 }
