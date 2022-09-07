@@ -44,7 +44,6 @@ VALUES
 'Supervillano con temática de Halloween cuyas armas se asemejan a murciélagos, fantasmas y linternas de calabaza. Es estrambótico, bocazas y políticamente incorrecto.' ,true, false, 4000.00);
 
 
-
 -- insert leandro--
 
 insert into personaje(nombre,imagen,descripcion,enVenta, enMiColeccion, monto)
@@ -66,3 +65,18 @@ values('Ermac','ermac.jpg',
       ('Sonya Blade','sb.jpg','miembro de una unidad superior de las Fuerzas Especiales de los Estados Unidos. Sonya representa a una mujer muy emancipada y testaruda, con obstinación y orgullo, ella se preocupa por las vidas de sus amigos y compañeros.',true,false,7900.00),
       ('Sub-Zero','sub.jpg','Un asesino del clan Lin Kuei. Que asumió el mando, cuando su hermano fue asesinado por el espectro ninja Scorpion en el mismo torneo de Mortal Kombat',false,true,10000.0),
       ('Kung Lao','kunglao.jpg','Monje Shaolin y un miembro de la Sociedad del Loto Blanco que se encuentra a la sombra de su antepasado. Kung Lao es el mejor amigo de Liu Kang.',true,false,98000.0);
+
+-- Insert superheroes DC--
+
+insert into personaje(nombre,imagen,descripcion,enVenta, enMiColeccion, monto)
+values('Superman','superman.jpg','Superheroe nacido en el planeta de Krypton.Sus poderes provienen de la absorción solar,entre ellos se encuentran: super fuerza,super velocidad,factor curativo,volar,visión de rayos X,etc. ',true,false,15000.0),
+      ('Aquaman','aquaman.jpg','Rey de Atlantis,forma parte de la Liga de La Justicia.Tiene control de los mares y criaturas marinas.Posee super fuerza y resistencia. ',true,false,8500.0),
+      ('Batman','batman.jpg',' Millonario que por las noches se convierte en un justiciero.Tiene una basta experiencia en multiples artes marciales.Cuenta con una inteligencia superior',true,false,10000.0),
+      ('Black Adam','blackAdam.jpg',' Black Adam es un antiguo egipcio llamado Teth-Adam (es decir, "Poderoso humano"), que es elegido por el mago Shazam para ser su sucesor debido a su presunta pureza moral. ',true,false,10500.0),
+      ('Brainiac','brainiac.jpg','Es un villano humanoide de piel verde.Posee poderes telepáticos y psicoquinéticos cuyos límites se desconocen ',true,false,12300.0),
+      ('Deadshot','deadshot.jpg','Floyd Lawton, más conocido como Deadshot, es un pistolero a sueldo, conocido por ser el segundo asesino más letal de todo el universo de DC Comics',true,false,8500.0),
+      ('Flash','flash.jpg','Superheroe integrante de La Liga de La Justicia.Posee super velocidad,puede atravesar las paredes ,lanzar rayos y hasta viajar en el tiempo.',true,false,12000.0),
+      ('Lex Luthor','lexLuthor.jpg','Alexander J. Luthor, conocido simplemente como Lex Luthor, es un supervillano y el archienemigo de Superman.Es un millonario con una gran inteligencia. ',true,false,10200.0),
+      ('Mujer Maravilla','mujerMaravilla.jpg','Princesa guerrera de las Amazonas.Forma parte de La Liga de La Justicia.',true,false,11000.0),
+      ('Deadthstroke','deadthstroke.jpg','Mercenario y villano, mentalmente inestable y con una gran habilidad en el manejo de las espadas ',true,false,7500.0);
+
