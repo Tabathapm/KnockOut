@@ -124,11 +124,11 @@
                 </div>
               </div>
             </div>
-            <div class="form-group">
-              <label for="x_zip" class="control-label">Postal code</label>
-              <input id="x_zip" name="x_zip" type="text" class="form-control" value="" data-val="true" data-val-required="Please enter the ZIP/Postal code" autocomplete="postal-code">
-              <span class="help-block" data-valmsg-for="x_zip" data-valmsg-replace="true"></span>
-            </div>
+<%--            <div class="form-group">--%>
+<%--              <label for="x_zip" class="control-label">Postal code</label>--%>
+<%--              <input id="x_zip" name="x_zip" type="text" class="form-control" value="" data-val="true" data-val-required="Please enter the ZIP/Postal code" autocomplete="postal-code">--%>
+<%--              <span class="help-block" data-valmsg-for="x_zip" data-valmsg-replace="true"></span>--%>
+<%--            </div>--%>
             <div>
               <button id="payment-button" type="submit" class="btn btn-lg btn-success btn-block">
                 <i class="fa fa-lock fa-lg"></i>&nbsp;
