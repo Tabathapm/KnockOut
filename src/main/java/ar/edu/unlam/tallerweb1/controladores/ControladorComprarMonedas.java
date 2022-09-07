@@ -32,4 +32,11 @@ private ServicioUsuario servicioUsuario;
 
         return new ModelAndView("comprarMonedas");
     }
+
+    @RequestMapping("/pagoMonedas")
+    public ModelAndView irAPagarMonedas(){
+
+        return new ModelAndView("pagoMonedas");
+
+    }
 }
