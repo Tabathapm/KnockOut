@@ -10,18 +10,25 @@
         </button>
     </div>
     <!-- Sidebar Toggle-->
-    <div class="d-flex" style="margin: 0 -54%;">
+    <div class="d-flex" style="justify-content: end;">
+        <div style="justify-content: center;display: flex;align-items: center;padding: 1% 40% 0% 0%;flex-direction: column">
+            <span class="badge badge-pill badge-danger" style="color: white; background: red; width: 100%; font-size: medium">
+                Nivel ${nivel.numero}
+            </span>
+            <progress max="${nivel.valorMax}" value="${nivel.valorActual}"></progress>
+        </div>
+
         <img src="<c:url value="/images/dollar.png" />" style="width: 6%;display: flex;align-items: center;" class="p-2">
-        <div style="justify-content: center;display: flex;align-items: center;padding: 2% 2% 0% 1%;">
+        <div style="justify-content: center;display: flex;align-items: center;padding: 2% 2% 0% 0%;">
             <p> ${billetera.monto} </p>
         </div>
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4" style="width: 9%;">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="<c:url value="/images/user_gamer.png" />" style="width: 66%; margin-left: 86%;">
+                    <img src="<c:url value="/images/user_gamer.png" />" style="width: 66%;">
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="margin: -8% -61%;">
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="margin: -9%;">
                     <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
                     <li><a class="dropdown-item" href="#">Modificar</a></li>
                     <li><hr class="dropdown-divider"></li>

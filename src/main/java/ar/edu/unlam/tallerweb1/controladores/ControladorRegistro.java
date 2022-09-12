@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Coleccion;
+import ar.edu.unlam.tallerweb1.modelo.Nivel;
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.*;
@@ -22,13 +23,17 @@ public class ControladorRegistro {
     private ServicioPersonaje servicioPersonaje;
     private ServicioColeccion servicioColeccion;
     private ServicioBilletera servicioBilletera;
+    private ServicioNivel servicioNivel;
 
     @Autowired
-    public ControladorRegistro(ServicioUsuario servicioUsuario, ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion, ServicioBilletera servicioBilletera){
+    public ControladorRegistro(ServicioUsuario servicioUsuario, ServicioPersonaje servicioPersonaje,
+                               ServicioColeccion servicioColeccion, ServicioBilletera servicioBilletera,
+                               ServicioNivel servicioNivel){
         this.servicioUsuario   = servicioUsuario;
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
         this.servicioBilletera = servicioBilletera;
+        this.servicioNivel     = servicioNivel;
     }
 
     @RequestMapping("registro")
@@ -52,6 +57,11 @@ public class ControladorRegistro {
 //          ------ ASIGNACION DE BILLETERA Y COLECCION ---------
             servicioBilletera.agregarBilletera(user);
             servicioColeccion.creacionDeColeccion(user);
+
+//          ------ CREACION Y ASIGNACION DE NIVEL ---------
+            Nivel nivel = servicioNivel.crearNivel(1, 10);
+            user.setNivel(nivel);
+            servicioUsuario.modificar(user);
 
 //          ------ ASIGNACION DE PERSONAJES --------------------
             Random preNumRandom = new Random();

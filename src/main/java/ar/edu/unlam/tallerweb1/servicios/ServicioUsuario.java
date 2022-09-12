@@ -9,4 +9,5 @@ public interface ServicioUsuario {
     Usuario consultarUsuarioPorEmail(String email);
     Usuario buscarUsuario(String email, String password);
     Usuario buscarPorID(Integer id);
+    void modificar(Usuario usuario);
 }
