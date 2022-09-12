@@ -40,6 +40,11 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
     }
 
     @Override
+    public void modificar(Usuario usuario) {
+        repoUsuario.modificar(usuario);
+    }
+
+    @Override
     public Usuario consultarUsuarioPorEmail(String email) {
         return repoUsuario.buscarUsuarioPorEmail(email);
     }

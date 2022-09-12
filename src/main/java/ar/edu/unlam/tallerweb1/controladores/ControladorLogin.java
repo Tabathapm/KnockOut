@@ -1,8 +1,10 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Billetera;
+import ar.edu.unlam.tallerweb1.modelo.Nivel;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBilletera;
+import ar.edu.unlam.tallerweb1.servicios.ServicioNivel;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,11 +26,13 @@ public class ControladorLogin {
 	// applicationContext.xml
 	private ServicioUsuario servicioUsuario;
 	private ServicioBilletera servicioBilletera;
+	private ServicioNivel servicioNivel;
 
 	@Autowired
-	public ControladorLogin(ServicioUsuario servicioUsuario, ServicioBilletera servicioBilletera){
+	public ControladorLogin(ServicioUsuario servicioUsuario, ServicioBilletera servicioBilletera, ServicioNivel servicioNivel){
 		this.servicioUsuario   = servicioUsuario;
 		this.servicioBilletera = servicioBilletera;
+		this.servicioNivel     = servicioNivel;
 	}
 
 	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/login si la misma es invocada por metodo http GET
@@ -55,12 +59,16 @@ public class ControladorLogin {
 		// hace una llamada a otro action a traves de la URL correspondiente a esta
 		Usuario usuarioBuscado = servicioUsuario.buscarUsuario(datosLogin.getEmail(), datosLogin.getPassword());
 		if (usuarioBuscado != null) {
-//			------ SE GUARDA EL ID DEL USUARIO EN LA SESION CON LA CLAVE "idUsuario" -------
-			request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
-//			--------------------------------------------------------------------------------
+
 			Billetera billetera = servicioBilletera.traerDatosBilletera(usuarioBuscado);
-			model.put("billetera", billetera);
-			return new ModelAndView("home", model);
+			Nivel nivel = servicioNivel.traerDatosDelNivel(usuarioBuscado.getNivel().getId());
+
+//			------ SE GUARDAN DATOS EN LA SESION -------
+			request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
+			request.getSession().setAttribute("billetera", billetera);
+			request.getSession().setAttribute("nivel", nivel);
+//          -----------------------------------------------------------
+			return new ModelAndView("home");
 		} else {
 			// si el usuario no existe agrega un mensaje de error en el modelo.
 			model.put("error", "Usuario o clave incorrecta");
