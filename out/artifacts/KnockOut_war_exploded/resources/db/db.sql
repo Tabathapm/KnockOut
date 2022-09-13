@@ -48,7 +48,7 @@ VALUES
 
 insert into personaje(nombre,imagen,descripcion,enVenta, enMiColeccion, monto)
 values('Ermac','ermac.jpg',
-       'Ermac es una entidad compuesta de legiones de almas de los muertos, que se enviaron a guerras sin sentido, la manera en que las almas fueron fusionados en Ermac es desconocida.',false,true,5000.00),
+       'Ermac es una entidad compuesta de legiones de almas de los muertos, que se enviaron a guerras sin sentido, la manera en que las almas fueron fusionados en Ermac es desconocida.',true,false,5000.00),
       ('Johnny Cage','johnny_.jpg',
        'Una superestrella de las artes marciales entrenado por grandes maestros de todo el mundo.',true,false,8000.00),
       ('Kitana','kitana_.jpg',
@@ -58,12 +58,12 @@ values('Ermac','ermac.jpg',
       ('Mileena','milena_.jpg',
        ' Mileena es un clon de Kitana. Su odio hacia Kitana consume sus pensamientos; desea matarla para tomar el trono de Edenia.',true,false,5600.00),
       ('Reptile','reptile.jpg',
-       'Un general del ejército de la oscuridad de Shinnok, Reptile pertenece a una raza extinta de criaturas reptilianas. Fue desterrado al Netherrealm acusado del genocidio contra su propia especie.',false,true,8300.00),
-      ('Scorpion','scorpion.jpg','Espectro Ninja no muerto que busca venganza por su propia muerte a manos de Sub-Zero.',false,true,10000.00),
+       'Un general del ejército de la oscuridad de Shinnok, Reptile pertenece a una raza extinta de criaturas reptilianas. Fue desterrado al Netherrealm acusado del genocidio contra su propia especie.',true,false,8300.00),
+      ('Scorpion','scorpion.jpg','Espectro Ninja no muerto que busca venganza por su propia muerte a manos de Sub-Zero.',true,false,10000.00),
       ('Shang Tsung','shang_.jpg','Es un poderoso hechicero con la capacidad de absorber almas y cambiar de forma. Bajo el mando de Shao Kahn buscara conquistar la tierra.',true,false,9200.00),
       ('Shao Kahn','sk.jpg','Emperador del Reino del Outworld.Lo conocen por su divina fuerza, la insensibilidad, extrema brutalidad y su afición por las ejecuciones personales, intentara conquistar la tierra mandando a Shang Tsung.',true,false,12000.00),
       ('Sonya Blade','sonya_.jpg','miembro de una unidad superior de las Fuerzas Especiales de los Estados Unidos. Sonya representa a una mujer muy emancipada y testaruda, con obstinación y orgullo, ella se preocupa por las vidas de sus amigos y compañeros.',true,false,7900.00),
-      ('Sub-Zero','sub.jpg','Un asesino del clan Lin Kuei. Que asumió el mando, cuando su hermano fue asesinado por el espectro ninja Scorpion en el mismo torneo de Mortal Kombat',false,true,10000.0),
+      ('Sub-Zero','sub.jpg','Un asesino del clan Lin Kuei. Que asumió el mando, cuando su hermano fue asesinado por el espectro ninja Scorpion en el mismo torneo de Mortal Kombat',true,false,10000.0),
       ('Kung Lao','kunglao.jpg','Monje Shaolin y un miembro de la Sociedad del Loto Blanco que se encuentra a la sombra de su antepasado. Kung Lao es el mejor amigo de Liu Kang.',true,false,98000.0);
 
 -- Insert superheroes DC--

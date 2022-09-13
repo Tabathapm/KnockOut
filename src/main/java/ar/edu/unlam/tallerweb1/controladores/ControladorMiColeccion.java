@@ -50,9 +50,9 @@ public class ControladorMiColeccion {
         //List <Personaje> listaPer =    coleccion.getPersonajes();
 
 //      --------------------------------
-//        List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion();
+        List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion();
 //      --------------------------------
-        //model.put("personajes", listaPer);
+        model.put("personajes", listaPersonajes);
 //      --------------------------------
         return new ModelAndView("miColeccion", model);
     }
