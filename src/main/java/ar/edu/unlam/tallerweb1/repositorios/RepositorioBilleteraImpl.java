@@ -31,4 +31,9 @@ public class RepositorioBilleteraImpl implements RepositorioBilletera{
         billetera.setMonto(10000.00f);
         sessionFactory.getCurrentSession().save(billetera);
     }
+
+    @Override
+    public void modificar(Billetera billetera) {
+        sessionFactory.getCurrentSession().update(billetera);
+    }
 }

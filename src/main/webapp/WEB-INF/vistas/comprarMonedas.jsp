@@ -41,9 +41,12 @@
                                         <h5 class="card-title">500 Monedas</h5>
                                         <p class="card-text">Comprar 500 monedas a tan solo $.</p>
                                     </div>
-                                    <a href="pagoMonedas" class="btn btn-success" role="button" aria-pressed="true">
+                                    <form action="pagoMonedas" method="post">
+                                        <input type="hidden" name="montoElegido" value="500" >
+                                        <a href="pagoMonedas" class="btn btn-success" role="button" aria-pressed="true">
                                         Comprar 500 monedas
                                     </a>
+                                    </form>
                                 </div>
                                 <div class="card">
                                     <img src="images/dollar.png">
@@ -52,9 +55,12 @@
                                         <p class="card-text">Comprar 1000 monedas a tan solo $.</p>
                                     </div>
 
-                                    <a href="pagoMonedas" class="btn btn-success" role="button" aria-pressed="true">
-                                        Comprar 1000 monedas
-                                    </a>
+                                    <form action="pagoMonedas" method="post">
+                                        <input type="hidden" name="montoElegido" value="1000">
+                                        <a href="pagoMonedas" class="btn btn-success" role="button" aria-pressed="true">
+                                            Comprar 1000 monedas
+                                        </a>
+                                    </form>
 
                                 </div>
                                 <div class="card">
@@ -64,9 +70,12 @@
                                         <p class="card-text">Comprar 2000 monedas a tan solo $.</p>
                                     </div>
 
-                                    <a href="pagoMonedas" class="btn btn-success" role="button" aria-pressed="true">
-                                        Comprar 2000 monedas
-                                    </a>
+                                    <form action="pagoMonedas" method="post">
+                                        <input type="hidden" name="montoElegido" value="2000">
+                                        <a href="pagoMonedas" class="btn btn-success" role="button" aria-pressed="true">
+                                            Comprar 2000 monedas
+                                        </a>
+                                    </form>
 
                                 </div>
                             </div>

@@ -26,4 +26,9 @@ public class ServicioBilleteraImpl implements ServicioBilletera{
     public void agregarBilletera(Usuario usuario) {
         repoBilletera.agregarBilletera(usuario);
     }
+
+    @Override
+    public void modificar(Billetera billetera) {
+        repoBilletera.modificar(billetera);
+    }
 }
