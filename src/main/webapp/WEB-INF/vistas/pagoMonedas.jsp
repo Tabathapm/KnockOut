@@ -34,6 +34,7 @@
             <hr class="colorgraph">
 
             <form action="validar-pago" method="POST" modelAttribute="datosDePago">
+                <input type="hidden" name="montoElegido" value="${montoElegido}">
               <br>
               <div class="row">
                 <div class="col-12">

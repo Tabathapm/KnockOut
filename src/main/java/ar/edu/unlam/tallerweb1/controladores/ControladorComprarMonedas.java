@@ -1,10 +1,19 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import ar.edu.unlam.tallerweb1.modelo.Billetera;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioBilletera;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
@@ -12,11 +21,15 @@ public class ControladorComprarMonedas {
 
 private ServicioUsuario servicioUsuario;
 
+    private ServicioBilletera servicioBilletera;
 
     @Autowired
-    public ControladorComprarMonedas(ServicioUsuario servicioUsuario) {
+    public ControladorComprarMonedas(ServicioUsuario servicioUsuario, ServicioBilletera servicioBilletera) {
         this.servicioUsuario = servicioUsuario;
+        this.servicioBilletera = servicioBilletera;
     }
+
+
 
 
     @RequestMapping("/comprarMonedas")
@@ -33,10 +46,114 @@ private ServicioUsuario servicioUsuario;
         return new ModelAndView("comprarMonedas");
     }
 
-    @RequestMapping("/pagoMonedas")
-    public ModelAndView irAPagarMonedas(){
+    @RequestMapping(value = "/pagoMonedas")
+    public ModelAndView irAPagarMonedas(@RequestParam("montoElegido") String montoElegido){
 
-        return new ModelAndView("pagoMonedas");
+        //Creo el modelo
+        ModelMap model = new ModelMap();
+
+        //Recibe los datos por parametros
+//        String montoElegido = request.getParameter("montoElegido");
+
+        //Envio los datos al modelo con una key llamada "montoElegido" y luego le paso el objeto llamado montoElegido
+        model.put("montoElegido", montoElegido);
+
+
+        return new ModelAndView("pagoMonedas",model);
 
     }
+
+
+    @RequestMapping("/validar-pago")
+    public ModelAndView validarPago(@ModelAttribute("datosDePago") DatosDePago datosDePago, HttpServletRequest request) {
+
+        //		-- LLAMAMOS A AL ID DEL USUARIO QUE SE GUARDÓ EN LA SESION CON LA CLAVE QUE LE ASIGNAMOS --
+        Integer idUSer = (Integer) request.getSession().getAttribute("idUsuario");
+        // -- BUSCO AL USUARIO POR ID --
+        Usuario usuario = servicioUsuario.buscarPorID(idUSer);
+        // -- BUSCAR LA BILLETERA DEL USUARIO --
+        Billetera billetera = servicioBilletera.traerDatosBilletera(usuario);
+
+        //-- PASAMOS A FLOAT EL .getMontoElegido que estaba en String
+        Float montoElegido = Float.parseFloat(datosDePago.getMontoElegido());
+
+        Long nroTarjeta = datosDePago.getNumTarjeta();
+
+        ModelMap model = new ModelMap();
+
+        if(esValido(datosDePago.getNumTarjeta())){
+            //-- SUMAMOS EL NUEVO MONTO AL MONTO QUE YA TENIA EL USUARIO
+            Float nuevoMonto = billetera.getMonto() + montoElegido;
+
+            //-- SETEAMOS EL NUEVO MONTO AL MONTO
+            billetera.setMonto(nuevoMonto);
+
+            //-- GUARDA LA MODIFICACION DEL MONTO DE LA BILLETERA
+            servicioBilletera.modificar(billetera);
+
+            return new ModelAndView("redirect:/home");
+
+        }
+
+
+        else{
+
+
+            String error = "Hay un error con el numero de la tarjeta";
+
+            model.put("error",error);
+
+        }
+
+        return new ModelAndView("pagoMonedas",model);
+
+
+    }
+
+    public static int getTamanio(long d){
+        String num = d + "";
+        return num.length();
+    }
+    public static long getPrefijo(long number, int k){
+        if (getTamanio(number) > k) {
+            String num = number + "";
+            return Long.parseLong(num.substring(0, k));
+        }
+        return number;
+    }
+    public static boolean coincidirPrefijo(long number, int d){
+        return getPrefijo(number, getTamanio(d)) == d;
+    }
+    public static int sumaDeImpares(long number){
+        int sum = 0;
+        String num = number + "";
+        for (int i = getTamanio(number) - 1; i >= 0; i -= 2)
+            sum += Integer.parseInt(num.charAt(i) + "");
+        return sum;
+    }
+    public static int getDigito(int number){
+        if (number < 9)
+            return number;
+        return number / 10 + number % 10;
+    }
+    public static int sumaDePares(long number){
+        int sum = 0;
+        String num = number + "";
+        for (int i = getTamanio(number) - 2; i >= 0; i -= 2)
+            sum += getDigito(Integer.parseInt(num.charAt(i) + "") * 2);
+        return sum;
+    }
+    public static boolean esValido(long number){
+        return (getTamanio(number) >= 13 &&
+                getTamanio(number) <= 16) &&
+                (coincidirPrefijo(number, 4) ||
+                        coincidirPrefijo(number, 5) ||
+                        coincidirPrefijo(number, 37) ||
+                        coincidirPrefijo(number, 6)) &&
+                ((sumaDePares(number) +
+                        sumaDeImpares(number)) % 10 == 0);
+    }
+
+
+
 }
