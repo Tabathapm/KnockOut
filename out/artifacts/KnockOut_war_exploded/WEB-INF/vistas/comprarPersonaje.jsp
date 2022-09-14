@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +62,7 @@
 
                     <br>
                     <div style="display: flex; justify-content: space-evenly;">
-                      <button type="button" class="btn btn-primary">Ver m&aacute;s</button>
+                      <a href="verMasPersonaje?id=${personaje.id} " class="btn btn-primary" role="button">Ver más</a>
                       <button type="button" class="btn btn-success">Comprar</button>
                     </div>
                   </div>
