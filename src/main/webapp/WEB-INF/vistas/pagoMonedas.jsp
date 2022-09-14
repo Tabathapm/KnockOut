@@ -39,14 +39,14 @@
               <div class="row">
                 <div class="col-12">
                   <label>N&uacute;mero de tarjeta</label>
-                  <input id="numTarjeta" type="number" class="form-control" maxlength="16" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                  <input id="numTarjeta" name="numTarjeta" type="number" class="form-control" maxlength="16" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                 </div>
               </div>
               <br>
               <div class="row">
                 <div class="col-12">
                   <label>Nombre y apellido</label>
-                  <input type="text" id="nombreTitular" class="form-control">
+                  <input type="text" name="nombreTitular" id="nombreTitular" class="form-control">
                 </div>
               </div>
               <br>
@@ -89,7 +89,7 @@
               <div class="row">
                 <div class="col-12">
                   <label>C&oacute;digo de seguridad</label>
-                  <input id="cvv" type="number" class="form-control" placeholder="***" maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                  <input id="cvv" name="cvv" type="number" class="form-control" placeholder="***" maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                   <img src="<c:url value="/images/cvv.png" />" style="width: 12%; margin: -19% 0 0 85%;">
                 </div>
               </div>

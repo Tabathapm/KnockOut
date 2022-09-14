@@ -43,9 +43,10 @@
                                     </div>
                                     <form action="pagoMonedas" method="post">
                                         <input type="hidden" name="montoElegido" value="500" >
-                                        <a href="pagoMonedas" class="btn btn-success" role="button" aria-pressed="true">
-                                        Comprar 500 monedas
-                                    </a>
+                                        <button class="btn btn-success" Type="Submit"/>
+                                            Comprar 500 monedas
+                                        </button>
+
                                     </form>
                                 </div>
                                 <div class="card">
@@ -57,9 +58,9 @@
 
                                     <form action="pagoMonedas" method="post">
                                         <input type="hidden" name="montoElegido" value="1000">
-                                        <a href="pagoMonedas" class="btn btn-success" role="button" aria-pressed="true">
-                                            Comprar 1000 monedas
-                                        </a>
+                                        <button class="btn btn-success" Type="Submit"/>
+                                             Comprar 1000 monedas
+                                        </button>
                                     </form>
 
                                 </div>
@@ -72,9 +73,9 @@
 
                                     <form action="pagoMonedas" method="post">
                                         <input type="hidden" name="montoElegido" value="2000">
-                                        <a href="pagoMonedas" class="btn btn-success" role="button" aria-pressed="true">
+                                        <button class="btn btn-success" Type="Submit"/>
                                             Comprar 2000 monedas
-                                        </a>
+                                        </button>
                                     </form>
 
                                 </div>
