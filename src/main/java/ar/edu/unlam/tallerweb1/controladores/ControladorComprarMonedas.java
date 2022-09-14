@@ -91,7 +91,7 @@ private ServicioUsuario servicioUsuario;
             //-- GUARDA LA MODIFICACION DEL MONTO DE LA BILLETERA
             servicioBilletera.modificar(billetera);
 
-            return new ModelAndView("redirect:/home");
+            return new ModelAndView("home");
 
         }
 
