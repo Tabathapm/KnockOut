@@ -6,8 +6,8 @@ public class DatosDePago {
 
     private Long numTarjeta;
     private String nombreTitular;
-    private Date mes;
-    private Date anio;
+    private Integer mes;
+    private Integer anio;
     private Integer cvv;
     private String montoElegido;
 
@@ -35,19 +35,19 @@ public class DatosDePago {
         this.nombreTitular = nombreTitular;
     }
 
-    public Date getMes() {
+    public Integer getMes() {
         return mes;
     }
 
-    public void setMes(Date mes) {
+    public void setMes(Integer mes) {
         this.mes = mes;
     }
 
-    public Date getAnio() {
+    public Integer getAnio() {
         return anio;
     }
 
-    public void setAnio(Date anio) {
+    public void setAnio(Integer anio) {
         this.anio = anio;
     }
 
