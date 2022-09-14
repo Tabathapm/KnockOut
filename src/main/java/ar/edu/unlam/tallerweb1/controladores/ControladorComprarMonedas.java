@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 @Controller
 public class ControladorComprarMonedas {
 
@@ -28,9 +27,6 @@ private ServicioUsuario servicioUsuario;
         this.servicioUsuario = servicioUsuario;
         this.servicioBilletera = servicioBilletera;
     }
-
-
-
 
     @RequestMapping("/comprarMonedas")
     public ModelAndView irAComprarMonedas() {
@@ -63,11 +59,10 @@ private ServicioUsuario servicioUsuario;
 
     }
 
-
     @RequestMapping("/validar-pago")
     public ModelAndView validarPago(@ModelAttribute("datosDePago") DatosDePago datosDePago, HttpServletRequest request) {
 
-        //		-- LLAMAMOS A AL ID DEL USUARIO QUE SE GUARDÓ EN LA SESION CON LA CLAVE QUE LE ASIGNAMOS --
+        // -- LLAMAMOS A AL ID DEL USUARIO QUE SE GUARDÓ EN LA SESION CON LA CLAVE QUE LE ASIGNAMOS --
         Integer idUSer = (Integer) request.getSession().getAttribute("idUsuario");
         // -- BUSCO AL USUARIO POR ID --
         Usuario usuario = servicioUsuario.buscarPorID(idUSer);
@@ -90,24 +85,18 @@ private ServicioUsuario servicioUsuario;
 
             //-- GUARDA LA MODIFICACION DEL MONTO DE LA BILLETERA
             servicioBilletera.modificar(billetera);
+            request.getSession().setAttribute("billetera", billetera);
 
             return new ModelAndView("home");
 
         }
-
-
         else{
-
-
             String error = "Hay un error con el numero de la tarjeta";
 
             model.put("error",error);
-
         }
 
         return new ModelAndView("pagoMonedas",model);
-
-
     }
 
     public static int getTamanio(long d){
