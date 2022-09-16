@@ -43,7 +43,7 @@
         <header class="text-center mb-5">
           <h1 class="display-4 font-weight-bold">Comprar Personaje</h1>
           <p class="font-italic text-muted mb-0">
-            Acá vas a poder ver todos los personajes que que están a la venta.
+            Acá vas a poder ver todos los personajes que están a la venta.
           </p>
         </header>
 
