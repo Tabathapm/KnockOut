@@ -94,6 +94,7 @@ private ServicioUsuario servicioUsuario;
             String error = "Hay un error con el numero de la tarjeta";
 
             model.put("error",error);
+            model.put("montoElegido", montoElegido);
         }
 
         return new ModelAndView("pagoMonedas",model);
