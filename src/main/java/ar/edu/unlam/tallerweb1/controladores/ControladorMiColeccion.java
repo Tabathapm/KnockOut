@@ -34,6 +34,10 @@ public class ControladorMiColeccion {
 //      --------------------------------
         ModelMap model = new ModelMap();
 //      --------------------------------
+        //Si no inicio sesion en el sistema, no puede ver la coleccion
+        if(request.getSession().getAttribute("idUsuario") == null){
+            return new ModelAndView("redirect:/login", model);
+        }
 //      MODIFICACIONES A FUTURO:
 //          - buscar la coleccion con el id del usuario
 //          - mostrar solamente los personajes que están en esa colección
