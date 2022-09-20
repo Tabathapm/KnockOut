@@ -1,13 +1,15 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
-import ar.edu.unlam.tallerweb1.modelo.Billetera;
-import ar.edu.unlam.tallerweb1.modelo.Coleccion;
+
+import ar.edu.unlam.tallerweb1.modelo.Nivel;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 // implelemtacion del repositorio de usuarios, la anotacion @Repository indica a Spring que esta clase es un componente que debe
 // ser manejado por el framework, debe indicarse en applicationContext que busque en el paquete ar.edu.unlam.tallerweb1.dao
@@ -67,5 +69,13 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 				.add(Restrictions.eq("id", id))
 				.uniqueResult();
 	}
+
+	@Override
+	public List<Usuario> getAll() {
+		List<Usuario> usuarios =sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.list();
+		return usuarios;
+	}
+
 
 }

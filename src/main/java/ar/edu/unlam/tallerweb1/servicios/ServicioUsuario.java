@@ -3,6 +3,8 @@ package ar.edu.unlam.tallerweb1.servicios;
 import ar.edu.unlam.tallerweb1.controladores.DatosRegistro;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
+import java.util.List;
+
 public interface ServicioUsuario {
 
     void registrarUsuario(DatosRegistro datosRegistro);
@@ -10,4 +12,7 @@ public interface ServicioUsuario {
     Usuario buscarUsuario(String email, String password);
     Usuario buscarPorID(Integer id);
     void modificar(Usuario usuario);
+    List<Usuario> getAll();
+    List<Usuario> rankingJugadores();
+
 }

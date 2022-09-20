@@ -1,10 +1,8 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import ar.edu.unlam.tallerweb1.modelo.Coleccion;
-import ar.edu.unlam.tallerweb1.modelo.Nivel;
-import ar.edu.unlam.tallerweb1.modelo.Personaje;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.modelo.*;
 import ar.edu.unlam.tallerweb1.servicios.*;
+import com.sun.xml.fastinfoset.algorithm.IntEncodingAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -25,15 +23,18 @@ public class ControladorRegistro {
     private ServicioBilletera servicioBilletera;
     private ServicioNivel servicioNivel;
 
+    private ServicioRol servicioRol;
+
     @Autowired
     public ControladorRegistro(ServicioUsuario servicioUsuario, ServicioPersonaje servicioPersonaje,
                                ServicioColeccion servicioColeccion, ServicioBilletera servicioBilletera,
-                               ServicioNivel servicioNivel){
+                               ServicioNivel servicioNivel,ServicioRol servicioRol){
         this.servicioUsuario   = servicioUsuario;
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
         this.servicioBilletera = servicioBilletera;
         this.servicioNivel     = servicioNivel;
+        this.servicioRol = servicioRol;
     }
 
     @RequestMapping("registro")
@@ -61,6 +62,11 @@ public class ControladorRegistro {
 //          ------ CREACION Y ASIGNACION DE NIVEL ---------
             Nivel nivel = servicioNivel.crearNivel(1, 10);
             user.setNivel(nivel);
+
+
+            //------ CREACION Y ASIGNACION DE ROL ---------
+            Rol rol = servicioRol.obtenerRolUser();
+            user.setRol(rol);
             servicioUsuario.modificar(user);
 
 //          ------ ASIGNACION DE PERSONAJES --------------------

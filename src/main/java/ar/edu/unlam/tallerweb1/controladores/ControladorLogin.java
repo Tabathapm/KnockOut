@@ -59,7 +59,7 @@ public class ControladorLogin {
 		// hace una llamada a otro action a traves de la URL correspondiente a esta
 		Usuario usuarioBuscado = servicioUsuario.buscarUsuario(datosLogin.getEmail(), datosLogin.getPassword());
 		if (usuarioBuscado != null) {
-
+			if(usuarioBuscado.getRol().getId() == 2) {
 			Billetera billetera = servicioBilletera.traerDatosBilletera(usuarioBuscado);
 			Nivel nivel = servicioNivel.traerDatosDelNivel(usuarioBuscado.getNivel().getId());
 
@@ -68,7 +68,12 @@ public class ControladorLogin {
 			request.getSession().setAttribute("billetera", billetera);
 			request.getSession().setAttribute("nivel", nivel);
 //          -----------------------------------------------------------
-			return new ModelAndView("home");
+				return new ModelAndView("home");
+		 	}else {
+				model.put("usuarios",servicioUsuario.getAll());
+				model.put("max", servicioUsuario.rankingJugadores());
+				return new ModelAndView("homeAdmin",model);
+			}
 		} else {
 			// si el usuario no existe agrega un mensaje de error en el modelo.
 			model.put("error", "Usuario o clave incorrecta");
