@@ -15,4 +15,5 @@ public interface RepositorioUsuario {
 	Usuario buscarPorID(Integer id);
 	List<Usuario> getAll();
 
+	Usuario jugadorConMasNivel();
 }

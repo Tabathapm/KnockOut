@@ -84,8 +84,9 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
             }
         });
 
-        if(num < 3) {
-            for (Usuario jugador : jugadores) {
+        //Guardar los 3 primeros
+        for (Usuario jugador : jugadores) {
+            if (num < 3) {
                 rankingJugadores.add(jugador);
                 num++;
             }
@@ -94,6 +95,10 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
         return rankingJugadores;
     }
 
-
+    //que obtenga el maximo jugador que esta en el repositorio
+    @Override
+    public Usuario jugadorConMasNivel() {
+        return repoUsuario.jugadorConMasNivel();
+    }
 
 }

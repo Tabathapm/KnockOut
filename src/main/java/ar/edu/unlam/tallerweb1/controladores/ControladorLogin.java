@@ -72,6 +72,7 @@ public class ControladorLogin {
 		 	}else {
 				model.put("usuarios",servicioUsuario.getAll());
 				model.put("max", servicioUsuario.rankingJugadores());
+				model.put("maximo",servicioUsuario.jugadorConMasNivel());
 				return new ModelAndView("homeAdmin",model);
 			}
 		} else {

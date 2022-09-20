@@ -77,5 +77,16 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		return usuarios;
 	}
 
+	@Override
+	public Usuario jugadorConMasNivel() {
+		Usuario usuario = (Usuario) sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.createAlias("nivel", "n")
+				.addOrder(Order.desc("n.numero"))
+				.setMaxResults(1)
+				.uniqueResult();
+
+		return usuario;
+	}
+
 
 }

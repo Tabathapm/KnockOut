@@ -14,5 +14,5 @@ public interface ServicioUsuario {
     void modificar(Usuario usuario);
     List<Usuario> getAll();
     List<Usuario> rankingJugadores();
-
+    Usuario jugadorConMasNivel();
 }

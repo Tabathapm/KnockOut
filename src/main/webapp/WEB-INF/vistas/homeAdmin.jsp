@@ -19,6 +19,11 @@
     </div>
 </nav>
 
+<h1>Jugador con maximo nivel</h1>
+<h3>${maximo.email}</h3>
+<h3>${maximo.nivel.numero}</h3>
+
+
 <div class="container">
     <h2>Control de Usuarios</h2>
 
