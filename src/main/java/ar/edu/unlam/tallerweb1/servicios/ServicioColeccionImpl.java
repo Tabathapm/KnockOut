@@ -32,4 +32,9 @@ public class ServicioColeccionImpl implements ServicioColeccion{
     public void creacionDeColeccion(Usuario usuario) {
         repoColeccion.creacionDeColeccion(usuario);
     }
+
+    @Override
+    public Coleccion jugadorConMasCartas() {
+        return repoColeccion.jugadorConMasCartas();
+    }
 }

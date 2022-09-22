@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
 
+import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Nivel;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.hibernate.Session;
@@ -87,6 +88,8 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 
 		return usuario;
 	}
+
+
 
 
 }
