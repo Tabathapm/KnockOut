@@ -17,5 +17,4 @@ public interface ServicioUsuario {
     Usuario jugadorConMasNivel();
     void cambiarEstadoUsuario(Integer id);
 
-
 }

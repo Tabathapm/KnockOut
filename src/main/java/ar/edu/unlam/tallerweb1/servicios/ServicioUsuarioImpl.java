@@ -114,5 +114,4 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
         repoUsuario.modificar(usuario);
     }
 
-
 }

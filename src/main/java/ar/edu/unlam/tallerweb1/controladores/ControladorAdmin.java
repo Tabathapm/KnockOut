@@ -44,5 +44,4 @@ public class ControladorAdmin {
 
         return new ModelAndView("redirect:/inicio");
     }
-
 }
