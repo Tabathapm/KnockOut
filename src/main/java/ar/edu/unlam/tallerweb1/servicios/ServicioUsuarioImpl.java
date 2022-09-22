@@ -101,4 +101,17 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
         return repoUsuario.jugadorConMasNivel();
     }
 
+    @Override
+    public void cambiarEstadoUsuario(Integer id) {
+        Usuario usuario = buscarPorID(id);
+
+        if(usuario.getActivo()){
+            usuario.setActivo(false);
+        }else{
+            usuario.setActivo(true);
+        }
+
+        repoUsuario.modificar(usuario);
+    }
+
 }
