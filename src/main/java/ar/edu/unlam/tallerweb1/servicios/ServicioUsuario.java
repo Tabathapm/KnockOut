@@ -16,4 +16,6 @@ public interface ServicioUsuario {
     List<Usuario> rankingJugadores();
     Usuario jugadorConMasNivel();
     void cambiarEstadoUsuario(Integer id);
+
+
 }
