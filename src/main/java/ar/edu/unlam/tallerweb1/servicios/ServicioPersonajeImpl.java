@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioPersonaje;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class ServicioPersonajeImpl implements ServicioPersonaje {
     }
 
     @Override
-    public List<Personaje> listaDePersonajesEnMiColeccion(Integer id) {
-        return repoPersonaje.listaDePersonajesEnMiColeccion(id);
+    public List<Personaje> listaDePersonajesEnMiColeccion(Coleccion coleccion) {
+        return repoPersonaje.listaDePersonajesEnMiColeccion(coleccion);
     }
 }
