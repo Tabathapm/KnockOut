@@ -37,6 +37,9 @@ public class ControladorAdmin {
         return new ModelAndView ("homeAdmin",model);
     }
 
+    //revisar de agregar habilitado/inhabilitado
+    //usuario pueda dar de baja su cuenta --borrar todos los datos bbddd
+
     @RequestMapping(value = "/cambio-estado", method= RequestMethod.GET)
     public ModelAndView verDescripcionPersonaje(@RequestParam("id")Integer id, HttpServletRequest request) {
 
@@ -44,4 +47,7 @@ public class ControladorAdmin {
 
         return new ModelAndView("redirect:/inicio");
     }
+
+    //Control personajes
+    //Crear novedades de admin
 }
