@@ -1,6 +1,4 @@
 package ar.edu.unlam.tallerweb1.servicios;
-
-import ar.edu.unlam.tallerweb1.Exceptions.MailNoEnviado;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
