@@ -100,6 +100,8 @@
     <div class="container">
 
     <h2 class="mt-4 mb-4">Control de usuarios</h2>
+        <h1>${coleccion.usuario.email}</h1>
+        <h1>${coleccion.personajes.size()}</h1>
 
     <div class="row mb-4">
             <div class="col">
@@ -133,6 +135,7 @@
             </div>
             </div>
     </div>
+
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
@@ -178,6 +181,7 @@
         </div>
     </div>
 </div>
+
 </div>
 
 

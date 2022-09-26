@@ -17,4 +17,5 @@ public interface RepositorioUsuario {
 	List<Usuario> getAll();
 
 	Usuario jugadorConMasNivel();
+
 }

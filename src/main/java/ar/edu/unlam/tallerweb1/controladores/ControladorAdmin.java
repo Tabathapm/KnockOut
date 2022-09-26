@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioColeccion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,12 @@ import java.util.List;
 public class ControladorAdmin {
 
     private ServicioUsuario servicioUsuario;
+    private ServicioColeccion servicioColeccion;
 
     @Autowired
-    public ControladorAdmin(ServicioUsuario servicioUsuario){
+    public ControladorAdmin(ServicioUsuario servicioUsuario,ServicioColeccion servicioColeccion) {
         this.servicioUsuario = servicioUsuario;
+        this.servicioColeccion = servicioColeccion;
     }
 
     @RequestMapping("/inicio")
@@ -33,6 +36,8 @@ public class ControladorAdmin {
         model.put("usuarios",servicioUsuario.getAll());
         model.put("max", servicioUsuario.rankingJugadores());
         model.put("maximo",servicioUsuario.jugadorConMasNivel());
+        //coleccion que tiene mas personajes
+        model.put("coleccion",servicioColeccion.coleccionConMasPersonajes());
 
         return new ModelAndView ("homeAdmin",model);
     }

@@ -50,7 +50,7 @@ public class ControladorMiColeccion {
 //      traer la coleccion con usuarioID
         Coleccion coleccion = servicioColeccion.traerColeccion(usuario);
 
-        Coleccion coleccionCartas = servicioColeccion.jugadorConMasCartas();
+
         List <Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion(coleccion);
         //List <Personaje> listaPer =    coleccion.getPersonajes();
 
@@ -58,7 +58,7 @@ public class ControladorMiColeccion {
         //List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion();
 //      --------------------------------
         model.put("personajes", listaPersonajes);
-        model.put("coleccion", coleccionCartas);
+        model.put("coleccion", coleccion);
 
 //      --------------------------------
         return new ModelAndView("miColeccion", model);

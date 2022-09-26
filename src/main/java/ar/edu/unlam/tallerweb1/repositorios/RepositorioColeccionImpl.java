@@ -9,6 +9,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository("repositorioColeccion")
 public class RepositorioColeccionImpl implements RepositorioColeccion{
 
@@ -40,13 +42,23 @@ public class RepositorioColeccionImpl implements RepositorioColeccion{
     }
 
     @Override
-    public Coleccion jugadorConMasPersonajes(){
-        // devolver la colección con más personajes
+    public Coleccion coleccionConMasPersonajes() {
+        /*obtener la coleccion con mas personajes*/
         Coleccion coleccion = (Coleccion) sessionFactory.getCurrentSession().createCriteria(Coleccion.class)
                 .addOrder(Order.desc("personajes"))
                 .setMaxResults(1)
                 .uniqueResult();
 
+        coleccion.getPersonajes().size();
         return coleccion;
     }
+
+    @Override
+    public List<Coleccion> obtenerColecciones() {
+        List<Coleccion> colecciones = sessionFactory.getCurrentSession().createCriteria(Coleccion.class)
+                .list();
+        return colecciones;
+    }
+
+
 }
