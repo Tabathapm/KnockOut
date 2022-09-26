@@ -35,6 +35,6 @@ public class ServicioColeccionImpl implements ServicioColeccion{
 
     @Override
     public Coleccion jugadorConMasCartas() {
-        return repoColeccion.jugadorConMasCartas();
+        return repoColeccion.jugadorConMasPersonajes();
     }
 }

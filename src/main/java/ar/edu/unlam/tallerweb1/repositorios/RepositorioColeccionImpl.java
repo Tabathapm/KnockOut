@@ -40,11 +40,10 @@ public class RepositorioColeccionImpl implements RepositorioColeccion{
     }
 
     @Override
-    public Coleccion jugadorConMasCartas(){
-        // obtener el que mas personajes tiene
+    public Coleccion jugadorConMasPersonajes(){
+        // devolver la colección con más personajes
         Coleccion coleccion = (Coleccion) sessionFactory.getCurrentSession().createCriteria(Coleccion.class)
-                .createAlias("personajes", "p")
-                .addOrder(Order.desc("p.id"))
+                .addOrder(Order.desc("personajes"))
                 .setMaxResults(1)
                 .uniqueResult();
 
