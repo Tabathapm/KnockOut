@@ -54,4 +54,9 @@ public class ServicioPersonajeImpl implements ServicioPersonaje {
     public List<Personaje> listaDePersonajesEnMiColeccion(Coleccion coleccion) {
         return repoPersonaje.listaDePersonajesEnMiColeccion(coleccion);
     }
+
+    @Override
+    public void eliminarPersonaje(Integer id) {
+        repoPersonaje.eliminarPersonaje(id);
+    }
 }

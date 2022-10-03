@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+
 @Controller
 public class ControladorLogin {
 
@@ -84,12 +86,11 @@ public class ControladorLogin {
 			request.getSession().setAttribute("billetera", billetera);
 			request.getSession().setAttribute("nivel", nivel);
 //          -----------------------------------------------------------
-				return new ModelAndView("home");
+			return new ModelAndView("home");
 		}
-		model.put("usuarios",servicioUsuario.getAll());
-		model.put("max", servicioUsuario.rankingJugadores());
-		model.put("maximo",servicioUsuario.jugadorConMasNivel());
-		return new ModelAndView("homeAdmin",model);
+
+		request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
+		return new ModelAndView("redirect:/inicio");
 	}
 
 	// Escucha la URL /home por GET, y redirige a una vista.

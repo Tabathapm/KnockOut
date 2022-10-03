@@ -76,4 +76,10 @@ public class RepositorioPersonajeImpl implements RepositorioPersonaje {
 
         return personajesEnMiColeccion;
     }
+
+    @Override
+    public void eliminarPersonaje(Integer id) {
+        Personaje personaje = buscarPorId(id);
+        sessionFactory.getCurrentSession().delete(personaje);
+    }
 }
