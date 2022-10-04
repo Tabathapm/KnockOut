@@ -62,7 +62,7 @@
                                         <br>
                                         <div style="display: flex; justify-content: space-evenly;">
                                             <button type="button" class="btn btn-success">Ver m&aacute;s</button>
-                                            <a href="#myModal" role="button" class="btn btn-danger" data-bs-toggle="modal">Vender</a>
+                                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#card${personaje.id}">Vender</button>
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +73,8 @@
             </div>
 
             <%--   MODAL     --%>
-                <div id="myModal" class="modal fade" tabindex="-1">
+            <c:forEach items="${personajes}" var="personaje">
+            <div id="card${personaje.id}" class="modal fade" tabindex="-1">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -81,19 +82,17 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
-                                <c:forEach items="${personajes}" var="personaje">
-
-                                    <p class="text-center">Seguro que queres vender a ${personaje.nombre}?</p>
-                                    <p class="text-center">${personaje.monto}</p>
-                                </c:forEach>
+                                <p class="text-center">Seguro que queres vender a ${personaje.nombre}?</p>
+                                <p class="text-center">${personaje.monto}</p>
                             </div>
                             <div class="modal-footer d-flex justify-content-around">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <a href="venderPersonaje" role="button" class="btn btn-danger">Vender</a>
+                                <a href="venderPersonaje?id=${personaje.id}" role="button" class="btn btn-danger">Vender</a>
                             </div>
                         </div>
                     </div>
                 </div>
+            </c:forEach>
 
 
 

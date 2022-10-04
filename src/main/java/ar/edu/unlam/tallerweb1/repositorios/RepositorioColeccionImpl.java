@@ -40,11 +40,7 @@ public class RepositorioColeccionImpl implements RepositorioColeccion{
         sessionFactory.getCurrentSession().save(coleccion);
     }
 
-    @Override
-    public void agregarPersonaje(Personaje personaje, Coleccion coleccion) {
-        coleccion.getPersonajes().add(personaje);
-        sessionFactory.getCurrentSession().update(coleccion);
-    }
+
 
 /*
 *  List <Personaje> personajesEnMiColeccion = sessionFactory.getCurrentSession().createCriteria(Personaje.class)

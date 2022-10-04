@@ -44,4 +44,10 @@ public class RepositorioBilleteraImpl implements RepositorioBilletera{
 
         return billetera.getMonto();
     }
+
+    @Override
+    public void sumarMonto(Billetera billetera, Float monto) {
+        billetera.setMonto(billetera.getMonto() + monto);
+        sessionFactory.getCurrentSession().update(billetera);
+    }
 }

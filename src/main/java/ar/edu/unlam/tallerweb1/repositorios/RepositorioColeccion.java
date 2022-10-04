@@ -10,5 +10,5 @@ public interface RepositorioColeccion {
     void modificar(Coleccion coleccion);
     void creacionDeColeccion(Usuario usuario);
 
-    void agregarPersonaje(Personaje personaje, Coleccion coleccion);
+
 }

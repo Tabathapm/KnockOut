@@ -17,4 +17,5 @@ public interface ServicioPersonaje {
 
     Personaje traerPersonaje(Integer id);
 
+    List<Personaje> eliminarpersonaje(List<Personaje> listaPersonajes, Personaje personaje);
 }

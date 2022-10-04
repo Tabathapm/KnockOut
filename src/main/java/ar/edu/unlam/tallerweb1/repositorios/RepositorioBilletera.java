@@ -9,4 +9,6 @@ public interface RepositorioBilletera {
     void modificar(Billetera billetera);
 
     Float restarDinero(Billetera billetera, Float monto);
+
+    void sumarMonto(Billetera billetera, Float monto);
 }

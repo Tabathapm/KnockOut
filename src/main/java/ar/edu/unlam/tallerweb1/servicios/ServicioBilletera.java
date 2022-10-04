@@ -9,4 +9,6 @@ public interface ServicioBilletera {
     void modificar(Billetera billetera);
 
     void restarDinero(Billetera billetera, Float monto);
+
+    void sumarMonto(Billetera billetera, Float monto);
 }

@@ -42,4 +42,9 @@ public class ServicioBilleteraImpl implements ServicioBilletera{
         }
 
     }
+
+    @Override
+    public void sumarMonto(Billetera billetera, Float monto) {
+        repoBilletera.sumarMonto(billetera,monto);
+    }
 }

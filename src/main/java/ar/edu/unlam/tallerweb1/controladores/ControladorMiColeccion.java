@@ -1,8 +1,10 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import ar.edu.unlam.tallerweb1.modelo.Billetera;
 import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.servicios.ServicioBilletera;
 import ar.edu.unlam.tallerweb1.servicios.ServicioColeccion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
@@ -10,9 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 @Controller
@@ -21,12 +26,15 @@ public class ControladorMiColeccion {
     private ServicioPersonaje servicioPersonaje;
     private ServicioColeccion servicioColeccion;
     private ServicioUsuario servicioUsuario;
+    private ServicioBilletera servicioBilletera;
 
     @Autowired
-    public ControladorMiColeccion(ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion, ServicioUsuario servicioUsuario){
+    public ControladorMiColeccion(ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion,
+                                  ServicioUsuario servicioUsuario, ServicioBilletera servicioBilletera){
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
         this.servicioUsuario = servicioUsuario;
+        this.servicioBilletera = servicioBilletera;
     }
 
     @RequestMapping("/miColeccion")
@@ -59,9 +67,26 @@ public class ControladorMiColeccion {
     }
 
     @RequestMapping("/venderPersonaje")
-    public ModelAndView venderPersonaje(){
+    public ModelAndView venderPersonajes(@RequestParam("id") Integer id, HttpServletRequest request) {
+        ModelMap model = new ModelMap();
+        Integer usuario_id = (Integer) request.getSession().getAttribute("idUsuario");
+
+        Usuario usuario = servicioUsuario.buscarPorID(usuario_id);
+        Coleccion coleccion = servicioColeccion.traerColeccion(usuario);
+        Billetera billetera = servicioBilletera.traerDatosBilletera(usuario);
+        List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion(coleccion);
+        Personaje personaje = servicioPersonaje.traerPersonaje(id);
+        servicioBilletera.sumarMonto(billetera,personaje.getMonto());
+        List<Personaje> nuevaLista = servicioPersonaje.eliminarpersonaje(listaPersonajes,personaje);
+        BigDecimal formatNumber = new BigDecimal(billetera.getMonto());
+        billetera.setMonto(formatNumber.setScale(2, RoundingMode.HALF_UP).floatValue());
+        request.getSession().setAttribute("billetera",billetera);
+
+        coleccion.setPersonajes(nuevaLista);
+
+        servicioColeccion.modificar(coleccion);
 
 
-        return null;
+        return new ModelAndView("redirect:/miColeccion");
     }
 }
