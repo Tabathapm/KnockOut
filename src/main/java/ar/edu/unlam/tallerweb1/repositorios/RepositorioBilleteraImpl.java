@@ -36,4 +36,12 @@ public class RepositorioBilleteraImpl implements RepositorioBilletera{
     public void modificar(Billetera billetera) {
         sessionFactory.getCurrentSession().update(billetera);
     }
+
+    @Override
+    public Float restarDinero(Billetera billetera, Float monto) {
+        billetera.setMonto(billetera.getMonto() - monto);
+        sessionFactory.getCurrentSession().update(billetera);
+
+        return billetera.getMonto();
+    }
 }

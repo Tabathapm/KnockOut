@@ -7,4 +7,6 @@ public interface ServicioBilletera {
     Billetera traerDatosBilletera(Usuario user);
     void agregarBilletera(Usuario usuario);
     void modificar(Billetera billetera);
+
+    void restarDinero(Billetera billetera, Float monto);
 }

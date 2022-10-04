@@ -8,6 +8,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository("repositorioColeccion")
 public class RepositorioColeccionImpl implements RepositorioColeccion{
 
@@ -37,4 +39,19 @@ public class RepositorioColeccionImpl implements RepositorioColeccion{
         coleccion.setUsuario(usuario);
         sessionFactory.getCurrentSession().save(coleccion);
     }
+
+    @Override
+    public void agregarPersonaje(Personaje personaje, Coleccion coleccion) {
+        coleccion.getPersonajes().add(personaje);
+        sessionFactory.getCurrentSession().update(coleccion);
+    }
+
+/*
+*  List <Personaje> personajesEnMiColeccion = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
+                .createAlias("coleccion", "c")
+                .add(Restrictions.eq("c.id", coleccion.getId()))
+                .list();
+
+        return personajesEnMiColeccion;
+* */
 }

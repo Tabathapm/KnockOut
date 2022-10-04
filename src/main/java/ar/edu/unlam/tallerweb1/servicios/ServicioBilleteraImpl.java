@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import ar.edu.unlam.tallerweb1.Exceptions.MontoInsuficienteException;
 import ar.edu.unlam.tallerweb1.modelo.Billetera;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioBilletera;
@@ -30,5 +31,15 @@ public class ServicioBilleteraImpl implements ServicioBilletera{
     @Override
     public void modificar(Billetera billetera) {
         repoBilletera.modificar(billetera);
+    }
+
+    @Override
+    public void restarDinero(Billetera billetera, Float monto) {
+        if(billetera.getMonto() >= monto) {
+            repoBilletera.restarDinero(billetera,monto);
+        }else{
+            throw new MontoInsuficienteException();
+        }
+
     }
 }

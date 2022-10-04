@@ -17,6 +17,9 @@ public class Personaje {
     private Boolean enVenta;
     private Boolean enMiColeccion;
 
+    @ManyToMany(mappedBy = "personajes", cascade = CascadeType.ALL)
+    private List<Coleccion> coleccion;
+
     @ManyToMany
     private List<Caracteristica> caracteristica;
 
@@ -82,5 +85,13 @@ public class Personaje {
 
     public void setEnMiColeccion(Boolean enMiColeccion) {
         this.enMiColeccion = enMiColeccion;
+    }
+
+    public List<Coleccion> getColeccion() {
+        return coleccion;
+    }
+
+    public void setColeccion(List<Coleccion> coleccion) {
+        this.coleccion = coleccion;
     }
 }
