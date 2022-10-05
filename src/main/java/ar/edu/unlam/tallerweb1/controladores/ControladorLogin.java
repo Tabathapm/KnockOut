@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+
 @Controller
 public class ControladorLogin {
 
@@ -58,8 +60,24 @@ public class ControladorLogin {
 		// invoca el metodo consultarUsuario del servicio y hace un redirect a la URL /home, esto es, en lugar de enviar a una vista
 		// hace una llamada a otro action a traves de la URL correspondiente a esta
 		Usuario usuarioBuscado = servicioUsuario.buscarUsuario(datosLogin.getEmail(), datosLogin.getPassword());
-		if (usuarioBuscado != null) {
 
+		/*Cambiar logica de la validacion del login
+		* Esta mal logica de usuario = null
+		* porque deberia retornar usuario no existe,
+		* y si existe pero la contraseña es incorrecta
+		* o el mail es incorrecto deberia lanzar otro error
+		* */
+		if( usuarioBuscado == null ){
+			model.put("error", "Usuario o contraseña incorrectos");
+			return new ModelAndView("login", model);
+		}
+
+		if(usuarioBuscado.getActivo() == false){
+			model.put("error", "Debe validar su email");
+			return new ModelAndView("login", model);
+		}
+
+		if(usuarioBuscado.getRol().getId() == 2) {
 			Billetera billetera = servicioBilletera.traerDatosBilletera(usuarioBuscado);
 			Nivel nivel = servicioNivel.traerDatosDelNivel(usuarioBuscado.getNivel().getId());
 
@@ -69,11 +87,10 @@ public class ControladorLogin {
 			request.getSession().setAttribute("nivel", nivel);
 //          -----------------------------------------------------------
 			return new ModelAndView("home");
-		} else {
-			// si el usuario no existe agrega un mensaje de error en el modelo.
-			model.put("error", "Usuario o clave incorrecta");
 		}
-		return new ModelAndView("login", model);
+
+		request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
+		return new ModelAndView("redirect:/inicio");
 	}
 
 	// Escucha la URL /home por GET, y redirige a una vista.

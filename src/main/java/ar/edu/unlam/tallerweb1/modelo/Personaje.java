@@ -17,6 +17,9 @@ public class Personaje {
     private Boolean enVenta;
     private Boolean enMiColeccion;
 
+    @ManyToMany(mappedBy = "personajes")
+    private List<Coleccion> coleccion;
+
     @ManyToMany
     private List<Caracteristica> caracteristica;
 

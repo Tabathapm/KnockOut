@@ -13,7 +13,8 @@ public class Coleccion {
     @OneToOne
     private Usuario usuario;
 
-    @ManyToMany
+    @JoinTable(name = "coleccion_personaje", joinColumns = @JoinColumn(name = "fk_coleccion"), inverseJoinColumns = @JoinColumn(name = "fk_personaje"))
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Personaje> personajes;
 
     public Integer getId() {

@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -21,10 +22,15 @@ public class ControladorComprarPersonaje {
     }
 
     @RequestMapping("/comprarPersonaje")
-    public ModelAndView irAComprarPersonaje() {
+    public ModelAndView irAComprarPersonaje(HttpServletRequest request) {
 //      --------------------------------
         ModelMap model = new ModelMap();
 //      --------------------------------
+        //Si no inicio sesion en el sistema, no puede ver la coleccion
+        if(request.getSession().getAttribute("idUsuario") == null){
+            return new ModelAndView("redirect:/login", model);
+        }
+
         List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnVenta();
 //      --------------------------------
         model.put("personajes", listaPersonajes);

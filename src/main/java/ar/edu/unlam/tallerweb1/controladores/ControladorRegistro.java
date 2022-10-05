@@ -1,17 +1,20 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import ar.edu.unlam.tallerweb1.modelo.Coleccion;
-import ar.edu.unlam.tallerweb1.modelo.Nivel;
-import ar.edu.unlam.tallerweb1.modelo.Personaje;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.modelo.*;
 import ar.edu.unlam.tallerweb1.servicios.*;
+import com.sun.xml.fastinfoset.algorithm.IntEncodingAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -24,16 +27,20 @@ public class ControladorRegistro {
     private ServicioColeccion servicioColeccion;
     private ServicioBilletera servicioBilletera;
     private ServicioNivel servicioNivel;
+    private ServicioMail servicioMail;
+    private ServicioRol servicioRol;
 
     @Autowired
     public ControladorRegistro(ServicioUsuario servicioUsuario, ServicioPersonaje servicioPersonaje,
                                ServicioColeccion servicioColeccion, ServicioBilletera servicioBilletera,
-                               ServicioNivel servicioNivel){
+                               ServicioNivel servicioNivel,ServicioRol servicioRol, ServicioMail servicioMail){
         this.servicioUsuario   = servicioUsuario;
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
         this.servicioBilletera = servicioBilletera;
         this.servicioNivel     = servicioNivel;
+        this.servicioRol       = servicioRol;
+        this.servicioMail      = servicioMail;
     }
 
     @RequestMapping("registro")
@@ -48,9 +55,11 @@ public class ControladorRegistro {
         ModelMap model = new ModelMap();
 //      --------------------------------
         Usuario usuarioEmail = servicioUsuario.consultarUsuarioPorEmail(datosRegistro.getEmail());
+        String md5 = crearMd5(datosRegistro.getEmail());
 
         if(usuarioEmail==null){
             servicioUsuario.registrarUsuario(datosRegistro);
+            servicioMail.enviarMailRegistro(datosRegistro.getEmail());
 
             Usuario user = servicioUsuario.consultarUsuarioPorEmail(datosRegistro.getEmail());
 
@@ -61,6 +70,11 @@ public class ControladorRegistro {
 //          ------ CREACION Y ASIGNACION DE NIVEL ---------
             Nivel nivel = servicioNivel.crearNivel(1, 10);
             user.setNivel(nivel);
+
+
+            //------ CREACION Y ASIGNACION DE ROL ---------
+            Rol rol = servicioRol.obtenerRolUser();
+            user.setRol(rol);
             servicioUsuario.modificar(user);
 
 //          ------ ASIGNACION DE PERSONAJES --------------------
@@ -102,6 +116,20 @@ public class ControladorRegistro {
 
     }
 
+    @RequestMapping(path = "/validar-mail", method = RequestMethod.GET)
+    public ModelAndView confirmarMail(@RequestParam(value = "email") String email){
+        ModelMap model = new ModelMap();
+
+        try{
+            servicioMail.verificarMail(email);
+        }catch (Exception e){
+            model.put("error", "No se pudo verificar el mail");
+            return new ModelAndView("registro", model);
+        }
+
+        return new ModelAndView("cuenta-verificada");
+    }
+
 //    @RequestMapping(path = "/registrarse")
 //    public ModelAndView registrarse(@ModelAttribute("usuario") DatosRegistro datosRegistro){
 //
@@ -113,6 +141,23 @@ public class ControladorRegistro {
 //        return new ModelAndView("home",model);
 //
 //    }
+
+    private String crearMd5(String email){
+        try{
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(email.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            String hashtext = number.toString(16);
+
+            while(hashtext.length() < 32){
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        }
+        catch (NoSuchAlgorithmException e){
+            throw new RuntimeException(e);
+        }
+    }
 
 
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service("servicioColeccion")
 @Transactional
 public class ServicioColeccionImpl implements ServicioColeccion{
@@ -32,4 +34,24 @@ public class ServicioColeccionImpl implements ServicioColeccion{
     public void creacionDeColeccion(Usuario usuario) {
         repoColeccion.creacionDeColeccion(usuario);
     }
+
+    @Override
+    public Coleccion coleccionConMasPersonajes(){
+        List<Coleccion> colecciones = repoColeccion.obtenerColecciones();
+
+        Coleccion coleccionConMasPersonajes = null;
+
+        for ( Coleccion coleccion : colecciones ) {
+            if ( coleccionConMasPersonajes == null ) {
+                coleccionConMasPersonajes = coleccion;
+            } else {
+                if ( coleccionConMasPersonajes.getPersonajes().size() < coleccion.getPersonajes().size() ) {
+                    coleccionConMasPersonajes = coleccion;
+                }
+            }
+        }
+
+        return coleccionConMasPersonajes;
+    }
+
 }

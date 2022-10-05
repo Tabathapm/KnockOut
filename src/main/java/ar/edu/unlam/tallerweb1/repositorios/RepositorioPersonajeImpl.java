@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
+import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.hibernate.Criteria;
@@ -67,15 +68,18 @@ public class RepositorioPersonajeImpl implements RepositorioPersonaje {
     }
 
     @Override
-    public List<Personaje> listaDePersonajesEnMiColeccion(Integer id){
-
-//      -------------- NO FUNCIONA ----------------
+    public List<Personaje> listaDePersonajesEnMiColeccion(Coleccion coleccion){
         List <Personaje> personajesEnMiColeccion = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
-                .createAlias("personaje.id", "idPersonaje")
-                .createAlias("coleccion_personaje.personajes_id", "personajes_id")
-                .add(Restrictions.eq("Coleccion_id", id))
+                .createAlias("coleccion", "c")
+                .add(Restrictions.eq("c.id", coleccion.getId()))
                 .list();
 
         return personajesEnMiColeccion;
+    }
+
+    @Override
+    public void eliminarPersonaje(Integer id) {
+        Personaje personaje = buscarPorId(id);
+        sessionFactory.getCurrentSession().delete(personaje);
     }
 }

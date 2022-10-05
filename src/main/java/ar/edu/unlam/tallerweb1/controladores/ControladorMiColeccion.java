@@ -34,6 +34,10 @@ public class ControladorMiColeccion {
 //      --------------------------------
         ModelMap model = new ModelMap();
 //      --------------------------------
+        //Si no inicio sesion en el sistema, no puede ver la coleccion
+        if(request.getSession().getAttribute("idUsuario") == null){
+            return new ModelAndView("redirect:/login", model);
+        }
 //      MODIFICACIONES A FUTURO:
 //          - buscar la coleccion con el id del usuario
 //          - mostrar solamente los personajes que están en esa colección
@@ -46,13 +50,16 @@ public class ControladorMiColeccion {
 //      traer la coleccion con usuarioID
         Coleccion coleccion = servicioColeccion.traerColeccion(usuario);
 
-        //List <Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion(coleccion.getId());
+
+        List <Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion(coleccion);
         //List <Personaje> listaPer =    coleccion.getPersonajes();
 
 //      --------------------------------
-        List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion();
+        //List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion();
 //      --------------------------------
         model.put("personajes", listaPersonajes);
+        model.put("coleccion", coleccion);
+
 //      --------------------------------
         return new ModelAndView("miColeccion", model);
     }

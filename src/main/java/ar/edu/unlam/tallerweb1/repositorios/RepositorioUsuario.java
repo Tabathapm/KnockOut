@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
+import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 import java.util.List;
@@ -13,4 +14,8 @@ public interface RepositorioUsuario {
 	void modificar(Usuario usuario);
 	Usuario buscarUsuarioPorEmail(String email);
 	Usuario buscarPorID(Integer id);
+	List<Usuario> getAll();
+
+	Usuario jugadorConMasNivel();
+
 }
