@@ -31,6 +31,7 @@ public class ControladorAdmin {
 
     }
 
+    //VALIDAR ROLES
     @RequestMapping("/inicio")
     public ModelAndView verHome(){
         ModelMap model =new ModelMap();

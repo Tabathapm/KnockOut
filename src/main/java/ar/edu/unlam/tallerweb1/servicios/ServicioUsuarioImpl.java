@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.controladores.DatosRegistro;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +63,7 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
         List<Usuario> usuarios = repoUsuario.getAll();
 
         for (Usuario lista : usuarios) {
-            if (lista.getRol().getId() == 2) {
+            if (lista.getRol() == Rol.USER) {
                 sinAdmin.add(lista);
             }
         }

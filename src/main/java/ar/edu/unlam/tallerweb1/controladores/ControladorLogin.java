@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Billetera;
 import ar.edu.unlam.tallerweb1.modelo.Nivel;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBilletera;
 import ar.edu.unlam.tallerweb1.servicios.ServicioNivel;
@@ -77,7 +78,7 @@ public class ControladorLogin {
 			return new ModelAndView("login", model);
 		}
 
-		if(usuarioBuscado.getRol().getId() == 2) {
+		if(usuarioBuscado.getRol() == Rol.USER) {
 			Billetera billetera = servicioBilletera.traerDatosBilletera(usuarioBuscado);
 			Nivel nivel = servicioNivel.traerDatosDelNivel(usuarioBuscado.getNivel().getId());
 

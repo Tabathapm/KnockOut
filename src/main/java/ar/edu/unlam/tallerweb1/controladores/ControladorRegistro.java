@@ -72,10 +72,10 @@ public class ControladorRegistro {
             user.setNivel(nivel);
 
 
-            //------ CREACION Y ASIGNACION DE ROL ---------
-            Rol rol = servicioRol.obtenerRolUser();
-            user.setRol(rol);
+            //------ ASIGNACION DE ROL ---------
+            user.setRol(Rol.USER);
             servicioUsuario.modificar(user);
+
 
 //          ------ ASIGNACION DE PERSONAJES --------------------
             Random preNumRandom = new Random();

@@ -21,7 +21,6 @@ public class Usuario {
 	@ManyToOne
 	private Nivel nivel;
 
-	@OneToOne
 	private Rol rol;
 	
 	public Integer getId() {
