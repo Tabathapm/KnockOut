@@ -63,7 +63,7 @@
                     <br>
                     <div style="display: flex; justify-content: space-evenly;">
                       <a href="verMasPersonaje?id=${personaje.id} " class="btn btn-primary" role="button">Ver más</a>
-                      <button type="button" class="btn btn-success">Comprar</button>
+                      <a href="comprar?id=${personaje.id} " class="btn btn-primary" role="button">Comprar</a>
                     </div>
                   </div>
                 </div>
@@ -72,9 +72,15 @@
           </c:forEach>
         </div>
       </div>
+
     </main>
   </div>
 </div>
+
+<c:if test="${not empty error}">
+  <h4><span>${error}</span></h4>
+  <br>
+</c:if>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/homeDos.js"></script>

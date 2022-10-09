@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioColeccion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioPersonaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +15,12 @@ import java.util.List;
 public class ServicioPersonajeImpl implements ServicioPersonaje {
 
     private RepositorioPersonaje repoPersonaje;
+    private RepositorioColeccion repoColeccion;
 
     @Autowired
-    public ServicioPersonajeImpl(RepositorioPersonaje repoPersonaje){
+    public ServicioPersonajeImpl(RepositorioPersonaje repoPersonaje, RepositorioColeccion repoColeccion) {
         this.repoPersonaje = repoPersonaje;
+        this.repoColeccion = repoColeccion;
     }
 
     @Override
@@ -56,7 +59,22 @@ public class ServicioPersonajeImpl implements ServicioPersonaje {
     }
 
     @Override
-    public void eliminarPersonaje(Integer id) {
-        repoPersonaje.eliminarPersonaje(id);
+    public Personaje traerPersonaje(Integer id) {
+        return repoPersonaje.traerPersonaje(id);
     }
+
+    @Override
+    public List<Personaje> eliminarpersonaje(List<Personaje> listaPersonajes, Personaje personaje) {
+        for (int i = 0; i < listaPersonajes.size(); i++) {
+            if (listaPersonajes.get(i).getId().equals(personaje.getId())) {
+                personaje.setEnMiColeccion(false);
+                personaje.setEnVenta(true);
+                listaPersonajes.remove(i);
+            }
+        }
+
+        repoPersonaje.modificar(personaje);
+        return listaPersonajes;
+    }
+
 }

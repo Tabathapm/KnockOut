@@ -14,5 +14,8 @@ public interface ServicioPersonaje {
     public Integer maxId();
     void modificar(Personaje personaje);
     List<Personaje> listaDePersonajesEnMiColeccion(Coleccion coleccion);
-    void eliminarPersonaje(Integer id);
+
+    Personaje traerPersonaje(Integer id);
+
+    List<Personaje> eliminarpersonaje(List<Personaje> listaPersonajes, Personaje personaje);
 }

@@ -4,7 +4,6 @@ import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -41,24 +40,14 @@ public class RepositorioColeccionImpl implements RepositorioColeccion{
         sessionFactory.getCurrentSession().save(coleccion);
     }
 
-    @Override
-    public Coleccion coleccionConMasPersonajes() {
-        /*obtener la coleccion con mas personajes*/
-        Coleccion coleccion = (Coleccion) sessionFactory.getCurrentSession().createCriteria(Coleccion.class)
-                .addOrder(Order.desc("personajes"))
-                .setMaxResults(1)
-                .uniqueResult();
 
-        coleccion.getPersonajes().size();
-        return coleccion;
-    }
 
-    @Override
-    public List<Coleccion> obtenerColecciones() {
-        List<Coleccion> colecciones = sessionFactory.getCurrentSession().createCriteria(Coleccion.class)
+/*
+*  List <Personaje> personajesEnMiColeccion = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
+                .createAlias("coleccion", "c")
+                .add(Restrictions.eq("c.id", coleccion.getId()))
                 .list();
-        return colecciones;
-    }
 
-
+        return personajesEnMiColeccion;
+* */
 }

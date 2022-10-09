@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
+import ar.edu.unlam.tallerweb1.modelo.Billetera;
 import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
 
@@ -15,5 +16,6 @@ public interface RepositorioPersonaje {
     void modificar(Personaje personaje);
     List<Personaje> listaDePersonajesEnMiColeccion(Coleccion coleccion);
 
-    void eliminarPersonaje(Integer id);
+    Personaje traerPersonaje(Integer id);
+
 }

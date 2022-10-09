@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.repositorios;
 
+import ar.edu.unlam.tallerweb1.modelo.Billetera;
 import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
@@ -78,8 +79,13 @@ public class RepositorioPersonajeImpl implements RepositorioPersonaje {
     }
 
     @Override
-    public void eliminarPersonaje(Integer id) {
-        Personaje personaje = buscarPorId(id);
-        sessionFactory.getCurrentSession().delete(personaje);
+    public Personaje traerPersonaje(Integer id) {
+        Personaje personaje = (Personaje) sessionFactory.getCurrentSession().createCriteria(Personaje.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
+        return personaje;
     }
+
+
+
 }
