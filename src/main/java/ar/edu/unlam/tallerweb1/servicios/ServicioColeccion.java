@@ -9,4 +9,5 @@ public interface ServicioColeccion {
     void modificar(Coleccion coleccion);
     void creacionDeColeccion(Usuario usuario);
 
+    Coleccion coleccionConMasPersonajes();
 }

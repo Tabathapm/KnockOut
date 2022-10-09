@@ -77,4 +77,9 @@ public class ServicioPersonajeImpl implements ServicioPersonaje {
         return listaPersonajes;
     }
 
+    @Override
+    public void eliminarPersonaje(Integer id) {
+        repoPersonaje.eliminarPersonje(id);
+    }
+
 }

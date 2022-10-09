@@ -4,6 +4,8 @@ import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
+import java.util.List;
+
 public interface RepositorioColeccion {
 
     Coleccion traerColeccion(Usuario user);
@@ -11,4 +13,5 @@ public interface RepositorioColeccion {
     void creacionDeColeccion(Usuario usuario);
 
 
+    List<Coleccion> obtenerColecciones();
 }

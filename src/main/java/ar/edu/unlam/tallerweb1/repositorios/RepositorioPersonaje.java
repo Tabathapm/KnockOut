@@ -18,4 +18,5 @@ public interface RepositorioPersonaje {
 
     Personaje traerPersonaje(Integer id);
 
+    void eliminarPersonje(Integer id);
 }

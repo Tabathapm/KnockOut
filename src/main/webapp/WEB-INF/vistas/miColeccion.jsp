@@ -99,7 +99,6 @@
     </div>
 </div>
 
-<h1>${coleccion.usuario.email}</h1>
 
 
 

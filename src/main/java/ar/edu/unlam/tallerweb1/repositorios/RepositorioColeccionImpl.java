@@ -40,6 +40,13 @@ public class RepositorioColeccionImpl implements RepositorioColeccion{
         sessionFactory.getCurrentSession().save(coleccion);
     }
 
+    @Override
+    public List<Coleccion> obtenerColecciones() {
+        List<Coleccion> colecciones = sessionFactory.getCurrentSession().createCriteria(Coleccion.class)
+                .list();
+        return colecciones;
+    }
+
 
 
 /*
