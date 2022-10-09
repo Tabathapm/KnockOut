@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class ControladorVerMasPersonaje {
     private ServicioPersonaje servicioPersonaje;
@@ -20,10 +22,15 @@ public class ControladorVerMasPersonaje {
     }
 
     @RequestMapping(value = "/verMasPersonaje", method= RequestMethod.GET)
-    public ModelAndView verDescripcionPersonaje(@RequestParam("id")Integer id) {
+    public ModelAndView verDescripcionPersonaje(@RequestParam("id")Integer id, HttpServletRequest request) {
 //      --------------------------------
         ModelMap model = new ModelMap();
 //      --------------------------------
+
+        //Si no inicio sesion en el sistema, no puede ver la coleccion
+        if(request.getSession().getAttribute("idUsuario") == null){
+            return new ModelAndView("redirect:/login", model);
+        }
         Personaje personaje=servicioPersonaje.buscarPorId(id);
 //      --------------------------------
         model.put("personaje", personaje);

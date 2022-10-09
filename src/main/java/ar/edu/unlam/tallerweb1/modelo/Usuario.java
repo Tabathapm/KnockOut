@@ -20,6 +20,9 @@ public class Usuario {
 
 	@ManyToOne
 	private Nivel nivel;
+
+	@OneToOne
+	private Rol rol;
 	
 	public Integer getId() {
 		return id;
@@ -60,5 +63,13 @@ public class Usuario {
 
 	public void setNivel(Nivel nivel) {
 		this.nivel = nivel;
+	}
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 }

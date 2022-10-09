@@ -29,7 +29,12 @@ private ServicioUsuario servicioUsuario;
     }
 
     @RequestMapping("/comprarMonedas")
-    public ModelAndView irAComprarMonedas() {
+    public ModelAndView irAComprarMonedas(HttpServletRequest request) {
+
+        //Si no inicio sesion en el sistema, no puede ver la coleccion
+        if(request.getSession().getAttribute("idUsuario") == null){
+            return new ModelAndView("redirect:/login");
+        }
 //      --------------------------------
 //        ModelMap model = new ModelMap();
 ////      --------------------------------
