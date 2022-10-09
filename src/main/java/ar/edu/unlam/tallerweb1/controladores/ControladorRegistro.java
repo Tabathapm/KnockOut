@@ -28,18 +28,16 @@ public class ControladorRegistro {
     private ServicioBilletera servicioBilletera;
     private ServicioNivel servicioNivel;
     private ServicioMail servicioMail;
-    private ServicioRol servicioRol;
 
     @Autowired
     public ControladorRegistro(ServicioUsuario servicioUsuario, ServicioPersonaje servicioPersonaje,
                                ServicioColeccion servicioColeccion, ServicioBilletera servicioBilletera,
-                               ServicioNivel servicioNivel,ServicioRol servicioRol, ServicioMail servicioMail){
+                               ServicioNivel servicioNivel, ServicioMail servicioMail){
         this.servicioUsuario   = servicioUsuario;
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
         this.servicioBilletera = servicioBilletera;
         this.servicioNivel     = servicioNivel;
-        this.servicioRol       = servicioRol;
         this.servicioMail      = servicioMail;
     }
 
@@ -72,10 +70,10 @@ public class ControladorRegistro {
             user.setNivel(nivel);
 
 
-            //------ CREACION Y ASIGNACION DE ROL ---------
-            Rol rol = servicioRol.obtenerRolUser();
-            user.setRol(rol);
+            //------ ASIGNACION DE ROL ---------
+            user.setRol(Rol.USER);
             servicioUsuario.modificar(user);
+
 
 //          ------ ASIGNACION DE PERSONAJES --------------------
             Random preNumRandom = new Random();
