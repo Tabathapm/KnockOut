@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -61,7 +62,7 @@
                                         <h5 class="mb-0 text-center">${personaje.nombre}</h5>
                                         <br>
                                         <div style="display: flex; justify-content: space-evenly;">
-                                            <button type="button" class="btn btn-success">Ver m&aacute;s</button>
+                                            <a href="verMasPersonaje?id=${personaje.id} " class="btn btn-success" role="button">Ver más</a>
                                             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#card${personaje.id}">Vender</button>
                                         </div>
                                     </div>

@@ -17,6 +17,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 
     <link href="css/verMas.css" rel="stylesheet" >
+    <style>
+        .ficha{
+            background-color: #d1caca;
+            border: 1px solid;
+            border-radius: 30px;
+            padding: 10px;
+            box-shadow: 13px 13px 21px -3px rgba(0,0,0,0.7);
+            -webkit-box-shadow: 13px 13px 21px -3px rgba(0,0,0,0.7);
+            -moz-box-shadow: 13px 13px 21px -3px rgba(0,0,0,0.7);
+        }
+    </style>
 </head>
 <body class="sb-nav-fixed">
 <%@include file="partial/navBar.jsp"%>
@@ -33,8 +44,8 @@
                 <a href="javascript:history.back()"> <img src="images/atras.png" style="height: 50px"> </a>
                 <section class="py-5 text-center">
                     <div class="container px-4 px-lg-5 my-5">
-                        <div class="row gx-4 gx-lg-5 align-items-center">
-                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="<c:url value="/images/personajes/${personaje.imagen}" />" alt="..." /></div>
+                        <div class="row gx-4 gx-lg-5 align-items-center ficha">
+                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="<c:url value="/images/personajes/${personaje.imagen}" />" alt="..." style="border-radius: 10px"/></div>
                             <div class="col-md-6">
                                 <h1 class="display-5 fw-bolder">${personaje.nombre}</h1>
                                 <div class="fs-5 mb-5">
