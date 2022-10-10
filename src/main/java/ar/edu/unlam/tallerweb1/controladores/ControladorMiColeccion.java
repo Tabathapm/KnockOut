@@ -81,8 +81,8 @@ public class ControladorMiColeccion {
         Personaje personaje = servicioPersonaje.traerPersonaje(id);
         servicioBilletera.sumarMonto(billetera,personaje.getMonto());
         List<Personaje> nuevaLista = servicioPersonaje.eliminarpersonaje(listaPersonajes,personaje);
-        BigDecimal formatNumber = new BigDecimal(billetera.getMonto());
-        billetera.setMonto(formatNumber.setScale(2, RoundingMode.HALF_UP).floatValue());
+        //Servicio billetera limitar a 2 decimales
+        billetera.setMonto(servicioBilletera.limitarDecimales(billetera));
         request.getSession().setAttribute("billetera",billetera);
 
         coleccion.setPersonajes(nuevaLista);
