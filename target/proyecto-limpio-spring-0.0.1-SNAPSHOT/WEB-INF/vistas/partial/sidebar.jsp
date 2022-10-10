@@ -13,7 +13,7 @@
                     Mi Colecci&oacute;n
                 </a>
                 <%-- ------------------------ --%>
-                <a class="nav-link " href="#">
+                <a class="nav-link " href="Jugar">
                     Jugar
                 </a>
                 <%-- ------------------------ --%>
