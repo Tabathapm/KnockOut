@@ -86,11 +86,14 @@ public class ControladorLogin {
 			request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
 			request.getSession().setAttribute("billetera", billetera);
 			request.getSession().setAttribute("nivel", nivel);
+			request.getSession().setAttribute("rol", usuarioBuscado.getRol());
 //          -----------------------------------------------------------
 			return new ModelAndView("home");
 		}
 
 		request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
+		request.getSession().setAttribute("rol", usuarioBuscado.getRol());
+
 		return new ModelAndView("redirect:/inicio");
 	}
 

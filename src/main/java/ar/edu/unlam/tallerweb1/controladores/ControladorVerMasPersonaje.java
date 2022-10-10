@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,10 +28,13 @@ public class ControladorVerMasPersonaje {
         ModelMap model = new ModelMap();
 //      --------------------------------
 
-        //Si no inicio sesion en el sistema, no puede ver la coleccion
         if(request.getSession().getAttribute("idUsuario") == null){
-            return new ModelAndView("redirect:/login", model);
+            return new ModelAndView("redirect:/login");
         }
+        if(request.getSession().getAttribute("rol") == Rol.ADMIN){
+            return new ModelAndView("redirect:/inicio");
+        }
+
         Personaje personaje=servicioPersonaje.buscarPorId(id);
 //      --------------------------------
         model.put("personaje", personaje);

@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.servicios.ServicioColeccion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 
 
 @Controller
@@ -33,7 +35,14 @@ public class ControladorAdmin {
 
     //VALIDAR ROLES
     @RequestMapping("/inicio")
-    public ModelAndView verHome(){
+    public ModelAndView verHome(HttpServletRequest request){
+        if(request.getSession().getAttribute("idUsuario") == null){
+            return new ModelAndView("redirect:/login");
+        }
+        if(request.getSession().getAttribute("rol") == Rol.USER){
+            return new ModelAndView("redirect:/home");
+        }
+
         ModelMap model =new ModelMap();
         model.put("usuarios",servicioUsuario.getAll());
         model.put("max", servicioUsuario.rankingJugadores());

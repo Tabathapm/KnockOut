@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Billetera;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBilletera;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
@@ -31,9 +32,11 @@ private ServicioUsuario servicioUsuario;
     @RequestMapping("/comprarMonedas")
     public ModelAndView irAComprarMonedas(HttpServletRequest request) {
 
-        //Si no inicio sesion en el sistema, no puede ver la coleccion
         if(request.getSession().getAttribute("idUsuario") == null){
             return new ModelAndView("redirect:/login");
+        }
+        if(request.getSession().getAttribute("rol") == Rol.ADMIN){
+            return new ModelAndView("redirect:/inicio");
         }
 //      --------------------------------
 //        ModelMap model = new ModelMap();

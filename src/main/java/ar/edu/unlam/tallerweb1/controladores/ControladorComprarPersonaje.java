@@ -1,10 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.Exceptions.MontoInsuficienteException;
-import ar.edu.unlam.tallerweb1.modelo.Billetera;
-import ar.edu.unlam.tallerweb1.modelo.Coleccion;
-import ar.edu.unlam.tallerweb1.modelo.Personaje;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.modelo.*;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBilletera;
 import ar.edu.unlam.tallerweb1.servicios.ServicioColeccion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
@@ -40,7 +37,13 @@ public class ControladorComprarPersonaje {
     }
 
     @RequestMapping("/comprarPersonaje")
-    public ModelAndView irAComprarPersonaje() {
+    public ModelAndView irAComprarPersonaje(HttpServletRequest request) {
+        if(request.getSession().getAttribute("idUsuario") == null){
+            return new ModelAndView("redirect:/login");
+        }
+        if(request.getSession().getAttribute("rol") == Rol.ADMIN){
+            return new ModelAndView("redirect:/inicio");
+        }
 //      --------------------------------
         ModelMap model = new ModelMap();
 //      --------------------------------
