@@ -1,6 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,6 +100,7 @@
             </div>
         </div>
     </div>
+        <h1>${fecha}</h1>
 
         <div class="card mb-4">
             <div class="card-header">
@@ -113,18 +116,22 @@
                         <th scope="col" class="text-center">Ultima conexion</th>
                         <th scope="col" class="text-center">Activar/Desactivar</th>
                     </tr>
-
                     <c:forEach var="usuario" items="${usuarios}">
                         <tr>
                             <td>${usuario.email}</td>
-                            <td class="text-center">${usuario.activo}</td>
+                            <td class="text-center">${usuario.habilitado}</td>
                             <td class="text-center">${usuario.nivel.numero}</td>
-                            <td class="text-center"></td>
+                            <c:if test="${empty usuario.ultimaConexion}">
+                                <td class="text-center">Aún no inicio sesión</td>
+                            </c:if>
+                            <c:if  test="${!empty usuario.ultimaConexion}">
+                                <td class="text-center"><fmt:formatDate value="${usuario.ultimaConexion}" pattern="dd/MM/yyyy HH:mm" /></td>
+                            </c:if>
                             <td class="text-center">
-                                <c:if test="${usuario.activo == false}">
+                                <c:if test="${usuario.habilitado == false}">
                                     <a href="cambio-estado?id=${usuario.id}" class="text-decoration-none btn btn-success">Activar</a>
                                 </c:if>
-                                <c:if test="${usuario.activo == true}">
+                                <c:if test="${usuario.habilitado == true}">
                                     <a  href="cambio-estado?id=${usuario.id}" class="text-decoration-none btn btn-danger">Desactivar</a>
                                 </c:if>
                             </td>
