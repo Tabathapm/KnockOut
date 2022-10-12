@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function ShowSelected(){
 
-            if(window.location == 'http://localhost:8080/KnockOut_war/comprarPersonaje?order=min'){
+            if(window.location == 'http://localhost:8080/KnockOut_war_exploded/comprarPersonaje?order=min'){
 
             var option = document.querySelector('option[value="min"]' );
 
@@ -13,7 +13,7 @@ function ShowSelected(){
             }
 
 
-            if(window.location == 'http://localhost:8080/KnockOut_war/comprarPersonaje?order=max'){
+            if(window.location == 'http://localhost:8080/KnockOut_war_exploded/comprarPersonaje?order=max'){
 
                     var option = document.querySelector('option[value="max"]' );
 
@@ -21,7 +21,7 @@ function ShowSelected(){
                     option.setAttribute('selected','true')
             }
 
-            if(window.location == 'http://localhost:8080/KnockOut_war/comprarPersonaje?order=name'){
+            if(window.location == 'http://localhost:8080/KnockOut_war_exploded/comprarPersonaje?order=name'){
 
             var option = document.querySelector('option[value="name"]' );
 
