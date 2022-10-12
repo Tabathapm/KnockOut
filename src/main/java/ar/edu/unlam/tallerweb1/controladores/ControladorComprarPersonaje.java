@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,20 +38,34 @@ public class ControladorComprarPersonaje {
     }
 
     @RequestMapping("/comprarPersonaje")
-    public ModelAndView irAComprarPersonaje(HttpServletRequest request) {
+    public ModelAndView irAComprarPersonaje(@RequestParam(required = false, defaultValue = "") String order,HttpServletRequest request) {
         if(request.getSession().getAttribute("idUsuario") == null){
             return new ModelAndView("redirect:/login");
         }
         if(request.getSession().getAttribute("rol") == Rol.ADMIN){
             return new ModelAndView("redirect:/inicio");
         }
-//      --------------------------------
+
         ModelMap model = new ModelMap();
-//      --------------------------------
-        List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnVenta();
-//      --------------------------------
+
+        List<Personaje> listaPersonajes = null;
+
+        switch (order) {
+            case "min":
+                listaPersonajes = servicioPersonaje.personajeOrdenadoMenorPrecio();
+                break;
+            case "max":
+                listaPersonajes = servicioPersonaje.personajeOrdenadoMayorPrecio();
+                break;
+            case "name":
+                listaPersonajes = servicioPersonaje.personajeOrdenadoAlfabeticamente();
+                break;
+            default:
+                listaPersonajes =servicioPersonaje.listaDePersonajesEnVenta();
+        }
+
         model.put("personajes", listaPersonajes);
-//      --------------------------------
+
         return new ModelAndView("comprarPersonaje", model);
     }
 

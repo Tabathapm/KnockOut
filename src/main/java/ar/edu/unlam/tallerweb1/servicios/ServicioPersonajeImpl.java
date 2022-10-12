@@ -82,4 +82,19 @@ public class ServicioPersonajeImpl implements ServicioPersonaje {
         repoPersonaje.eliminarPersonje(id);
     }
 
+    @Override
+    public List<Personaje> personajeOrdenadoMenorPrecio() {
+        return repoPersonaje.personajeOrdenadoMenorPrecio();
+    }
+
+    @Override
+    public List<Personaje> personajeOrdenadoMayorPrecio() {
+        return repoPersonaje.personajeOrdenadoMayorPrecio();
+    }
+
+    @Override
+    public List<Personaje> personajeOrdenadoAlfabeticamente() {
+        return repoPersonaje.personajeOrdenadoAlfabeticamente();
+    }
+
 }

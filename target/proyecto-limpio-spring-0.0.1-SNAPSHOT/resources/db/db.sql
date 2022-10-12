@@ -80,5 +80,5 @@ values('Superman','superman_.jpg','Superheroe nacido en el planeta de Krypton.Su
       ('Mujer Maravilla','mujerMaravilla_.jpg','Princesa guerrera de las Amazonas.Forma parte de La Liga de La Justicia.',true,false,11000.0),
       ('Deadthstroke','deadthstroke_.jpg','Mercenario y villano, mentalmente inestable y con una gran habilidad en el manejo de las espadas ',true,false,7500.0);
 
-INSERT INTO usuario(activo,email,password,rol,nivel_id) 
-values (1,'test@gmail.com','123',0,null);
+INSERT INTO usuario(activo,email,habilitado,password,rol,ultimaConexion,nivel_id)
+values (1,'test@gmail.com',1,'123',0,null,null);

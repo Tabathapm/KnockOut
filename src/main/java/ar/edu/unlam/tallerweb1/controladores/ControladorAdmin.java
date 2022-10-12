@@ -53,7 +53,7 @@ public class ControladorAdmin {
         return new ModelAndView ("homeAdmin",model);
     }
 
-    @RequestMapping("/personajes")
+    @RequestMapping("/administracionPersonaje")
     public ModelAndView getAdministracionPersonaje(){
         ModelMap model =new ModelMap();
 

@@ -47,7 +47,20 @@
           </p>
         </header>
 
-        <div class="row pb-5 mb-4">
+        <form action="comprarPersonaje" method="get">
+          <label>Ordenar</label>
+          <div class="d-block">
+            <select id="order" name="order">
+              <option selected disabled>Elige una opcion</option>
+              <option value="min">Menor precio a mayor precio</option>
+              <option value="max">Mayor precio a menor precio</option>
+              <option value="name">Por nombre</option>
+            </select>
+            <input type="submit" class="btn btn-success" value="Aplicar">
+          </div>
+        </form>
+
+        <div class="row pb-5 mt-4 mb-4">
           <%--    SE RECORRE LA LISTA     --%>
           <c:forEach items="${personajes}" var="personaje">
 
@@ -84,6 +97,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/homeDos.js"></script>
+<script src="js/select.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 </body>

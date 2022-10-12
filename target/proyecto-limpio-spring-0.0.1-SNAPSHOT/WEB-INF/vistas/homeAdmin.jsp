@@ -45,7 +45,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                         Administrar usuarios
                     </a>
-                    <a class="nav-link" href="personajes">
+                    <a class="nav-link" href="administracionPersonaje">
                         <div class="sb-nav-link-icon"><i class="fas fa-user-robot"></i></div>
                         Administrar personajes
                     </a>
@@ -60,22 +60,25 @@
     <h1  style="font-weight: 300" class="mt-4 mb-4">Control de usuarios</h1>
     <div class="row mb-4">
             <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card mb-3" style="width: 18rem;">
                 <div class="card-header">
                     Ranking <i class="fas fa-medal"></i>
                 </div>
                 <table class="table"style="margin-bottom:0">
                     <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Jugador</th>
                         <th scope="col">Nivel</th>
                     </tr>
-
+                    <c:set var="i" value="1"/>
                     <c:forEach var="maximos" items="${max}">
                         <tr>
+                            <td><img width="115%" src="images/medalla_${i}.png"></td>
                             <td>${maximos.email}</td>
                             <td class="text-center">${maximos.nivel.numero}</td>
                         </tr>
-                    </c:forEach>
+                        <c:set var="i" value="${i+1}"/>
+                        </c:forEach>
                 </table>
             </div>
             </div>
