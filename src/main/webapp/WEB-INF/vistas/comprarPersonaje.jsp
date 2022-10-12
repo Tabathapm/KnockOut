@@ -51,7 +51,7 @@
           <label>Ordenar</label>
           <div class="d-block">
             <select id="order" name="order">
-              <option selected>Elige una opcion</option>
+              <option selected value="default">Elige una opcion</option>
               <option value="min">Menor precio a mayor precio</option>
               <option value="max">Mayor precio a menor precio</option>
               <option value="name">Por nombre</option>
