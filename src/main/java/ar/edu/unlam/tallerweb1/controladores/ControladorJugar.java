@@ -45,7 +45,7 @@ public class ControladorJugar {
 //      traer la coleccion con usuarioID
         Coleccion coleccion = servicioColeccion.traerColeccion(usuario);
 //      --------------------------------
-        this.misPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion();
+        this.misPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion(coleccion);
 //      --------------------------------
         model.put("personajes", this.misPersonajes );
 

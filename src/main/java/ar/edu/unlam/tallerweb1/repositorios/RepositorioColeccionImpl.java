@@ -49,6 +49,9 @@ public class RepositorioColeccionImpl implements RepositorioColeccion{
 
 
 
+
+
+
 /*
 *  List <Personaje> personajesEnMiColeccion = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
                 .createAlias("coleccion", "c")
