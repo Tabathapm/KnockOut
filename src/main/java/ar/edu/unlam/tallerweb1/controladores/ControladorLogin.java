@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 
 @Controller
@@ -78,19 +81,32 @@ public class ControladorLogin {
 			return new ModelAndView("login", model);
 		}
 
+		if(usuarioBuscado.getHabilitado() == false){
+
+			model.put("error", "Su usuario se encuentra inhabilitado");
+			return new ModelAndView("login", model);
+		}
+
 		if(usuarioBuscado.getRol() == Rol.USER) {
 			Billetera billetera = servicioBilletera.traerDatosBilletera(usuarioBuscado);
 			Nivel nivel = servicioNivel.traerDatosDelNivel(usuarioBuscado.getNivel().getId());
+			//setear fecha de hoy
+			Date fechaActual = new Date();
+			usuarioBuscado.setUltimaConexion(fechaActual);
 
+			servicioUsuario.modificar(usuarioBuscado);
 //			------ SE GUARDAN DATOS EN LA SESION -------
 			request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
 			request.getSession().setAttribute("billetera", billetera);
 			request.getSession().setAttribute("nivel", nivel);
+			request.getSession().setAttribute("rol", usuarioBuscado.getRol());
 //          -----------------------------------------------------------
 			return new ModelAndView("home");
 		}
 
 		request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
+		request.getSession().setAttribute("rol", usuarioBuscado.getRol());
+
 		return new ModelAndView("redirect:/inicio");
 	}
 

@@ -84,7 +84,7 @@
                             </div>
                             <div class="modal-body">
                                 <p class="text-center">Seguro que queres vender a ${personaje.nombre}?</p>
-                                <p class="text-center">${personaje.monto}</p>
+                                <p class="text-center">${String.format("%.2f",personaje.monto - (personaje.monto * 0.2))}</p>
                             </div>
                             <div class="modal-footer d-flex justify-content-around">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

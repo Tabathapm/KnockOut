@@ -92,5 +92,32 @@ public class RepositorioPersonajeImpl implements RepositorioPersonaje {
         sessionFactory.getCurrentSession().delete(personaje);
     }
 
+    @Override
+    public List<Personaje> personajeOrdenadoMenorPrecio() {
+        List<Personaje> personajes = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
+                .add(Restrictions.eq("enVenta", true))
+                .addOrder(Order.asc("monto"))
+                .list();
+        return personajes;
+    }
+
+    @Override
+    public List<Personaje> personajeOrdenadoMayorPrecio() {
+        List<Personaje> personajes = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
+                .add(Restrictions.eq("enVenta", true))
+                .addOrder(Order.desc("monto"))
+                .list();
+        return personajes;
+    }
+
+    @Override
+    public List<Personaje> personajeOrdenadoAlfabeticamente() {
+        List<Personaje> personajes = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
+                .add(Restrictions.eq("enVenta", true))
+                .addOrder(Order.asc("nombre"))
+                .list();
+        return personajes;
+    }
+
 
 }

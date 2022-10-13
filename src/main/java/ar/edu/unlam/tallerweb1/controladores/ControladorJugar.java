@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.Coleccion;
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
+import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioColeccion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
@@ -38,6 +39,12 @@ public class ControladorJugar {
         ModelMap model = new ModelMap();
 //      --------------------------------
         Integer usuario_id = (Integer) request.getSession().getAttribute("idUsuario");
+        if(usuario_id == null){
+            return new ModelAndView("redirect:/login");
+        }
+        if(request.getSession().getAttribute("rol") == Rol.ADMIN){
+            return new ModelAndView("redirect:/inicio");
+        }
 
 //      se busca al usuario
         Usuario usuario = servicioUsuario.buscarPorID(usuario_id);

@@ -1,9 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import ar.edu.unlam.tallerweb1.modelo.Billetera;
-import ar.edu.unlam.tallerweb1.modelo.Coleccion;
-import ar.edu.unlam.tallerweb1.modelo.Personaje;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.modelo.*;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBilletera;
 import ar.edu.unlam.tallerweb1.servicios.ServicioColeccion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
@@ -39,6 +36,12 @@ public class ControladorMiColeccion {
 
     @RequestMapping("/miColeccion")
     public ModelAndView irAMiColeccion(HttpServletRequest request) {
+        if(request.getSession().getAttribute("idUsuario") == null){
+            return new ModelAndView("redirect:/login");
+        }
+        if(request.getSession().getAttribute("rol") == Rol.ADMIN){
+            return new ModelAndView("redirect:/inicio");
+        }
 //      --------------------------------
         ModelMap model = new ModelMap();
 //      --------------------------------
@@ -78,8 +81,8 @@ public class ControladorMiColeccion {
         Personaje personaje = servicioPersonaje.traerPersonaje(id);
         servicioBilletera.sumarMonto(billetera,personaje.getMonto());
         List<Personaje> nuevaLista = servicioPersonaje.eliminarpersonaje(listaPersonajes,personaje);
-        BigDecimal formatNumber = new BigDecimal(billetera.getMonto());
-        billetera.setMonto(formatNumber.setScale(2, RoundingMode.HALF_UP).floatValue());
+        //Servicio billetera limitar a 2 decimales
+        billetera.setMonto(servicioBilletera.limitarDecimales(billetera));
         request.getSession().setAttribute("billetera",billetera);
 
         coleccion.setPersonajes(nuevaLista);

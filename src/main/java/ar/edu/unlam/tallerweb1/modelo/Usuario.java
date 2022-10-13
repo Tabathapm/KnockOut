@@ -1,6 +1,11 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 // Clase que modela el concepto de Usuario, la anotacion @Entity le avisa a hibernate que esta clase es persistible
 // el paquete ar.edu.unlam.tallerweb1.modelo esta indicado en el archivo hibernateCOntext.xml para que hibernate
@@ -22,6 +27,10 @@ public class Usuario {
 	private Nivel nivel;
 
 	private Rol rol;
+
+	private Boolean habilitado = true;
+	@DateTimeFormat(pattern = "dd-MM-yyyy hh:mm")
+	private Date ultimaConexion;
 	
 	public Integer getId() {
 		return id;
@@ -48,6 +57,7 @@ public class Usuario {
 		this.activo = activo;
 	}
 
+
 	public boolean activo() {
 		return activo;
     }
@@ -70,5 +80,21 @@ public class Usuario {
 
 	public void setRol(Rol rol) {
 		this.rol = rol;
+	}
+
+	public Boolean getHabilitado() {
+		return habilitado;
+	}
+
+	public void setHabilitado(Boolean habilitado) {
+		this.habilitado = habilitado;
+	}
+
+	public Date getUltimaConexion() {
+		return ultimaConexion;
+	}
+
+	public void setUltimaConexion(Date ultimaConexion) {
+		this.ultimaConexion = ultimaConexion;
 	}
 }

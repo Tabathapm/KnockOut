@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 @Service("servicioBilletera")
 @Transactional
 public class ServicioBilleteraImpl implements ServicioBilletera{
@@ -45,6 +48,16 @@ public class ServicioBilleteraImpl implements ServicioBilletera{
 
     @Override
     public void sumarMonto(Billetera billetera, Float monto) {
-        repoBilletera.sumarMonto(billetera,monto);
+        Float montoVenta = monto - (monto * 0.2f);
+        repoBilletera.sumarMonto(billetera,montoVenta);
     }
+
+    @Override
+    public Float limitarDecimales(Billetera billetera) {
+        BigDecimal formatNumber = new BigDecimal(billetera.getMonto());
+        billetera.setMonto(formatNumber.setScale(2, RoundingMode.HALF_UP).floatValue());
+        return billetera.getMonto();
+    }
+
+
 }

@@ -106,10 +106,10 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
     public void cambiarEstadoUsuario(Integer id) {
         Usuario usuario = buscarPorID(id);
 
-        if(usuario.getActivo()){
-            usuario.setActivo(false);
+        if(usuario.getHabilitado()){
+            usuario.setHabilitado(false);
         }else{
-            usuario.setActivo(true);
+            usuario.setHabilitado(true);
         }
 
         repoUsuario.modificar(usuario);

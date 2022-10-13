@@ -11,4 +11,7 @@ public interface ServicioBilletera {
     void restarDinero(Billetera billetera, Float monto);
 
     void sumarMonto(Billetera billetera, Float monto);
+
+
+    Float limitarDecimales(Billetera billetera);
 }
