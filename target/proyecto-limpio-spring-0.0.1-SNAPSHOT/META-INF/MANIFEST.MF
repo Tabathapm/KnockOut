@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Created-By: IntelliJ IDEA
-Built-By: eri
-Build-Jdk: Oracle OpenJDK version 11.0.14
+Built-By: warhe
+Build-Jdk: 11.0.11
 
