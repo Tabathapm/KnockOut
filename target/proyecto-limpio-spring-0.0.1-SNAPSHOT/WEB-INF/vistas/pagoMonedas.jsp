@@ -32,7 +32,18 @@
               </h3>
             </div>
             <hr class="colorgraph">
+            <h1>${preference}</h1>
+            <h2>${preference.payer.email}</h2>
 
+            <h1>mercadopago</h1>
+            <form action="pagarMonedas" method="get" class="d-inline">
+              <input type="hidden" name="montoElegido" value="${montoElegido}">
+              <script
+                      src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+                      data-preference-id="${preference.id}"/>
+              >
+              </script>
+            </form>
             <form action="validar-pago" method="POST" modelAttribute="datosDePago">
                 <input type="hidden" name="montoElegido" value="${montoElegido}">
               <br>

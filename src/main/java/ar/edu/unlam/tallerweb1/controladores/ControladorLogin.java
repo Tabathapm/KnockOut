@@ -96,6 +96,7 @@ public class ControladorLogin {
 
 			servicioUsuario.modificar(usuarioBuscado);
 //			------ SE GUARDAN DATOS EN LA SESION -------
+			request.getSession().setAttribute("usuario", usuarioBuscado);
 			request.getSession().setAttribute("idUsuario", usuarioBuscado.getId());
 			request.getSession().setAttribute("billetera", billetera);
 			request.getSession().setAttribute("nivel", nivel);

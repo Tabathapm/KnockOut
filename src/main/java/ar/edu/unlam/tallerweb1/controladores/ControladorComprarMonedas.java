@@ -4,7 +4,9 @@ import ar.edu.unlam.tallerweb1.modelo.Billetera;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBilletera;
+import ar.edu.unlam.tallerweb1.servicios.ServicioMP;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+import com.mercadopago.resources.Preference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +24,8 @@ public class ControladorComprarMonedas {
 private ServicioUsuario servicioUsuario;
 
     private ServicioBilletera servicioBilletera;
+
+    private ServicioMP servicioMP = new ServicioMP();
 
     @Autowired
     public ControladorComprarMonedas(ServicioUsuario servicioUsuario, ServicioBilletera servicioBilletera) {
@@ -51,23 +55,41 @@ private ServicioUsuario servicioUsuario;
     }
 
     @RequestMapping(value = "/pagoMonedas")
-    public ModelAndView irAPagarMonedas(@RequestParam("montoElegido") String montoElegido){
+    public ModelAndView irAPagarMonedas(@RequestParam("montoElegido") String montoElegido,HttpServletRequest request){
 
-        //Creo el modelo
         ModelMap model = new ModelMap();
+        Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+        //parsear el monto a double
+        Double monto = Double.parseDouble(montoElegido);
+        Preference preference = servicioMP.checkout(user, monto);
 
-        //Recibe los datos por parametros
-//        String montoElegido = request.getParameter("montoElegido");
-
-        //Envio los datos al modelo con una key llamada "montoElegido" y luego le paso el objeto llamado montoElegido
+        model.put("preference", preference);
         model.put("montoElegido", montoElegido);
-
-
-        return new ModelAndView("pagoMonedas",model);
+        return new ModelAndView("pagoMonedas", model);
 
     }
 
-    @RequestMapping("/validar-pago")
+    @RequestMapping(value = "/pagarMonedas", method = RequestMethod.GET)
+    public ModelAndView pagarMonedas(@RequestParam("montoElegido") String montoElegido, @RequestParam(value = "payment_status") String estado, HttpServletRequest request) {
+        ModelMap model = new ModelMap();
+        Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+        //parsear el monto a double
+        Double monto = Double.parseDouble(montoElegido);
+
+        if(estado.equals("approved")){
+            Billetera billetera = servicioBilletera.traerDatosBilletera(user);
+            billetera.setMonto((float) (billetera.getMonto() + monto));
+            servicioBilletera.modificar(billetera);
+            request.getSession().setAttribute("billetera", billetera);
+            return new ModelAndView("redirect:/comprarMonedas", model);
+
+        } else {
+            model.put("mensaje", "No se han acreditado monedas a tu billetera");
+        }
+
+        return new ModelAndView("redirect:/comprarMonedas", model);
+    }
+    /*@RequestMapping("/validar-pago")
     public ModelAndView validarPago(@ModelAttribute("datosDePago") DatosDePago datosDePago, HttpServletRequest request) {
 
         // -- LLAMAMOS A AL ID DEL USUARIO QUE SE GUARDÓ EN LA SESION CON LA CLAVE QUE LE ASIGNAMOS --
@@ -107,7 +129,7 @@ private ServicioUsuario servicioUsuario;
 
         return new ModelAndView("pagoMonedas",model);
     }
-
+*/
     public static int getTamanio(long d){
         String num = d + "";
         return num.length();
