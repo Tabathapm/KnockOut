@@ -14,4 +14,6 @@ public interface ServicioBilletera {
 
 
     Float limitarDecimales(Billetera billetera);
+
+    Double agregarPorcentajes(Double monto);
 }

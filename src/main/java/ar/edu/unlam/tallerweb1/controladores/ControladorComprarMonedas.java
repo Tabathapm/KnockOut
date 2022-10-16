@@ -59,12 +59,20 @@ private ServicioUsuario servicioUsuario;
 
         ModelMap model = new ModelMap();
         Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+        String montoCantidad = montoElegido;
+
         //parsear el monto a double
         Double monto = Double.parseDouble(montoElegido);
-        Preference preference = servicioMP.checkout(user, monto);
+        //agregar los porcentajes dependiendo del montoElegido
+        Double montoConRecargo = servicioBilletera.agregarPorcentajes(monto);
+        Preference preference = servicioMP.checkout(user, montoConRecargo);
+
+        //agregarle al montoelegido el 25% de recargo
+        montoElegido = String.valueOf(montoConRecargo);
 
         model.put("preference", preference);
-        model.put("montoElegido", montoElegido);
+        model.put("montoElegido", montoCantidad);
+        model.put("precio", montoElegido);
         return new ModelAndView("pagoMonedas", model);
 
     }
