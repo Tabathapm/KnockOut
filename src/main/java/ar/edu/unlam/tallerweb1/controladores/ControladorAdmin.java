@@ -78,7 +78,7 @@ public class ControladorAdmin {
 
         servicioPersonaje.eliminarPersonaje(id);
 
-        return new ModelAndView("redirect:/personajes");
+        return new ModelAndView("redirect:/administracionPersonaje");
     }
 
     @RequestMapping(value = "/modificar", method= RequestMethod.POST)
@@ -88,7 +88,7 @@ public class ControladorAdmin {
         personaje.setMonto(monto);
         servicioPersonaje.modificar(personaje);
 
-        return new ModelAndView("redirect:/personajes");
+        return new ModelAndView("redirect:/administracionPersonaje");
     }
 
     //Control personajes
