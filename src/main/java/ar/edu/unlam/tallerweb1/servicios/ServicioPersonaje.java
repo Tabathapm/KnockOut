@@ -20,7 +20,8 @@ public interface ServicioPersonaje {
     List<Personaje> eliminarpersonaje(List<Personaje> listaPersonajes, Personaje personaje);
 
     void eliminarPersonaje(Integer id);
-
+    List<Personaje> modificarPersonajeAIntercambiable(List<Personaje> listaPersonajes, Personaje personaje);
+    List<Personaje> modificarPersonajeAColeccion(List<Personaje> listaPersonajes, Personaje personaje);
     List<Personaje> personajeOrdenadoMenorPrecio();
 
     List<Personaje> personajeOrdenadoMayorPrecio();

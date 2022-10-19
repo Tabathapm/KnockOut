@@ -28,6 +28,7 @@
             transform: scale(1.05);
             box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
         }
+
     </style>
 </head>
 <body class="sb-nav-fixed">
@@ -52,6 +53,8 @@
                 <div class="row pb-5 mb-4">
                 <%--    SE RECORRE LA LISTA     --%>
                     <c:forEach items="${personajes}" var="personaje">
+                        <c:if test="${personaje.intercambiable==false}">
+
 
                     <%--    POR CADA PERSONAJE SE CREA UNA TARJETA    --%>
                         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 pb-5">
@@ -63,14 +66,46 @@
                                         <br>
                                         <div style="display: flex; justify-content: space-evenly;">
                                             <a href="verMasPersonaje?id=${personaje.id} " class="btn btn-success" role="button">Ver más</a>
+                                            <a href="aIntercambiar?id=${personaje.id}"  style="display: flex;flex-direction: column;justify-content: center;"><i class="fa-solid fa-arrows-rotate"></i></a>
                                             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#card${personaje.id}">Vender</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </c:if>
                     </c:forEach>
                 </div>
+                <h1 class="display-4 font-weight-bold text-center">Intercambio</h1>
+                <p class="font-italic text-muted mb-0 text-center mb-5">
+                    Ac&aacute; vas a poder ver todos los personajes que ten&eacute;s para intercambiar.
+                </p>
+                <div class="row pb-5 mb-4">
+                    <c:forEach items="${personajes}" var="personaje">
+                        <c:if test="${personaje.intercambiable==true}">
+
+
+                            <%--    POR CADA PERSONAJE SE CREA UNA TARJETA    --%>
+                            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 pb-5">
+                                <div class="card shadow-sm border-1 shadow-lg rounded">
+                                    <div class="card-body p-0">
+                                        <img src="<c:url value="/images/personajes/${personaje.imagen}" />" class="w-100 card-img-top">
+                                        <div class="p-4">
+                                            <h5 class="mb-0 text-center">${personaje.nombre}</h5>
+                                            <br>
+                                            <div style="display: flex; justify-content: space-evenly;">
+                                                <a href="verMasPersonaje?id=${personaje.id} " class="btn btn-success" role="button">Ver más</a>
+                                                <a href="aColeccion?id=${personaje.id}"  style="display: flex;flex-direction: column;justify-content: center;"><i class="fa-solid fa-arrows-rotate"></i></a>
+                                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#card${personaje.id}">Vender</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:if>
+                    </c:forEach>
+                </div>
+
             </div>
 
             <%--   MODAL     --%>
