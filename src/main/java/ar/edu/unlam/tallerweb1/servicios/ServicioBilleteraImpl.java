@@ -59,5 +59,21 @@ public class ServicioBilleteraImpl implements ServicioBilletera{
         return billetera.getMonto();
     }
 
+    @Override
+    public Double agregarPorcentajes(Double monto) {
+        //si monto es igual a 500 agregar el 50%
+        if(monto == 500){
+            monto = monto + (monto * 1.0);
+        }
+        else if(monto == 1000){
+            monto = monto + (monto * 0.5);
+        }
+        else {
+            monto = monto + (monto * 0.25);
+        }
+
+        return monto;
+    }
+
 
 }
