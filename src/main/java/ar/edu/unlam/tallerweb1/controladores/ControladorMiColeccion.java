@@ -92,4 +92,58 @@ public class ControladorMiColeccion {
 
         return new ModelAndView("redirect:/miColeccion");
     }
+
+    @RequestMapping("/aIntercambiar")
+    public ModelAndView aIntercambiar(@RequestParam("id") Integer id, HttpServletRequest request) {
+        ModelMap model = new ModelMap();
+        Integer usuario_id = (Integer) request.getSession().getAttribute("idUsuario");
+
+//      se busca al usuario
+        Usuario usuario = servicioUsuario.buscarPorID(usuario_id);
+
+//      traer la coleccion con usuarioID
+        Coleccion coleccion = servicioColeccion.traerColeccion(usuario);
+
+//      --------------------------------
+        List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion(coleccion);
+
+        Personaje personaje = servicioPersonaje.traerPersonaje(id);
+
+        List<Personaje> nuevaLista = servicioPersonaje.modificarPersonajeAIntercambiable(listaPersonajes,personaje);
+//      --------------------------------
+
+        coleccion.setPersonajes(nuevaLista);
+
+        servicioColeccion.modificar(coleccion);
+
+
+        return new ModelAndView("redirect:/miColeccion");
+    }
+    @RequestMapping("/aColeccion")
+    public ModelAndView aColeccion(@RequestParam("id") Integer id, HttpServletRequest request) {
+        ModelMap model = new ModelMap();
+        Integer usuario_id = (Integer) request.getSession().getAttribute("idUsuario");
+
+//      se busca al usuario
+        Usuario usuario = servicioUsuario.buscarPorID(usuario_id);
+
+//      traer la coleccion con usuarioID
+        Coleccion coleccion = servicioColeccion.traerColeccion(usuario);
+
+//      --------------------------------
+        List<Personaje> listaPersonajes = servicioPersonaje.listaDePersonajesEnMiColeccion(coleccion);
+
+        Personaje personaje = servicioPersonaje.traerPersonaje(id);
+
+        List<Personaje> nuevaLista = servicioPersonaje.modificarPersonajeAColeccion(listaPersonajes,personaje);
+//      --------------------------------
+
+        coleccion.setPersonajes(nuevaLista);
+
+        servicioColeccion.modificar(coleccion);
+
+
+        return new ModelAndView("redirect:/miColeccion");
+    }
+
 }
