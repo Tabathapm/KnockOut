@@ -38,4 +38,46 @@ public class ControladorUsuario {
 
         return new ModelAndView("miPerfil", model);
     }
+
+    @RequestMapping("/irModificarPerfil")
+    private ModelAndView irModificarPerfil(HttpServletRequest request){
+
+        Integer usuario_id = (Integer) request.getSession().getAttribute("idUsuario");
+
+        if(usuario_id == null){
+            return new ModelAndView("redirect:/login");
+        }
+//      --------------------------------
+        ModelMap model = new ModelMap();
+//      --------------------------------
+        Usuario usuario = servicioUsuario.buscarPorID(usuario_id);
+        model.put("usuario", usuario);
+
+        return new ModelAndView("modificarPerfil", model);
+
+    }
+    @RequestMapping("/modificarPerfil")
+    private ModelAndView modificar(@RequestParam("password")String nuevaPassword, HttpServletRequest request){
+
+        Integer usuario_id = (Integer) request.getSession().getAttribute("idUsuario");
+
+        if(usuario_id == null){
+            return new ModelAndView("redirect:/login");
+        }
+//      --------------------------------
+        ModelMap model = new ModelMap();
+//      --------------------------------
+        Usuario usuario = servicioUsuario.buscarPorID(usuario_id);
+
+        if (usuario.getPassword().equals(nuevaPassword)){
+            model.put("usuario", usuario);
+            model.put("error", "La password tiene que ser diferente a la anterior");
+            return new ModelAndView("modificarPerfil", model);
+        }else {
+            usuario.setPassword(nuevaPassword);
+            servicioUsuario.modificar(usuario);
+            return new ModelAndView("redirect:/login");
+        }
+
+    }
 }

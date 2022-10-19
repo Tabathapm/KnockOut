@@ -30,7 +30,7 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="margin: -9%;">
                     <li><a class="dropdown-item" href="miPerfil">Mi Perfil</a></li>
-                    <li><a class="dropdown-item" href="#">Modificar</a></li>
+                    <li><a class="dropdown-item" href="irModificarPerfil">Modificar</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="logout">Cerrar sesion</a></li>
                 </ul>
