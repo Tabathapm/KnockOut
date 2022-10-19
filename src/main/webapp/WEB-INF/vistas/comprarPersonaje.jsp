@@ -49,14 +49,16 @@
 
         <form action="comprarPersonaje" method="get">
           <label>Ordenar</label>
-          <div class="d-block">
-            <select id="order" name="order">
+          <div class="d-block d-flex">
+            <select id="order" name="order" class="form-select" style="width: 20%;">
               <option selected value="default">Elige una opcion</option>
               <option value="min">Menor precio a mayor precio</option>
               <option value="max">Mayor precio a menor precio</option>
               <option value="name">Por nombre</option>
             </select>
-            <input type="submit" class="btn btn-success" value="Aplicar">
+            <div class="ps-3">
+              <input type="submit" class="btn btn-success" value="Aplicar">
+            </div>
           </div>
         </form>
 
