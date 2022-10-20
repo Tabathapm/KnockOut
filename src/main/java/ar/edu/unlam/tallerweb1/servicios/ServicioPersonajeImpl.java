@@ -76,6 +76,26 @@ public class ServicioPersonajeImpl implements ServicioPersonaje {
         repoPersonaje.modificar(personaje);
         return listaPersonajes;
     }
+    public List<Personaje> modificarPersonajeAIntercambiable(List<Personaje> listaPersonajes, Personaje personaje) {
+        for (int i = 0; i < listaPersonajes.size(); i++) {
+            if (listaPersonajes.get(i).getId().equals(personaje.getId())) {
+                personaje.setIntercambiable(true);
+                listaPersonajes.get(i).setIntercambiable(true);
+            }
+        }
+        repoPersonaje.modificar(personaje);
+        return listaPersonajes;
+    }
+    public List<Personaje> modificarPersonajeAColeccion(List<Personaje> listaPersonajes, Personaje personaje) {
+        for (int i = 0; i < listaPersonajes.size(); i++) {
+            if (listaPersonajes.get(i).getId().equals(personaje.getId())) {
+                personaje.setIntercambiable(false);
+                listaPersonajes.get(i).setIntercambiable(false);
+            }
+        }
+        repoPersonaje.modificar(personaje);
+        return listaPersonajes;
+    }
 
     @Override
     public void eliminarPersonaje(Integer id) {
