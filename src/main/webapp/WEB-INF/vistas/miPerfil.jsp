@@ -1,7 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/homeDos.css" rel="stylesheet" />
@@ -22,24 +22,34 @@
         <main>
             <img src="<c:url value="/images/fondoMiPerfil.jpg" />" style="width: 100%" class="opacity-50">
 
-            <div class="container pt-5" style="width: 36%; margin: -606px 0 0 420px;z-index: 100;position: absolute;">
+            <div class="container pt-5" style="width: 36%; margin: -688px 0 0 406px;z-index: 100;position: absolute;">
                 <div class="card text-center">
                     <div class="card-header">
                         Mi Perfil
                     </div>
                     <div class="card-body">
-                        <div class="row g-3 align-items-center" id="formulario" enctype="multipart/form-data">
-                            <form action="#" method="post">
-                                <div class="col-auto d-flex p-2">
-                                    <label for="email" class="col-form-label px-2">Email:</label>
-                                    <input type="text" id="email" class="form-control px-2" name="email" placeholder="${usuario.email}" disabled>
+                        <div class="row g-3" enctype="multipart/form-data">
+                            <form class="row">
+                                <div class="input-group p-2 d-flex align-items-center form-floating col">
+                                    <input type="text" class="form-control" id="floatingnombreGrid" value="${usuario.nombre}" disabled>
+                                    <label for="floatingnombreGrid">Nombre</label>
                                 </div>
-
-                                <div class="col-auto d-flex p-2">
-                                    <label for="nivel" class="col-form-label px-2">Nivel N&#176;:</label>
-                                    <input type="text" id="nivel" class="form-control px-2" name="nivel" placeholder="${usuario.nivel.numero}" disabled style="width: 83%;">
+                                <div class="input-group p-2 d-flex align-items-center form-floating col">
+                                    <input type="text" class="form-control" id="floatingApellidoGrid" value="${usuario.apellido}" disabled>
+                                    <label for="floatingApellidoGrid">Apellido</label>
                                 </div>
-
+                                <div class="input-group p-2 d-flex align-items-center form-floating">
+                                    <input type="text" class="form-control" id="floatingUserNameGrid" value="${usuario.userName}" disabled>
+                                    <label for="floatingUserNameGrid">User Name</label>
+                                </div>
+                                <div class="input-group p-2 d-flex align-items-center form-floating">
+                                    <input type="email" class="form-control" id="floatingEmailGrid" value="${usuario.email}" disabled>
+                                    <label for="floatingEmailGrid">Email</label>
+                                </div>
+                                <div class="input-group p-2 d-flex align-items-center form-floating">
+                                    <input type="text" class="form-control" id="floatingNivelGrid" value="${usuario.nivel.numero}" disabled>
+                                    <label for="floatingNivelGrid">Nivel</label>
+                                </div>
                             </form>
                         </div>
                     </div>

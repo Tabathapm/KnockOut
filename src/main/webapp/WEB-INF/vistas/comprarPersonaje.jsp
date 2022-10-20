@@ -50,7 +50,7 @@
         <form action="comprarPersonaje" method="get">
           <label>Ordenar</label>
           <div class="d-block d-flex">
-            <select id="order" name="order" class="form-select" style="width: 20%;">
+            <select id="order" name="order" class="form-select" style="width: 24%;">
               <option selected value="default">Elige una opcion</option>
               <option value="min">Menor precio a mayor precio</option>
               <option value="max">Mayor precio a menor precio</option>
