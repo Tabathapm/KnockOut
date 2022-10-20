@@ -29,6 +29,7 @@
                     <img src="<c:url value="/images/user_gamer.png" />" style="width: 66%;">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="margin: -9%;">
+                    <li><span class="dropdown-item-text fw-bold">${usuario.userName}</span></li>
                     <li><a class="dropdown-item" href="miPerfil">Mi Perfil</a></li>
                     <li><a class="dropdown-item" href="irModificarPerfil">Modificar</a></li>
                     <li><hr class="dropdown-divider"></li>
