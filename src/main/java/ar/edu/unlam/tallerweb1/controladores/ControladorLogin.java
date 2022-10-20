@@ -1,11 +1,9 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import ar.edu.unlam.tallerweb1.modelo.Billetera;
-import ar.edu.unlam.tallerweb1.modelo.Nivel;
-import ar.edu.unlam.tallerweb1.modelo.Rol;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.modelo.*;
 import ar.edu.unlam.tallerweb1.servicios.ServicioBilletera;
 import ar.edu.unlam.tallerweb1.servicios.ServicioNivel;
+import ar.edu.unlam.tallerweb1.servicios.ServicioNotificacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +19,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -33,12 +33,15 @@ public class ControladorLogin {
 	private ServicioUsuario servicioUsuario;
 	private ServicioBilletera servicioBilletera;
 	private ServicioNivel servicioNivel;
+	private ServicioNotificacion servicioNotificacion;
 
 	@Autowired
-	public ControladorLogin(ServicioUsuario servicioUsuario, ServicioBilletera servicioBilletera, ServicioNivel servicioNivel){
+	public ControladorLogin(ServicioUsuario servicioUsuario, ServicioBilletera servicioBilletera,
+							ServicioNivel servicioNivel, ServicioNotificacion servicioNotificacion) {
 		this.servicioUsuario   = servicioUsuario;
 		this.servicioBilletera = servicioBilletera;
 		this.servicioNivel     = servicioNivel;
+		this.servicioNotificacion = servicioNotificacion;
 	}
 
 	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/login si la misma es invocada por metodo http GET
@@ -82,8 +85,8 @@ public class ControladorLogin {
 		}
 
 		if(usuarioBuscado.getHabilitado() == false){
-
-			model.put("error", "Su usuario se encuentra inhabilitado");
+			model.put("user", usuarioBuscado);
+			model.put("disabled", "Su usuario se encuentra inhabilitado");
 			return new ModelAndView("login", model);
 		}
 
@@ -128,5 +131,24 @@ public class ControladorLogin {
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
 		return new ModelAndView("redirect:/login");
+	}
+
+
+	@RequestMapping(path = "/guardar-peticion", method = RequestMethod.POST)
+	public ModelAndView enviarPeticionHabilitarUusuario(String email) {
+		ModelMap model = new ModelMap();
+		Usuario usuarioBuscado = servicioUsuario.consultarUsuarioPorEmail(email);
+		List <Notificaciones> notificaciones = servicioNotificacion.traerNotificaciones();
+		for (Notificaciones n : notificaciones) {
+			if (n.getUsuario().getId() == usuarioBuscado.getId()) {
+				model.put("error", "No puede reenviar varias peticiones de habilitación");
+				model.put("datosLogin", new DatosLogin());
+				return new ModelAndView("login", model);
+			}
+		}
+		servicioNotificacion.guardarPeticionHabilitarUsuario(usuarioBuscado);
+		model.put("NotificacionEnviada", "Se envió una petición de habilitación");
+		model.put("datosLogin", new DatosLogin());
+		return new ModelAndView("login", model);
 	}
 }

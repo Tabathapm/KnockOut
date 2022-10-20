@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 import ar.edu.unlam.tallerweb1.controladores.DatosRegistro;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.repositorios.RepositorioNotificacion;
 import ar.edu.unlam.tallerweb1.repositorios.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,12 @@ import java.util.List;
 public class ServicioUsuarioImpl implements ServicioUsuario {
 
     private RepositorioUsuario repoUsuario;
+    private RepositorioNotificacion repositorioNotificacion;
 
     @Autowired
-    public ServicioUsuarioImpl(RepositorioUsuario repoUsuario) {
+    public ServicioUsuarioImpl(RepositorioUsuario repoUsuario, RepositorioNotificacion repositorioNotificacion) {
         this.repoUsuario = repoUsuario;
+        this.repositorioNotificacion = repositorioNotificacion;
     }
 
     @Override
@@ -110,9 +113,15 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
             usuario.setHabilitado(false);
         }else{
             usuario.setHabilitado(true);
+            repositorioNotificacion.eliminarnotificacion(id);
         }
 
         repoUsuario.modificar(usuario);
+    }
+
+    @Override
+    public Usuario buscarUsuarioRolAdmin() {
+        return repoUsuario.buscarUsuarioRolAdmin();
     }
 
 

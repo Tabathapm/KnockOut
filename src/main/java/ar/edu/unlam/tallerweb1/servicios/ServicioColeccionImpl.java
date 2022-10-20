@@ -44,15 +44,16 @@ public class ServicioColeccionImpl implements ServicioColeccion{
 
         Coleccion coleccionConMasPersonajes = null;
 
-        for ( Coleccion coleccion : colecciones ) {
-            if ( coleccionConMasPersonajes == null ) {
+
+        for (Coleccion coleccion : colecciones) {
+            if (coleccionConMasPersonajes == null) {
                 coleccionConMasPersonajes = coleccion;
             } else {
-                if ( coleccionConMasPersonajes.getPersonajes().size() < coleccion.getPersonajes().size() ) {
-                    coleccionConMasPersonajes = coleccion;
+                if (coleccionConMasPersonajes.getPersonajes().size() < coleccion.getPersonajes().size()) {
+                        coleccionConMasPersonajes = coleccion;
+                    }
                 }
             }
-        }
 
         return coleccionConMasPersonajes;
 

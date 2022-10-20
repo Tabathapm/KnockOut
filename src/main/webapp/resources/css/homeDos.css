@@ -11699,3 +11699,35 @@ body {
     font-size: 0.75rem;
     border-radius: 0.25rem !important;
 }
+
+.alert_list{font-size: 11px; color:grey}
+li.alert_li {
+    font-size: 11px;
+    color:grey;
+    padding:10px 0px 2px 0px;
+    border-bottom: thin solid #c0c0c0;
+}
+li.alert_li:hover{background-color:#eee}
+.turn_off_alert{float:right;margin-bottom :1px}
+a.alert_message{color : grey}
+a.alert_message:hover{color : grey}
+
+
+[data-badge]{
+    background-color: #e70000;
+    border: 0;
+    position: absolute;
+    width: 22px;
+    height: 50%;
+    border-radius: 100%;
+}
+
+[data-badge]::after{
+    content: attr(data-badge);
+    position: absolute;
+    color: #FFF;
+    top: -3px;
+    left: 30%;
+}
+
+
