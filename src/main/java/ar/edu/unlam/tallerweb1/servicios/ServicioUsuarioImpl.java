@@ -28,6 +28,9 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
     public void registrarUsuario(DatosRegistro datosRegistro) {
         Usuario usuario = new Usuario();
 //        usuario.setId(datosRegistro.getId());
+        usuario.setNombre(datosRegistro.getNombre());
+        usuario.setApellido(datosRegistro.getApellido());
+        usuario.setUserName(datosRegistro.getUserName());
         usuario.setEmail(datosRegistro.getEmail());
         usuario.setPassword(datosRegistro.getPassword());
         usuario.setActivo(datosRegistro.getActivo());
