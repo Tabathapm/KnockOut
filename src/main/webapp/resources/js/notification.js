@@ -1,6 +1,11 @@
-
-
 window.addEventListener('DOMContentLoaded', event => {
+    const notify = document.querySelector('#news');
+    const btn = document.querySelector('#numbers');
+
+    notify.addEventListener('click', event => {
+        btn.setAttribute('data-badge', 0 );
+    });
+
     $("#news").popover({
         'title': 'Notificaciones',
         'html': true,
@@ -15,13 +20,7 @@ window.addEventListener('DOMContentLoaded', event => {
         alert.hide("fast");
 
     })
+
 });
 
-window.addEventListener('DOMContentLoaded', event => {
-    const notify = document.querySelector('#news');
-    const btn = document.querySelector('#numbers');
 
-    notify.addEventListener('click', event => {
-        btn.setAttribute('data-badge', 0 );
-    });
-});
