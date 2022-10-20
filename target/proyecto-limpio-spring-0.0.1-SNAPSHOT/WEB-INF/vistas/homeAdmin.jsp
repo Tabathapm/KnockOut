@@ -53,11 +53,6 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Novedades</div>
-                    <a class="nav-link" href="index.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-external-link-square"></i></div>
-                        Crear publicación
-                    </a>
                     <div class="sb-sidenav-menu-heading">Administración</div>
                     <a class="nav-link" href="inicio">
                         <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
@@ -66,10 +61,6 @@
                     <a class="nav-link" href="administracionPersonaje">
                         <div class="sb-nav-link-icon"><i class="fas fa-user-robot"></i></div>
                         Administrar personajes
-                    </a>
-                    <a class="nav-link" href="notificaciones">
-                        <div class="sb-nav-link-icon"><i class="fas fa-user-robot"></i></div>
-                        Notificaciones
                     </a>
                 </div>
             </div>

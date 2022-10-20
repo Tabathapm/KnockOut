@@ -101,10 +101,12 @@
                 <div class="card-header">Jugador con máximo nivel <i class="fas fa-crown"></i> </div>
                 <div class="card-body">
                     <c:if test="${empty maximo}">
-                        <h5 class="card-text text-center">No hay usuarios registrados</h5>
+                        <p class="card-text text-center">No hay usuarios registrados</p>
                     </c:if>
-                    <h5 class="card-text text-center">${maximo.email}</h5>
-                    <h5 class="card-text text-center">Nivel: ${maximo.nivel.numero}</h5>
+                    <c:if test="${!empty maximo}">
+                        <h5 class="card-text text-center">${maximo.email}</h5>
+                        <h5 class="card-text text-center">Nivel: ${maximo.nivel.numero}</h5>
+                    </c:if>
                 </div>
             </div>
             </div>
@@ -113,8 +115,13 @@
             <div class="card mb-3" style="max-width: 18rem;">
                 <div class="card-header">Jugador con más cartas <i class="fas fa-crown"></i> </div>
                 <div class="card-body">
-                    <h5 class="card-text text-center">${coleccion.usuario.email}</h5>
-                    <h5 class="card-text text-center">Total cartas: ${coleccion.personajes.size()}</h5>
+                    <c:if test="${!empty coleccion}">
+                        <p class="card-text text-center">No hay usuarios registrados</p>
+                    </c:if>
+                    <c:if test="${!empty coleccion}">
+                        <h5 class="card-text text-center">${coleccion.usuario.email}</h5>
+                        <h5 class="card-text text-center">Total cartas: ${coleccion.personajes.size()}</h5>
+                    </c:if>
                 </div>
             </div>
         </div>
