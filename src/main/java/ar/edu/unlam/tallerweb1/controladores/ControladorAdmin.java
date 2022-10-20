@@ -4,6 +4,7 @@ package ar.edu.unlam.tallerweb1.controladores;
 import ar.edu.unlam.tallerweb1.modelo.Personaje;
 import ar.edu.unlam.tallerweb1.modelo.Rol;
 import ar.edu.unlam.tallerweb1.servicios.ServicioColeccion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioNotificacion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,15 @@ public class ControladorAdmin {
     private ServicioColeccion servicioColeccion;
 
     private ServicioPersonaje servicioPersonaje;
+    private ServicioNotificacion servicioNotificacion;
 
     @Autowired
-    public ControladorAdmin(ServicioUsuario servicioUsuario,ServicioColeccion servicioColeccion,ServicioPersonaje servicioPersonaje) {
+    public ControladorAdmin(ServicioUsuario servicioUsuario,ServicioColeccion servicioColeccion,
+                            ServicioPersonaje servicioPersonaje, ServicioNotificacion servicioNotificacion) {
         this.servicioUsuario = servicioUsuario;
         this.servicioColeccion = servicioColeccion;
         this.servicioPersonaje = servicioPersonaje;
-
+        this.servicioNotificacion = servicioNotificacion;
     }
 
     //VALIDAR ROLES
@@ -47,6 +50,7 @@ public class ControladorAdmin {
         model.put("usuarios",servicioUsuario.getAll());
         model.put("max", servicioUsuario.rankingJugadores());
         model.put("maximo",servicioUsuario.jugadorConMasNivel());
+        model.put("notificaciones", servicioNotificacion.traerNotificaciones());
         //coleccion que tiene mas personajes
         model.put("coleccion",servicioColeccion.coleccionConMasPersonajes());
 

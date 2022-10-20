@@ -89,5 +89,12 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 		return usuario;
 	}
 
+	@Override
+	public Usuario buscarUsuarioRolAdmin() {
+		return (Usuario) sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.add(Restrictions.eq("rol", "0"))
+				.uniqueResult();
+	}
+
 
 }

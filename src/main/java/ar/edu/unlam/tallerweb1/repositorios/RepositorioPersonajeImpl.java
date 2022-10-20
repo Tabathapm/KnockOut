@@ -73,6 +73,9 @@ public class RepositorioPersonajeImpl implements RepositorioPersonaje {
         List <Personaje> personajesEnMiColeccion = sessionFactory.getCurrentSession().createCriteria(Personaje.class)
                 .createAlias("coleccion", "c")
                 .add(Restrictions.eq("c.id", coleccion.getId()))
+                .setResultTransformer(
+                        CriteriaSpecification.DISTINCT_ROOT_ENTITY
+                )
                 .list();
 
         return personajesEnMiColeccion;

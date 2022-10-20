@@ -44,6 +44,22 @@
 							<h4><span>${error}</span></h4>
 							<br>
 						</c:if>
+						<c:if test="${not empty disabled}">
+							<h4><span>${error}</span></h4>
+							<br>
+							<p>Haciendo click en el siguiente boton, se enviara una notificacion al administrador del
+								sitio para que lo pueda volver a habilitar</p>
+							<form:form action="guardar-peticion" method="post">
+								<input type="hidden" name="email" value="${user.email}"/>
+								<input type="submit" value="Enviar"/>
+							</form:form>
+						</c:if>
+						<c:if test="${not empty NotificacionEnviada}">
+							<div class="notify">
+								<p>${NotificacionEnviada}</p>
+								<p>Recuerde que esto puede demorar hasta 24hs.</p>
+							</div>
+						</c:if>
 						${msg}
 					</div>
 				</div>
