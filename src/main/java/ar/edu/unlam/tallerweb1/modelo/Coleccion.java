@@ -15,7 +15,7 @@ public class Coleccion {
 
     @JoinTable(name = "coleccion_personaje", joinColumns = @JoinColumn(name = "fk_coleccion", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "fk_personaje", nullable = false))
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Personaje> personajes;
 
     public Integer getId() {
