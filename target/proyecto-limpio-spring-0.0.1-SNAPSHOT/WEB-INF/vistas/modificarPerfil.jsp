@@ -22,30 +22,13 @@
         <main>
           <img src="<c:url value="/images/fondoMiPerfil.jpg" />" style="width: 100%" class="opacity-50">
 
-          <div class="container pt-5" style="width: 36%; margin: -606px 0 0 420px;z-index: 100;position: absolute;">
+          <div class="container pt-5" style="width: 36%; margin: -631px 0 0 358px;z-index: 100;position: absolute;">
             <div class="card text-center">
               <div class="card-header">
                 Mi Perfil
               </div>
               <div class="card-body">
                 <div class="row g-3 align-items-center" id="formulario" enctype="multipart/form-data">
-<%--                  <form action="modificarPerfil" method="post">--%>
-<%--                    <div class="col-auto d-flex p-2">--%>
-<%--                      <label for="email" class="col-form-label px-2">Email:</label>--%>
-<%--                      <input type="text" id="email" class="form-control px-2" name="email" placeholder="${usuario.email}" disabled>--%>
-<%--                    </div>--%>
-
-<%--                    <div class="col-auto d-flex p-2">--%>
-<%--                      <label for="password" class="col-form-label px-2">Nueva password:</label>--%>
-<%--                      <input type="password" id="password" class="form-control px-2" name="password" style="width: 71%;">--%>
-<%--                    </div>--%>
-
-<%--                    <div class="col-auto p-2" >--%>
-<%--                      <input type="submit" name="modificar" class="btn btn-primary w-100" value="Modificar">--%>
-<%--                    </div>--%>
-
-<%--                  </form>--%>
-
                   <form action="modificarPerfil" method="post" class="row">
                     <div class="input-group p-2 d-flex align-items-center form-floating">
                       <input type="email" class="form-control" id="floatingEmailGrid" value="${usuario.email}" disabled>
