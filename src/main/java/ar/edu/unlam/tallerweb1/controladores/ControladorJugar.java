@@ -56,7 +56,8 @@ public class ControladorJugar {
 //      --------------------------------
         model.put("personajes", this.misPersonajes );
 
-        return new ModelAndView("combate", model);
+        //return new ModelAndView("combate", model);
+        return new ModelAndView("seleccionarPersonaje", model);
     }
 
     @RequestMapping(value = "/seleccionPersonaje", method= RequestMethod.GET)
