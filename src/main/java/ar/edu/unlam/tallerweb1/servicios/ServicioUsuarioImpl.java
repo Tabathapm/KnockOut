@@ -126,6 +126,18 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
     public Usuario buscarUsuarioRolAdmin() {
         return repoUsuario.buscarUsuarioRolAdmin();
     }
+    @Override
+    public  List<Usuario> buscarLosDemasUsuarios(Integer id){
+        List<Usuario>usuarios=getAll();
+        Usuario usuarioBuscado=buscarPorID(id);
 
+        for (Usuario user : usuarios) {
+            if (user.getId()==usuarioBuscado.getId()) {
+                usuarios.remove(usuarioBuscado);
+                break;
+            }
+        }
+        return usuarios;
+    }
 
 }

@@ -28,7 +28,7 @@
                     </nav>
                 </div>
                 <%-- ------------------------ --%>
-                <a class="nav-link " href="Intercambio">
+                <a class="nav-link " href="seleccionJugadorIntercambio">
                         Intercambio
                 </a>
                 <%-- ------------------------ --%>

@@ -18,4 +18,5 @@ public interface ServicioUsuario {
     void cambiarEstadoUsuario(Integer id);
 
     Usuario buscarUsuarioRolAdmin();
+    List<Usuario> buscarLosDemasUsuarios(Integer id);
 }
