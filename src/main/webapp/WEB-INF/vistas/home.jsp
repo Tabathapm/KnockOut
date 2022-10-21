@@ -21,7 +21,7 @@
 			<div id="layoutSidenav_content">
 				<main>
 					<div>
-						<div class="container position-absolute top-0 start-0" style="margin: 3% 0 0  18%">
+						<div class="container position-absolute top-0 start-0" style="margin: 3% 0 0  18%; width: 30%;">
 <%--							<h1 class="mt-4">Bienvenidos a Knock Out!</h1>--%>
 							<h1>
 								<span class="badge badge-secondary" style="background-color: white;color: black;">

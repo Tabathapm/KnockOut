@@ -34,5 +34,9 @@
                 <%-- ------------------------ --%>
             </div>
         </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Logueado como:</div>
+            <span class="fw-bold">${usuario.userName}</span>
+        </div>
     </nav>
 </div>
