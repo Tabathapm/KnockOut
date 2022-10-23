@@ -18,6 +18,8 @@ public class Personaje {
     private Boolean enMiColeccion;
 
     private Boolean intercambiable;
+    private Integer ataque;
+    private Integer defensa;
 
     @ManyToMany(mappedBy = "personajes", cascade = CascadeType.ALL)
     private List<Coleccion> coleccion;
@@ -103,5 +105,21 @@ public class Personaje {
 
     public void setIntercambiable(Boolean intercambiable) {
         this.intercambiable = intercambiable;
+    }
+
+    public Integer getAtaque() {
+        return ataque;
+    }
+
+    public void setAtaque(Integer ataque) {
+        this.ataque = ataque;
+    }
+
+    public Integer getDefensa() {
+        return defensa;
+    }
+
+    public void setDefensa(Integer defensa) {
+        this.defensa = defensa;
     }
 }
