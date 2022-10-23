@@ -51,7 +51,7 @@
                             </p>
                         </header>
 
-                        <form action="">
+                        <form action="" method="post">
                             <div class="row pb-5 mb-4">
                                 <div class="d-flex justify-content-evenly">
                                     <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 pb-5">
@@ -219,6 +219,17 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <%--    valores de ataque y defensa de los personajes elegidos  --%>
+                                <input name="personajeUno"  value="${per1.id}" type="hidden">
+                                <input name="personajeDos"  value="${per2.id}" type="hidden">
+                                <input name="personajeTres" value="${per3.id}" type="hidden">
+
+                                <%--    valores de ataque y defensa de los personajes boot  --%>
+                                <input name="personajeBootUno"  value="${personajeBootUno.id}" type="hidden">
+                                <input name="personajeBootDos"  value="${personajeBootDos.id}" type="hidden">
+                                <input name="personajeBootTres" value="${personajeBootTres.id}" type="hidden">
+
                                 <div class="d-flex justify-content-center">
                                     <button class="btn btn-primary w-75" Type="Submit"/>Ver resultados</button>
                                 </div>

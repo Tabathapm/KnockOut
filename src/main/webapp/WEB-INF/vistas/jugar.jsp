@@ -219,23 +219,26 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <%--    valores de ataque y defensa de los personajes elegidos  --%>
+                                <input name="personajeUno"  value="${per1.id}" type="hidden">
+                                <input name="personajeDos"  value="${per2.id}" type="hidden">
+                                <input name="personajeTres" value="${per3.id}" type="hidden">
+
+                                <%--    valores de ataque y defensa de los personajes boot  --%>
+                                <input name="personajeBootUno"  value="${personajeBootUno.id}" type="hidden">
+                                <input name="personajeBootDos"  value="${personajeBootDos.id}" type="hidden">
+                                <input name="personajeBootTres" value="${personajeBootTres.id}" type="hidden">
+
                                 <div class="d-flex justify-content-center">
                                     <button class="btn btn-primary w-75" Type="Submit"/>Ver resultados</button>
                                 </div>
                             </div>
                         </form>
-
                     </div>
-
-
-
                 </main>
             </div>
         </div>
-
-
-
-
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/homeDos.js"></script>
