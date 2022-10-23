@@ -33,10 +33,7 @@
         <c:if test="${not empty personajeElegido}">
             <div class="cartaDuelo">
                 <div class="borde">
-
                     <img src="<c:url value="/images/personajes/${personajeElegido.imagen}" />" alt="">
-
-
                 </div>
                 <div class="text-white text-center nombre">
                     <h4>${personaje.nombre}</h4>
@@ -79,6 +76,9 @@
         </c:if>
     </div>
 </section>
+
+
+
 <section class="pt-5 pb-5 fondo1">
     <div class="container misCartas">
         <div class="row pb-5 mb-4">
