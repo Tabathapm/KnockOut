@@ -7,10 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/homeDos.css" rel="stylesheet" />
     <link href="css/miColeccion.css" rel="stylesheet" />
-    <%--		<link href="<c:url value="/resources/css/homeDos.css"/>" rel="stylesheet" />--%>
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-<%--        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">--%>
-<%--        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>--%>
     <%--	Icono	--%>
     <link rel="icon" type="image/png" href="<c:url value="/images/logo.png"/>">
     <title>Knock Out!</title>
@@ -50,7 +47,7 @@
               </p>
             </header>
 
-            <form action="seleccionPersonaje" method="post">
+            <form action="seleccionDePersonaje" method="get">
 
               <div class="row pb-5 mb-4">
                 <%--    SE RECORRE LA LISTA     --%>
@@ -65,7 +62,7 @@
                             <br>
 
                             <div style="display: flex; justify-content: center;" class="btn-group">
-                              <input type="checkbox" class="btn-check" id="${personaje.id}" name="${personaje.id}" value="${personaje.id}">
+                              <input type="checkbox" class="btn-check" id="${personaje.id}" name="personajesElegidos" value="${personaje.id}">
                               <label for="${personaje.id}" class="btn btn-outline-primary">Seleccionar</label>
                             </div>
 
@@ -78,21 +75,12 @@
                 <div class="d-flex justify-content-center">
                   <button class="btn btn-primary w-75" Type="Submit"/>Jugar</button>
                 </div>
-
               </div>
             </form>
-
           </div>
-
-
-
         </main>
       </div>
     </div>
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="js/homeDos.js"></script>

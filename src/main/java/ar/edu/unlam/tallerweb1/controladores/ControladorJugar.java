@@ -7,6 +7,7 @@ import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioColeccion;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,7 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 public class ControladorJugar {
@@ -81,5 +84,63 @@ public class ControladorJugar {
         model.put("personajes", this.misPersonajes );
 //      --------------------------------
         return new ModelAndView("combate",model);
+    }
+
+    @RequestMapping(value = "/seleccionDePersonaje", method= RequestMethod.GET)
+    public ModelAndView seleccionDePersonajeParaJugar(@RequestParam("personajesElegidos")String[] personajesElegidos, HttpServletRequest request) {
+//      --------------------------------------------------------------
+        if(request.getSession().getAttribute("idUsuario") == null){
+            return new ModelAndView("redirect:/login");
+        }
+        if(request.getSession().getAttribute("rol") == Rol.ADMIN){
+            return new ModelAndView("redirect:/inicio");
+        }
+//      --------------------------------
+        ModelMap model = new ModelMap();
+//      --------------------------------
+        if (personajesElegidos.length == 3){
+
+            List<Personaje> listaDePersonajesElegidos = new ArrayList<>();
+
+            for (String idPersonaje : personajesElegidos){
+                Integer idParseado  = Integer.parseInt(idPersonaje);
+                Personaje personaje = servicioPersonaje.buscarPorId(idParseado);
+                listaDePersonajesElegidos.add(personaje);
+            }
+
+            Personaje per1 = listaDePersonajesElegidos.get(0);
+            Personaje per2 = listaDePersonajesElegidos.get(1);
+            Personaje per3 = listaDePersonajesElegidos.get(2);
+
+//          --------- Jugador boot -----------
+            Random preNumRandom = new Random();
+            Integer maxId       = servicioPersonaje.maxId();
+
+            int numRandom1  = (int) (preNumRandom.nextDouble() * maxId + 1);
+            int numRandom2  = (int) (preNumRandom.nextDouble() * maxId + 1);
+            int numRandom3  = (int) (preNumRandom.nextDouble() * maxId + 1);
+
+            Personaje personajeBootUno  = servicioPersonaje.buscarPorId(numRandom1);
+            Personaje personajeBootDos  = servicioPersonaje.buscarPorId(numRandom2);
+            Personaje personajeBootTres = servicioPersonaje.buscarPorId(numRandom3);
+
+            model.put("per1", per1);
+            model.put("per2", per2);
+            model.put("per3", per3);
+
+            model.put("personajeBootUno", personajeBootUno);
+            model.put("personajeBootDos", personajeBootDos);
+            model.put("personajeBootTres", personajeBootTres);
+
+            return new ModelAndView("jugar", model);
+
+        } else if (personajesElegidos.length > 3) {
+            model.put("error","Se pasó del límite de personajes elegidos.");
+            return new ModelAndView("error", model);
+        }else {
+            model.put("error", "Debe seleccionar <b>TRES</b> personajes.");
+        }
+
+        return new ModelAndView("error", model);
     }
 }
