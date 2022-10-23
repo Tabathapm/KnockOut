@@ -51,7 +51,7 @@
                             </p>
                         </header>
 
-                        <form action="">
+                        <form action="" method="post">
                             <div class="row pb-5 mb-4">
                                 <div class="d-flex justify-content-evenly">
                                     <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 pb-5">
@@ -65,11 +65,11 @@
                                                     <div style="display: flex; justify-content: space-between;" class="btn-group">
                                                         <div class="fondoP d-flex">
                                                             <img src="images/espadas.png" alt="" style="height: 50px;">
-                                                            <h4>100</h4>
+                                                            <h4>${per1.ataque}</h4>
                                                         </div>
                                                         <div class="fondoP d-flex">
                                                             <img src="images/escudo.png" alt="" style="height: 50px;">
-                                                            <h4>500</h4>
+                                                            <h4>${per1.defensa}</h4>
                                                         </div>
                                                     </div>
 
@@ -94,11 +94,11 @@
                                                     <div style="display: flex; justify-content: space-between;" class="btn-group">
                                                         <div class="fondoP d-flex">
                                                             <img src="images/espadas.png" alt="" style="height: 50px;">
-                                                            <h4>100</h4>
+                                                            <h4>${personajeBootUno.ataque}</h4>
                                                         </div>
                                                         <div class="fondoP d-flex">
                                                             <img src="images/escudo.png" alt="" style="height: 50px;">
-                                                            <h4>500</h4>
+                                                            <h4>${personajeBootUno.defensa}</h4>
                                                         </div>
                                                     </div>
 
@@ -121,11 +121,11 @@
                                                     <div style="display: flex; justify-content: space-between;" class="btn-group">
                                                         <div class="fondoP d-flex">
                                                             <img src="images/espadas.png" alt="" style="height: 50px;">
-                                                            <h4>100</h4>
+                                                            <h4>${per2.ataque}</h4>
                                                         </div>
                                                         <div class="fondoP d-flex">
                                                             <img src="images/escudo.png" alt="" style="height: 50px;">
-                                                            <h4>500</h4>
+                                                            <h4>${per2.defensa}</h4>
                                                         </div>
                                                     </div>
 
@@ -150,11 +150,11 @@
                                                     <div style="display: flex; justify-content: space-between;" class="btn-group">
                                                         <div class="fondoP d-flex">
                                                             <img src="images/espadas.png" alt="" style="height: 50px;">
-                                                            <h4>100</h4>
+                                                            <h4>${personajeBootDos.ataque}</h4>
                                                         </div>
                                                         <div class="fondoP d-flex">
                                                             <img src="images/escudo.png" alt="" style="height: 50px;">
-                                                            <h4>500</h4>
+                                                            <h4>${personajeBootDos.defensa}</h4>
                                                         </div>
                                                     </div>
 
@@ -177,11 +177,11 @@
                                                     <div style="display: flex; justify-content: space-between;" class="btn-group">
                                                         <div class="fondoP d-flex">
                                                             <img src="images/espadas.png" alt="" style="height: 50px;">
-                                                            <h4>100</h4>
+                                                            <h4>${per3.ataque}</h4>
                                                         </div>
                                                         <div class="fondoP d-flex">
                                                             <img src="images/escudo.png" alt="" style="height: 50px;">
-                                                            <h4>500</h4>
+                                                            <h4>${per3.defensa}</h4>
                                                         </div>
                                                     </div>
 
@@ -206,11 +206,11 @@
                                                     <div style="display: flex; justify-content: space-between;" class="btn-group">
                                                         <div class="fondoP d-flex">
                                                             <img src="images/espadas.png" alt="" style="height: 50px;">
-                                                            <h4>100</h4>
+                                                            <h4>${personajeBootTres.ataque}</h4>
                                                         </div>
                                                         <div class="fondoP d-flex">
                                                             <img src="images/escudo.png" alt="" style="height: 50px;">
-                                                            <h4>500</h4>
+                                                            <h4>${personajeBootTres.defensa}</h4>
                                                         </div>
                                                     </div>
 
