@@ -27,5 +27,10 @@ public class ServicioNivelImpl implements ServicioNivel{
         return repoNivel.traerDatosDelNivel(id);
     }
 
+    @Override
+    public void modificar(Nivel nivel) {
+        repoNivel.modificar(nivel);
+    }
+
 
 }

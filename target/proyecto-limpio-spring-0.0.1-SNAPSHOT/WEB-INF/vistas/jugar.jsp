@@ -51,7 +51,7 @@
                             </p>
                         </header>
 
-                        <form action="" method="post">
+                        <form action="verResultados" method="get">
                             <div class="row pb-5 mb-4">
                                 <div class="d-flex justify-content-evenly">
                                     <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 pb-5">
@@ -230,23 +230,15 @@
                                 <input name="personajeBootDos"  value="${personajeBootDos.id}" type="hidden">
                                 <input name="personajeBootTres" value="${personajeBootTres.id}" type="hidden">
 
-                                <div class="d-flex justify-content-center">
+                                <div class="d-flex justify-content-center" href="verResultados">
                                     <button class="btn btn-primary w-75" Type="Submit"/>Ver resultados</button>
                                 </div>
                             </div>
                         </form>
-
                     </div>
-
-
-
                 </main>
             </div>
         </div>
-
-
-
-
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/homeDos.js"></script>
