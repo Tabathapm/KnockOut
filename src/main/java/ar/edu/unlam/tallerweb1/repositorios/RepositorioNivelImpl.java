@@ -35,4 +35,10 @@ public class RepositorioNivelImpl implements RepositorioNivel{
         return nivel;
     }
 
+    @Override
+    public void modificar(Nivel nivel){
+        sessionFactory.getCurrentSession().update(nivel);
+
+    }
+
 }

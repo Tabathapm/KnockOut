@@ -1,10 +1,8 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import ar.edu.unlam.tallerweb1.modelo.Coleccion;
-import ar.edu.unlam.tallerweb1.modelo.Personaje;
-import ar.edu.unlam.tallerweb1.modelo.Rol;
-import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.modelo.*;
 import ar.edu.unlam.tallerweb1.servicios.ServicioColeccion;
+import ar.edu.unlam.tallerweb1.servicios.ServicioNivel;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 import org.apache.commons.lang.ArrayUtils;
@@ -30,11 +28,13 @@ public class ControladorJugar {
     private ServicioColeccion servicioColeccion;
     private ServicioUsuario servicioUsuario;
     private List<Personaje>misPersonajes;
+    private ServicioNivel servicioNivel;
     @Autowired
-    public ControladorJugar(ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion, ServicioUsuario servicioUsuario){
+    public ControladorJugar(ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion, ServicioUsuario servicioUsuario,ServicioNivel servicioNivel){
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
         this.servicioUsuario = servicioUsuario;
+        this.servicioNivel = servicioNivel;
     }
 
     @RequestMapping( "/Jugar")
@@ -141,6 +141,132 @@ public class ControladorJugar {
             model.put("error", "Debe seleccionar <b>TRES</b> personajes.");
         }
 
+
         return new ModelAndView("error", model);
     }
+
+    @RequestMapping(value = "/verResultados", method= RequestMethod.GET)
+    public ModelAndView verResultados(HttpServletRequest request, @RequestParam("personajeUno") String personajeElegidoUno,
+                                                                  @RequestParam("personajeDos") String personajeElegidoDos,
+                                                                  @RequestParam("personajeTres") String personajeElegidoTres,
+                                                                  @RequestParam("personajeBootUno") String personajeBootUno,
+                                                                  @RequestParam("personajeBootDos") String personajeBootDos,
+                                                                  @RequestParam("personajeBootTres") String personajeBootTres){
+
+        if(request.getSession().getAttribute("idUsuario") == null){
+            return new ModelAndView("redirect:/login");
+        }
+        if(request.getSession().getAttribute("rol") == Rol.ADMIN){
+            return new ModelAndView("redirect:/inicio");
+        }
+
+        ModelMap model = new ModelMap();
+
+        Personaje p1 = servicioPersonaje.buscarPorId(Integer.parseInt(personajeElegidoUno));
+        Personaje p2 = servicioPersonaje.buscarPorId(Integer.parseInt(personajeElegidoDos));
+        Personaje p3 = servicioPersonaje.buscarPorId(Integer.parseInt(personajeElegidoTres));
+
+        Personaje boot1 = servicioPersonaje.buscarPorId(Integer.parseInt(personajeBootUno));
+        Personaje boot2 = servicioPersonaje.buscarPorId(Integer.parseInt(personajeBootDos));
+        Personaje boot3 = servicioPersonaje.buscarPorId(Integer.parseInt(personajeBootTres));
+
+        Integer contadorUsuario = 0;
+        Integer contadorBoot = 0;
+
+        if(p1.getAtaque()> boot1.getDefensa() && p1.getDefensa() > boot1.getAtaque()
+                || boot1.getAtaque() == p1.getDefensa() && p1.getAtaque() > boot1.getDefensa()
+                || p1.getDefensa() > boot1.getAtaque() && p1.getAtaque() == boot1.getDefensa() ){
+            contadorUsuario++;
+        }else if(p1.getAtaque() == boot1.getDefensa() && p1.getDefensa() == boot1.getAtaque()
+                || p1.equals(boot1)
+        ){
+            contadorUsuario++;
+            contadorBoot++;
+        }else{
+            contadorBoot++;
+        }
+//      --------------------------------
+
+        if(p2.getAtaque()> boot2.getDefensa() && p2.getDefensa() > boot2.getAtaque()
+              || boot2.getAtaque() == p2.getDefensa() && p2.getAtaque() > boot2.getDefensa()
+              || p2.getDefensa() > boot2.getAtaque() && p2.getAtaque() == boot2.getDefensa()
+        ){
+            contadorUsuario++;
+        }else if(p2.getAtaque() == boot2.getDefensa() && p2.getDefensa() == boot2.getAtaque()
+              || p2.equals(boot2)
+        ){
+            contadorUsuario++;
+            contadorBoot++;
+        }else{
+            contadorBoot++;
+        }
+
+//      --------------------------------
+
+        if(p3.getAtaque()> boot3.getDefensa() && p3.getDefensa() > boot3.getAtaque()
+              || boot3.getAtaque() == p3.getDefensa() && p3.getAtaque() > boot3.getDefensa()
+              || p3.getDefensa() > boot3.getAtaque() && p3.getAtaque() == boot3.getDefensa() ){
+            contadorUsuario++;
+        }else if(p3.getAtaque() == boot3.getDefensa() && p3.getDefensa() == boot3.getAtaque()
+                || p3.equals(boot3)
+        ){
+            contadorUsuario++;
+            contadorBoot++;
+        }else{
+            contadorBoot++;
+        }
+
+        Usuario usuario = servicioUsuario.buscarPorID((Integer) request.getSession().getAttribute("idUsuario"));
+        Nivel nivel = servicioNivel.traerDatosDelNivel(usuario.getNivel().getId());
+        Integer nroNivel = nivel.getNumero();
+        Integer valorMax = nivel.getValorMax();
+
+        if(contadorUsuario>contadorBoot){
+            model.put("ganador","VICTORIA");
+            nivel.setValorActual(nivel.getValorActual() + 2);
+            if(nivel.getValorActual() > nivel.getValorMax()){
+                Nivel nivelNuevo = servicioNivel.crearNivel(nroNivel + 1 , valorMax + 5);
+                usuario.setNivel(nivelNuevo);
+                servicioUsuario.modificar(usuario);
+            }
+            else{
+                servicioNivel.modificar(nivel);
+            }
+
+        }
+
+        else if(contadorUsuario == contadorBoot){
+            model.put("empate","EMPATE");
+            nivel.setValorActual(nivel.getValorActual() + 1);
+            if(nivel.getValorActual() > nivel.getValorMax()){
+                Nivel nivelNuevo = servicioNivel.crearNivel(nroNivel + 1 , valorMax + 5);
+                usuario.setNivel(nivelNuevo);
+                servicioUsuario.modificar(usuario);
+            }
+            else{
+                servicioNivel.modificar(nivel);
+            }
+
+        }
+
+        else{
+            model.put("derrota","DERROTA");
+        }
+
+
+        model.put("resultadoUsuario",contadorUsuario);
+        model.put("resultadoBoot",contadorBoot);
+
+
+
+
+        model.put("usuario",usuario);
+
+
+
+        return new ModelAndView("verResultados",model);
+
+    }
+
+
 }
