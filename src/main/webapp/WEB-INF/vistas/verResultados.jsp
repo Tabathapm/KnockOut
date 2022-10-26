@@ -2,7 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/homeDos.css" rel="stylesheet" />
@@ -167,7 +167,7 @@
                                                     </div>
                                                     <div class="fondoP d-flex">
                                                         <img src="images/escudo.png" alt="" style="height: 50px;">
-                                                        <h4>${per2.defensa}</h4>
+                                                        <h4>${p2.defensa}</h4>
                                                     </div>
                                                 </div>
 
