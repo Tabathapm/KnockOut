@@ -1,10 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.*;
-import ar.edu.unlam.tallerweb1.servicios.ServicioColeccion;
-import ar.edu.unlam.tallerweb1.servicios.ServicioNivel;
-import ar.edu.unlam.tallerweb1.servicios.ServicioPersonaje;
-import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+import ar.edu.unlam.tallerweb1.servicios.*;
 import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,12 +26,15 @@ public class ControladorJugar {
     private ServicioUsuario servicioUsuario;
     private List<Personaje>misPersonajes;
     private ServicioNivel servicioNivel;
+    private ServicioBilletera servicioBilletera;
     @Autowired
-    public ControladorJugar(ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion, ServicioUsuario servicioUsuario,ServicioNivel servicioNivel){
+    public ControladorJugar(ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion,
+                            ServicioUsuario servicioUsuario,ServicioNivel servicioNivel, ServicioBilletera servicioBilletera){
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
         this.servicioUsuario   = servicioUsuario;
         this.servicioNivel     = servicioNivel;
+        this.servicioBilletera = servicioBilletera;
     }
 
     @RequestMapping( "/Jugar")
@@ -227,9 +227,12 @@ public class ControladorJugar {
         Nivel nivel = servicioNivel.traerDatosDelNivel(usuario.getNivel().getId());
         Integer nroNivel = nivel.getNumero();
         Integer valorMax = nivel.getValorMax();
+        Billetera billetera = servicioBilletera.traerDatosBilletera(usuario);
 
         if(contadorUsuario > contadorBoot){
             model.put("ganador", "<b>¡Ganaste!</b>");
+            servicioBilletera.sumarMonto(billetera, 1000.0f);
+            request.getSession().setAttribute("billetera", billetera);
             nivel.setValorActual(nivel.getValorActual() + 2);
             if(nivel.getValorActual() > nivel.getValorMax()){
                 Nivel nivelNuevo = servicioNivel.crearNivel(nroNivel + 1 , valorMax + 5);
@@ -243,6 +246,8 @@ public class ControladorJugar {
             }
         } else if(contadorUsuario == contadorBoot){
             model.put("empate", "<b>Empate</b>");
+            servicioBilletera.sumarMonto(billetera, 500.0f);
+            request.getSession().setAttribute("billetera", billetera);
             nivel.setValorActual(nivel.getValorActual() + 1);
             if(nivel.getValorActual() > nivel.getValorMax()){
                 Nivel nivelNuevo = servicioNivel.crearNivel(nroNivel + 1 , valorMax + 5);
