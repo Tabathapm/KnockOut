@@ -119,7 +119,12 @@
                             </div>
                             <div class="modal-body">
                                 <p class="text-center">Seguro que queres vender a ${personaje.nombre}?</p>
-                                <p class="text-center">${String.format("%.2f",personaje.monto - (personaje.monto * 0.2))}</p>
+                                <div class="d-flex justify-content-center">
+                                    <img src="<c:url value="/images/dollar.png" />"style="width: 12%;" class="pe-2">
+                                    <p style="margin-bottom: 0px;margin-top: 16px;">
+                                            ${String.format("%.2f",personaje.monto - (personaje.monto * 0.2))}
+                                    </p>
+                                </div>
                             </div>
                             <div class="modal-footer d-flex justify-content-around">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
