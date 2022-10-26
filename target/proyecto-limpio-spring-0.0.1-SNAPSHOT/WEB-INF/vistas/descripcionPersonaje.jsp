@@ -55,21 +55,6 @@
                                 <p class="lead" style="font-weight: 600">${personaje.descripcion}</p>
                                 <h2 class="text-center m-5" style="font-weight: 400">Caracteristicas</h2>
                                 <div class="container">
-<%--                                    <div class="row">--%>
-<%--                                        <div class="col-6 col-md-4 text-center">--%>
-<%--                                            <i class="bi bi-patch-check-fill" style="font-size: 3.5rem;color: blue;"></i>--%>
-<%--                                            <h4 style="font-weight: 400">Superfuerza</h4>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="col-6 col-md-4 text-center">--%>
-<%--                                            <i class="bi bi-patch-check-fill" style="font-size: 3.5rem;color: blue;"></i>--%>
-<%--                                            <h4 style="font-weight: 400">Superfuerza</h4>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="col-6 col-md-4 text-center">--%>
-<%--                                            <i class="bi bi-patch-check-fill" style="font-size: 3.5rem;color: blue;"></i>--%>
-<%--                                            <h4 style="font-weight: 400">Superfuerza</h4>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-
                                     <div class="row">
                                         <div class="col text-center">
                                             <img src="<c:url value="/images/espadas.png" />"style="height: 72px;">
@@ -80,7 +65,6 @@
                                             <h4 style="font-weight: 400">${personaje.defensa}</h4>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
