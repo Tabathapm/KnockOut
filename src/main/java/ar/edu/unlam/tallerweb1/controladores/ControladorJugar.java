@@ -33,8 +33,8 @@ public class ControladorJugar {
     public ControladorJugar(ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion, ServicioUsuario servicioUsuario,ServicioNivel servicioNivel){
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
-        this.servicioUsuario = servicioUsuario;
-        this.servicioNivel = servicioNivel;
+        this.servicioUsuario   = servicioUsuario;
+        this.servicioNivel     = servicioNivel;
     }
 
     @RequestMapping( "/Jugar")
@@ -170,6 +170,14 @@ public class ControladorJugar {
         Personaje boot2 = servicioPersonaje.buscarPorId(Integer.parseInt(personajeBootDos));
         Personaje boot3 = servicioPersonaje.buscarPorId(Integer.parseInt(personajeBootTres));
 
+        model.put("p1", p1);
+        model.put("p2", p2);
+        model.put("p3", p3);
+
+        model.put("boot1", boot1);
+        model.put("boot2", boot2);
+        model.put("boot3", boot3);
+
         Integer contadorUsuario = 0;
         Integer contadorBoot = 0;
 
@@ -178,13 +186,13 @@ public class ControladorJugar {
                 || p1.getDefensa() > boot1.getAtaque() && p1.getAtaque() == boot1.getDefensa() ){
             contadorUsuario++;
         }else if(p1.getAtaque() == boot1.getDefensa() && p1.getDefensa() == boot1.getAtaque()
-                || p1.equals(boot1)
-        ){
+                || p1.equals(boot1)){
             contadorUsuario++;
             contadorBoot++;
         }else{
             contadorBoot++;
         }
+        model.put("round1", contadorUsuario +":"+ contadorBoot);
 //      --------------------------------
 
         if(p2.getAtaque()> boot2.getDefensa() && p2.getDefensa() > boot2.getAtaque()
@@ -193,14 +201,13 @@ public class ControladorJugar {
         ){
             contadorUsuario++;
         }else if(p2.getAtaque() == boot2.getDefensa() && p2.getDefensa() == boot2.getAtaque()
-              || p2.equals(boot2)
-        ){
+              || p2.equals(boot2)){
             contadorUsuario++;
             contadorBoot++;
         }else{
             contadorBoot++;
         }
-
+        model.put("round2", contadorUsuario +":"+ contadorBoot);
 //      --------------------------------
 
         if(p3.getAtaque()> boot3.getDefensa() && p3.getDefensa() > boot3.getAtaque()
@@ -208,61 +215,52 @@ public class ControladorJugar {
               || p3.getDefensa() > boot3.getAtaque() && p3.getAtaque() == boot3.getDefensa() ){
             contadorUsuario++;
         }else if(p3.getAtaque() == boot3.getDefensa() && p3.getDefensa() == boot3.getAtaque()
-                || p3.equals(boot3)
-        ){
+                || p3.equals(boot3)){
             contadorUsuario++;
             contadorBoot++;
         }else{
             contadorBoot++;
         }
+        model.put("round3", contadorUsuario +":"+ contadorBoot);
 
         Usuario usuario = servicioUsuario.buscarPorID((Integer) request.getSession().getAttribute("idUsuario"));
         Nivel nivel = servicioNivel.traerDatosDelNivel(usuario.getNivel().getId());
         Integer nroNivel = nivel.getNumero();
         Integer valorMax = nivel.getValorMax();
 
-        if(contadorUsuario>contadorBoot){
-            model.put("ganador","VICTORIA");
+        if(contadorUsuario > contadorBoot){
+            model.put("ganador", "<b>¡Ganaste!</b>");
             nivel.setValorActual(nivel.getValorActual() + 2);
             if(nivel.getValorActual() > nivel.getValorMax()){
                 Nivel nivelNuevo = servicioNivel.crearNivel(nroNivel + 1 , valorMax + 5);
                 usuario.setNivel(nivelNuevo);
                 servicioUsuario.modificar(usuario);
+                request.getSession().setAttribute("nivel", nivelNuevo);
             }
             else{
                 servicioNivel.modificar(nivel);
+                request.getSession().setAttribute("nivel", nivel);
             }
-
-        }
-
-        else if(contadorUsuario == contadorBoot){
-            model.put("empate","EMPATE");
+        } else if(contadorUsuario == contadorBoot){
+            model.put("empate", "<b>Empate</b>");
             nivel.setValorActual(nivel.getValorActual() + 1);
             if(nivel.getValorActual() > nivel.getValorMax()){
                 Nivel nivelNuevo = servicioNivel.crearNivel(nroNivel + 1 , valorMax + 5);
                 usuario.setNivel(nivelNuevo);
                 servicioUsuario.modificar(usuario);
-            }
-            else{
+                request.getSession().setAttribute("nivel", nivelNuevo);
+            } else{
                 servicioNivel.modificar(nivel);
+                request.getSession().setAttribute("nivel", nivel);
             }
-
+        } else{
+            model.put("perdedor", "<b>Perdiste</b>");
         }
-
-        else{
-            model.put("derrota","DERROTA");
-        }
-
 
         model.put("resultadoUsuario",contadorUsuario);
         model.put("resultadoBoot",contadorBoot);
 
-
-
-
         model.put("usuario",usuario);
-
-
 
         return new ModelAndView("verResultados",model);
 
