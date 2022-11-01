@@ -179,96 +179,39 @@ public class ControladorJugar {
         model.put("boot3", boot3);
 
         Integer contadorUsuario = 0;
-        Integer contadorBoot = 0;
+        Integer contadorBoot    = 0;
 
-        if(p1.getAtaque()> boot1.getDefensa() && p1.getDefensa() > boot1.getAtaque()
-                || boot1.getAtaque() == p1.getDefensa() && p1.getAtaque() > boot1.getDefensa()
-                || p1.getDefensa() > boot1.getAtaque() && p1.getAtaque() == boot1.getDefensa() ){
-            contadorUsuario++;
-        }else if(p1.getAtaque() == boot1.getDefensa() && p1.getDefensa() == boot1.getAtaque()
-                || p1.equals(boot1)){
-            contadorUsuario++;
-            contadorBoot++;
-        }else{
-            contadorBoot++;
-        }
-        model.put("round1", contadorUsuario +":"+ contadorBoot);
-//      --------------------------------
+        List<Integer> round1 = servicioPersonaje.rounds(p1,boot1,contadorUsuario,contadorBoot);
+        contadorUsuario = round1.get(0);
+        contadorBoot    = round1.get(1);
+        model.put("round1",contadorUsuario + ":" + contadorBoot);
 
-        if(p2.getAtaque()> boot2.getDefensa() && p2.getDefensa() > boot2.getAtaque()
-              || boot2.getAtaque() == p2.getDefensa() && p2.getAtaque() > boot2.getDefensa()
-              || p2.getDefensa() > boot2.getAtaque() && p2.getAtaque() == boot2.getDefensa()
-        ){
-            contadorUsuario++;
-        }else if(p2.getAtaque() == boot2.getDefensa() && p2.getDefensa() == boot2.getAtaque()
-              || p2.equals(boot2)){
-            contadorUsuario++;
-            contadorBoot++;
-        }else{
-            contadorBoot++;
-        }
-        model.put("round2", contadorUsuario +":"+ contadorBoot);
-//      --------------------------------
+        List<Integer> round2 = servicioPersonaje.rounds(p2,boot2,contadorUsuario,contadorBoot);
+        contadorUsuario = round2.get(0);
+        contadorBoot    = round2.get(1);
+        model.put("round2",contadorUsuario + ":" + contadorBoot);
 
-        if(p3.getAtaque()> boot3.getDefensa() && p3.getDefensa() > boot3.getAtaque()
-              || boot3.getAtaque() == p3.getDefensa() && p3.getAtaque() > boot3.getDefensa()
-              || p3.getDefensa() > boot3.getAtaque() && p3.getAtaque() == boot3.getDefensa() ){
-            contadorUsuario++;
-        }else if(p3.getAtaque() == boot3.getDefensa() && p3.getDefensa() == boot3.getAtaque()
-                || p3.equals(boot3)){
-            contadorUsuario++;
-            contadorBoot++;
-        }else{
-            contadorBoot++;
-        }
-        model.put("round3", contadorUsuario +":"+ contadorBoot);
+        List<Integer> round3 = servicioPersonaje.rounds(p3,boot3,contadorUsuario,contadorBoot);
+        contadorUsuario  = round3.get(0);
+        contadorBoot     = round3.get(1);
+        model.put("round3",contadorUsuario + ":" + contadorBoot);
 
-        Usuario usuario = servicioUsuario.buscarPorID((Integer) request.getSession().getAttribute("idUsuario"));
-        Nivel nivel = servicioNivel.traerDatosDelNivel(usuario.getNivel().getId());
-        Integer nroNivel = nivel.getNumero();
-        Integer valorMax = nivel.getValorMax();
+        Usuario usuario     = servicioUsuario.buscarPorID((Integer) request.getSession().getAttribute("idUsuario"));
+        Nivel nivel         = servicioNivel.traerDatosDelNivel(usuario.getNivel().getId());
         Billetera billetera = servicioBilletera.traerDatosBilletera(usuario);
+        String quienGana    = servicioPersonaje.quienGana(contadorUsuario, contadorBoot,billetera,request,nivel,usuario);
 
-        if(contadorUsuario > contadorBoot){
-            model.put("ganador", "<b>¡Ganaste!</b>");
-            servicioBilletera.sumarMonto(billetera, 1000.0f);
-            request.getSession().setAttribute("billetera", billetera);
-            nivel.setValorActual(nivel.getValorActual() + 2);
-            if(nivel.getValorActual() > nivel.getValorMax()){
-                Nivel nivelNuevo = servicioNivel.crearNivel(nroNivel + 1 , valorMax + 5);
-                usuario.setNivel(nivelNuevo);
-                servicioUsuario.modificar(usuario);
-                request.getSession().setAttribute("nivel", nivelNuevo);
-            }
-            else{
-                servicioNivel.modificar(nivel);
-                request.getSession().setAttribute("nivel", nivel);
-            }
-        } else if(contadorUsuario == contadorBoot){
-            model.put("empate", "<b>Empate</b>");
-            servicioBilletera.sumarMonto(billetera, 500.0f);
-            request.getSession().setAttribute("billetera", billetera);
-            nivel.setValorActual(nivel.getValorActual() + 1);
-            if(nivel.getValorActual() > nivel.getValorMax()){
-                Nivel nivelNuevo = servicioNivel.crearNivel(nroNivel + 1 , valorMax + 5);
-                usuario.setNivel(nivelNuevo);
-                servicioUsuario.modificar(usuario);
-                request.getSession().setAttribute("nivel", nivelNuevo);
-            } else{
-                servicioNivel.modificar(nivel);
-                request.getSession().setAttribute("nivel", nivel);
-            }
-        } else{
-            model.put("perdedor", "<b>Perdiste</b>");
+        if(quienGana.equals("ganaste")){
+            model.put("ganador","<b>¡Ganaste!</b>");
         }
-
-        model.put("resultadoUsuario",contadorUsuario);
-        model.put("resultadoBoot",contadorBoot);
-
-        model.put("usuario",usuario);
+        else if(quienGana.equals("empate")){
+            model.put("empate","<b>Empate</b>");
+        }
+        else{
+            model.put("perdedor","<b>Perdiste</b>");
+        }
 
         return new ModelAndView("verResultados",model);
-
     }
 
 
