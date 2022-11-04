@@ -33,5 +33,6 @@ public interface ServicioPersonaje {
     String quienGana(Integer contadorUsuario, Integer contadorBoot, Billetera billetera, HttpServletRequest request,
                      Nivel nivel, Usuario usuario);
 
+    Personaje personajeRandom();
 
 }

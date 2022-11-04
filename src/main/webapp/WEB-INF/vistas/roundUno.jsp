@@ -13,12 +13,10 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <style>
 
-            /*body {
-                background-image:url( "<c:url value="/images/fondo1.png" />");
-                background-repeat: no-repeat;
-            }*/
-
             @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+            #team {
+                background: #eee !important;
+            }
 
             .btn-primary:hover,
             .btn-primary:focus {
@@ -150,12 +148,194 @@
 
             <div id="layoutSidenav_content">
                 <main>
+
                     <div class="container py-3">
+
+                        <div class="row pb-5 mb-4">
+                            <c:if test="${not empty round1}">
+                                <div class="d-flex justify-content-evenly">
+                                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 pb-5">
+                                        <div class="card shadow-sm border-1 shadow-lg rounded">
+                                            <div class="card-body p-0">
+                                                <img src="<c:url value="/images/personajes/${p1.imagen}" />" class="w-100 card-img-top">
+                                                <div class="p-4">
+                                                    <h5 class="mb-0 text-center">${p1.nombre}</h5>
+                                                    <br>
+
+                                                    <div style="display: flex; justify-content: space-between;" class="btn-group">
+                                                        <div class="fondoP d-flex">
+                                                            <img src="images/espadas.png" alt="" style="height: 50px;">
+                                                            <h4>${p1.ataque}</h4>
+                                                        </div>
+                                                        <div class="fondoP d-flex">
+                                                            <img src="images/escudo.png" alt="" style="height: 50px;">
+                                                            <h4>${p1.defensa}</h4>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex colvs" style="flex-direction: column;justify-content: space-evenly;">
+                                        <h3 style="margin-bottom: -279px;">Round 1</h3>
+                                        <h3 style="margin-bottom: -516px;text-align: center;">${round1}</h3>
+                                        <img src="<c:url value="/images/imgVs.png" />" style="height: 100px;transform: scale(1.7);" class="mt-5 vs">
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 pb-5">
+                                        <div class="card shadow-sm border-1 shadow-lg rounded">
+                                            <div class="card-body p-0">
+                                                <img src="<c:url value="/images/personajes/${boot1.imagen}" />" class="w-100 card-img-top">
+                                                <div class="p-4">
+                                                    <h5 class="mb-0 text-center">${boot1.nombre}</h5>
+                                                    <br>
+
+                                                    <div style="display: flex; justify-content: space-between;" class="btn-group">
+                                                        <div class="fondoP d-flex">
+                                                            <img src="images/espadas.png" alt="" style="height: 50px;">
+                                                            <h4>${boot1.ataque}</h4>
+                                                        </div>
+                                                        <div class="fondoP d-flex">
+                                                            <img src="images/escudo.png" alt="" style="height: 50px;">
+                                                            <h4>${boot1.defensa}</h4>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:if>
+
+                            <%--  ------------------------- --%>
+                            <c:if test="${not empty round2}">
+                                <div class="d-flex justify-content-evenly">
+                                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 pb-5">
+                                        <div class="card shadow-sm border-1 shadow-lg rounded">
+                                            <div class="card-body p-0">
+                                                <img src="<c:url value="/images/personajes/${p2.imagen}" />" class="w-100 card-img-top">
+                                                <div class="p-4">
+                                                    <h5 class="mb-0 text-center">${p2.nombre}</h5>
+                                                    <br>
+
+                                                    <div style="display: flex; justify-content: space-between;" class="btn-group">
+                                                        <div class="fondoP d-flex">
+                                                            <img src="images/espadas.png" alt="" style="height: 50px;">
+                                                            <h4>${p2.ataque}</h4>
+                                                        </div>
+                                                        <div class="fondoP d-flex">
+                                                            <img src="images/escudo.png" alt="" style="height: 50px;">
+                                                            <h4>${p2.defensa}</h4>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex colvs" style="flex-direction: column;justify-content: space-evenly;">
+                                        <h3 style="margin-bottom: -279px;">Round 2</h3>
+                                        <h3 style="margin-bottom: -516px;text-align: center;">${round2}</h3>
+                                        <img src="<c:url value="/images/imgVs.png" />" style="height: 100px;transform: scale(1.7);" class="mt-5 vs">
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 pb-5">
+                                        <div class="card shadow-sm border-1 shadow-lg rounded">
+                                            <div class="card-body p-0">
+                                                <img src="<c:url value="/images/personajes/${boot2.imagen}" />" class="w-100 card-img-top">
+                                                <div class="p-4">
+                                                    <h5 class="mb-0 text-center">${boot2.nombre}</h5>
+                                                    <br>
+
+                                                    <div style="display: flex; justify-content: space-between;" class="btn-group">
+                                                        <div class="fondoP d-flex">
+                                                            <img src="images/espadas.png" alt="" style="height: 50px;">
+                                                            <h4>${boot2.ataque}</h4>
+                                                        </div>
+                                                        <div class="fondoP d-flex">
+                                                            <img src="images/escudo.png" alt="" style="height: 50px;">
+                                                            <h4>${boot2.defensa}</h4>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:if>
+
+                            <%--  ------------------------- --%>
+                            <c:if test="${not empty round3}">
+                                <div class="d-flex justify-content-evenly">
+                                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 pb-5">
+                                        <div class="card shadow-sm border-1 shadow-lg rounded">
+                                            <div class="card-body p-0">
+                                                <img src="<c:url value="/images/personajes/${p3.imagen}" />" class="w-100 card-img-top">
+                                                <div class="p-4">
+                                                    <h5 class="mb-0 text-center">${p3.nombre}</h5>
+                                                    <br>
+
+                                                    <div style="display: flex; justify-content: space-between;" class="btn-group">
+                                                        <div class="fondoP d-flex">
+                                                            <img src="images/espadas.png" alt="" style="height: 50px;">
+                                                            <h4>${p3.ataque}</h4>
+                                                        </div>
+                                                        <div class="fondoP d-flex">
+                                                            <img src="images/escudo.png" alt="" style="height: 50px;">
+                                                            <h4>${p3.defensa}</h4>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex colvs" style="flex-direction: column;justify-content: space-evenly;">
+                                        <h3 style="margin-bottom: -279px;">Round 3</h3>
+                                        <h3 style="margin-bottom: -516px;text-align: center;">${round3}</h3>
+                                        <img src="<c:url value="/images/imgVs.png" />" style="height: 100px;transform: scale(1.7);" class="mt-5 vs">
+                                    </div>
+
+                                    <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 pb-5">
+                                        <div class="card shadow-sm border-1 shadow-lg rounded">
+                                            <div class="card-body p-0">
+                                                <img src="<c:url value="/images/personajes/${boot3.imagen}" />" class="w-100 card-img-top">
+                                                <div class="p-4">
+                                                    <h5 class="mb-0 text-center">${boot3.nombre}</h5>
+                                                    <br>
+
+                                                    <div style="display: flex; justify-content: space-between;" class="btn-group">
+                                                        <div class="fondoP d-flex">
+                                                            <img src="images/espadas.png" alt="" style="height: 50px;">
+                                                            <h4>${boot3.ataque}</h4>
+                                                        </div>
+                                                        <div class="fondoP d-flex">
+                                                            <img src="images/escudo.png" alt="" style="height: 50px;">
+                                                            <h4>${boot3.defensa}</h4>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:if>
+                        </div>
+
+                        <%-- ----------------------- --%>
+                        <%-- ----------------------- --%>
 
                         <section class="fondo">
                             <div class="duelo mt-5">
                                 <c:if test="${not empty personajeElegido}">
-                                    <form action="atacar" method="get" class="d-flex justify-content-around w-100">
+                                    <form action="atacarRoundUno" method="get" class="d-flex justify-content-around w-100">
                                         <div class="cartaDuelo">
                                             <div class="borde">
                                                 <img src="<c:url value="/images/personajes/${personajeElegido.imagen}" />" alt="">
@@ -243,9 +423,6 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="d-flex justify-content-center">
-                                                            <a href="seleccionPersonaje?id=${personaje.id}" class="btn btn-primary" role="button" id="${personaje.id}">Seleccionar</a>
                                                         </div>
                                                     </div>
                                                 </div>
