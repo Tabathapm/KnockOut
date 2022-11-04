@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Service("servicioPersonaje")
 @Transactional
@@ -188,6 +189,15 @@ public class ServicioPersonajeImpl implements ServicioPersonaje {
         return mensaje;
     }
 
+    @Override
+    public Personaje personajeRandom(){
+        Random preNumRandom        = new Random();
+        Integer maxId              = repoPersonaje.maxId();
+        int numRandom              = (int) (preNumRandom.nextDouble() * maxId + 1);
+        Personaje personajeRandom  = repoPersonaje.buscarPorId(numRandom);
+
+        return personajeRandom;
+    }
 
 
 }

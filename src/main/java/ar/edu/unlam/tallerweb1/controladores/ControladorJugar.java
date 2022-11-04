@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 @Controller
 public class ControladorJugar {
@@ -27,6 +28,8 @@ public class ControladorJugar {
     private List<Personaje>misPersonajes;
     private ServicioNivel servicioNivel;
     private ServicioBilletera servicioBilletera;
+    private List<Personaje> listaDePersonajesElegidos;
+
     @Autowired
     public ControladorJugar(ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion,
                             ServicioUsuario servicioUsuario,ServicioNivel servicioNivel, ServicioBilletera servicioBilletera){
@@ -59,31 +62,23 @@ public class ControladorJugar {
 //      --------------------------------
         model.put("personajes", this.misPersonajes );
 
+        request.getSession().setAttribute("contadoresPrimerRound", null);
+        request.getSession().setAttribute("round1", null);
+        request.getSession().setAttribute("personajeUno", null);
+        request.getSession().setAttribute("boot1", null);
+
+        request.getSession().setAttribute("contadoresSegundoRound", null);
+        request.getSession().setAttribute("round2", null);
+        request.getSession().setAttribute("personajeDos", null);
+        request.getSession().setAttribute("boot2", null);
+
+        request.getSession().setAttribute("contadoresTercerRound", null);
+        request.getSession().setAttribute("round3", null);
+        request.getSession().setAttribute("personajeTres", null);
+        request.getSession().setAttribute("boot3", null);
+
         //return new ModelAndView("combate", model);
         return new ModelAndView("seleccionarPersonaje", model);
-    }
-
-    @RequestMapping(value = "/seleccionPersonaje", method= RequestMethod.GET)
-    public ModelAndView seleccionPersonajeParaJugar(@RequestParam("id")Integer id, RedirectAttributes atributo) {
-//      --------------------------------
-        Personaje personajeElegido=servicioPersonaje.buscarPorId(id);
-        //      --------------------------------
-//se le pasa el personaje buscado al atributo asi se redirige a combate
-
-        atributo.addFlashAttribute(personajeElegido);
-//      --------------------------------
-        return new ModelAndView("redirect:/combate");
-    }
-
-    @RequestMapping("/combate")
-    public ModelAndView combate(@ModelAttribute Personaje personajeElegido) {
-//      --------------------------------
-        ModelMap model = new ModelMap();
-//      --------------------------------
-        model.addAttribute("personajeElegido",personajeElegido);
-        model.put("personajes", this.misPersonajes );
-//      --------------------------------
-        return new ModelAndView("combate",model);
     }
 
     @RequestMapping(value = "/seleccionDePersonaje", method= RequestMethod.GET)
@@ -100,39 +95,18 @@ public class ControladorJugar {
 //      --------------------------------
         if (personajesElegidos.length == 3){
 
-            List<Personaje> listaDePersonajesElegidos = new ArrayList<>();
+            List<Personaje> listaDePersonajes_Elegidos = new ArrayList<>();
 
             for (String idPersonaje : personajesElegidos){
                 Integer idParseado  = Integer.parseInt(idPersonaje);
                 Personaje personaje = servicioPersonaje.buscarPorId(idParseado);
-                listaDePersonajesElegidos.add(personaje);
+                listaDePersonajes_Elegidos.add(personaje);
             }
 
-            Personaje per1 = listaDePersonajesElegidos.get(0);
-            Personaje per2 = listaDePersonajesElegidos.get(1);
-            Personaje per3 = listaDePersonajesElegidos.get(2);
+            this.listaDePersonajesElegidos = listaDePersonajes_Elegidos;
+            model.put("personajes", listaDePersonajesElegidos);
 
-//          --------- Jugador boot -----------
-            Random preNumRandom = new Random();
-            Integer maxId       = servicioPersonaje.maxId();
-
-            int numRandom1  = (int) (preNumRandom.nextDouble() * maxId + 1);
-            int numRandom2  = (int) (preNumRandom.nextDouble() * maxId + 1);
-            int numRandom3  = (int) (preNumRandom.nextDouble() * maxId + 1);
-
-            Personaje personajeBootUno  = servicioPersonaje.buscarPorId(numRandom1);
-            Personaje personajeBootDos  = servicioPersonaje.buscarPorId(numRandom2);
-            Personaje personajeBootTres = servicioPersonaje.buscarPorId(numRandom3);
-
-            model.put("per1", per1);
-            model.put("per2", per2);
-            model.put("per3", per3);
-
-            model.put("personajeBootUno", personajeBootUno);
-            model.put("personajeBootDos", personajeBootDos);
-            model.put("personajeBootTres", personajeBootTres);
-
-            return new ModelAndView("jugar", model);
+            return new ModelAndView("combate", model);
 
         } else if (personajesElegidos.length > 3) {
             model.put("error","Se pasó del límite de personajes elegidos.");
@@ -141,8 +115,304 @@ public class ControladorJugar {
             model.put("error", "Debe seleccionar <b>TRES</b> personajes.");
         }
 
-
         return new ModelAndView("error", model);
+    }
+
+    @RequestMapping(value = "/seleccionPersonaje", method= RequestMethod.GET)
+    public ModelAndView seleccionPersonajeParaJugar(@RequestParam("id")Integer id, RedirectAttributes atributo) {
+//      --------------------------------
+        Personaje personajeElegido=servicioPersonaje.buscarPorId(id);
+//      --------------------------------
+//      se le pasa el personaje buscado al atributo asi se redirige a combate
+        atributo.addFlashAttribute(personajeElegido);
+//      --------------------------------
+        //return new ModelAndView("redirect:/combate");
+        return new ModelAndView("redirect:/roundUno");
+    }
+
+    @RequestMapping(value = "/seleccionPersonajeRoundDos", method= RequestMethod.GET)
+    public ModelAndView seleccionPersonajeRoundDos(@RequestParam("id")Integer id, RedirectAttributes atributo) {
+//      --------------------------------
+        Personaje personajeElegido = servicioPersonaje.buscarPorId(id);
+//      --------------------------------
+//      se le pasa el personaje buscado al atributo asi se redirige a combate
+        atributo.addFlashAttribute(personajeElegido);
+//      --------------------------------
+        //return new ModelAndView("redirect:/combate");
+        return new ModelAndView("redirect:/roundDos");
+    }
+
+    @RequestMapping(value = "/seleccionPersonajeRoundTres", method= RequestMethod.GET)
+    public ModelAndView seleccionPersonajeRoundTres(@RequestParam("id")Integer id, RedirectAttributes atributo) {
+//      --------------------------------
+        Personaje personajeElegido=servicioPersonaje.buscarPorId(id);
+//      --------------------------------
+//      se le pasa el personaje buscado al atributo asi se redirige a combate
+        atributo.addFlashAttribute(personajeElegido);
+//      --------------------------------
+        //return new ModelAndView("redirect:/combate");
+        return new ModelAndView("redirect:/roundTres");
+    }
+
+    @RequestMapping("/roundUno")
+    public ModelAndView roundUno(@ModelAttribute Personaje personajeElegido) {
+//      --------------------------------
+        ModelMap model = new ModelMap();
+//      --------------------------------
+        Personaje personajeBoot  = servicioPersonaje.personajeRandom();
+//      ------------------------------------------------------------------
+        model.addAttribute("personajeElegido",personajeElegido);
+//      ------------------------------------------------------------------
+        List<Personaje> todosMenosElSeleccionado = new ArrayList<>();
+
+        for (Personaje p : listaDePersonajesElegidos){
+            if (!p.getId().equals(personajeElegido.getId())){
+                todosMenosElSeleccionado.add(p);
+            }
+        }
+
+        model.put("personajes", todosMenosElSeleccionado);
+        model.put("personajeBoot", personajeBoot);
+//      -------------------------------------------------
+        return new ModelAndView("roundUno",model);
+    }
+
+    @RequestMapping("/roundDos")
+    public ModelAndView roundDos(@ModelAttribute Personaje personajeElegido, HttpServletRequest request) {
+//      --------------------------------
+        ModelMap model = new ModelMap();
+//      --------------------------------
+        Personaje personajeBoot  = servicioPersonaje.personajeRandom();
+//      ------------------------------------------------------------------
+        model.addAttribute("personajeElegido",personajeElegido);
+//      ------------------------------------------------------------------
+        List<Personaje> todosMenosElSeleccionado = new ArrayList<>();
+        Personaje p1 = (Personaje) request.getSession().getAttribute("personajeUno");
+
+        for (Personaje p : listaDePersonajesElegidos){
+            if (!p.getId().equals(personajeElegido.getId()) && !p.getId().equals(p1.getId())){
+                todosMenosElSeleccionado.add(p);
+            }
+        }
+
+        model.put("personajes", todosMenosElSeleccionado);
+        model.put("personajeBoot", personajeBoot);
+
+        model.put("round1", request.getSession().getAttribute("round1"));
+        model.put("p1", request.getSession().getAttribute("personajeUno"));
+        model.put("boot1", request.getSession().getAttribute("boot1"));
+//      -------------------------------------------------
+        return new ModelAndView("roundDos",model);
+    }
+
+    @RequestMapping("/roundTres")
+    public ModelAndView roundTres(@ModelAttribute Personaje personajeElegido, HttpServletRequest request) {
+//      --------------------------------
+        ModelMap model = new ModelMap();
+//      --------------------------------
+        Personaje personajeBoot  = servicioPersonaje.personajeRandom();
+//      ------------------------------------------------------------------
+        model.addAttribute("personajeElegido",personajeElegido);
+//      ------------------------------------------------------------------
+        List<Personaje> todosMenosElSeleccionado = new ArrayList<>();
+        Personaje p1 = (Personaje) request.getSession().getAttribute("personajeUno");
+        Personaje p2 = (Personaje) request.getSession().getAttribute("personajeDos");
+
+        for (Personaje p : listaDePersonajesElegidos){
+            if (!p.getId().equals(personajeElegido.getId()) && !p.getId().equals(p1.getId()) && !p.getId().equals(p2.getId())){
+                todosMenosElSeleccionado.add(p);
+            }
+        }
+
+        model.put("personajes", todosMenosElSeleccionado);
+        model.put("personajeBoot", personajeBoot);
+
+//      ---------------- Round 1 ---------------------------
+        model.put("round1", request.getSession().getAttribute("round1"));
+        model.put("p1", request.getSession().getAttribute("personajeUno"));
+        model.put("boot1", request.getSession().getAttribute("boot1"));
+
+//      ---------------- Round 2 ---------------------------
+        model.put("round2", request.getSession().getAttribute("round2"));
+        model.put("p2", request.getSession().getAttribute("personajeDos"));
+        model.put("boot2", request.getSession().getAttribute("boot2"));
+//      -------------------------------------------------
+        return new ModelAndView("roundTres",model);
+    }
+
+    @RequestMapping("/combate")
+    public ModelAndView combate(@ModelAttribute Personaje personajeElegido) {
+//      --------------------------------
+        ModelMap model = new ModelMap();
+//      --------------------------------
+        Personaje personajeBoot  = servicioPersonaje.personajeRandom();
+//      ------------------------------------------------------------------
+        model.addAttribute("personajeElegido",personajeElegido);
+//      ------------------------------------------------------------------
+        List<Personaje> todosMenosElSeleccionado = new ArrayList<>();
+
+        for (Personaje p : listaDePersonajesElegidos){
+            if (!p.getId().equals(personajeElegido.getId())){
+                todosMenosElSeleccionado.add(p);
+            }
+        }
+
+        model.put("personajes", todosMenosElSeleccionado);
+        model.put("personajeBoot", personajeBoot);
+//      -------------------------------------------------
+        return new ModelAndView("combate",model);
+    }
+
+    @RequestMapping("/atacarRoundUno")
+    public ModelAndView atacarRoundUno(@RequestParam("personajeSeleccionado") String personajeSeleccionado,
+                                       @RequestParam("personajeBoot") String personajeBoot, HttpServletRequest request){
+        ModelMap model = new ModelMap();
+
+        Integer idPersonaje = Integer.parseInt(personajeSeleccionado);
+        Integer idBoot      = Integer.parseInt(personajeBoot);
+
+        Personaje personajeUno = servicioPersonaje.buscarPorId(idPersonaje);
+        Personaje boot1        = servicioPersonaje.buscarPorId(idBoot);
+
+        Integer contadorUsuario = 0;
+        Integer contadorBoot    = 0;
+
+        List<Integer> round1 = servicioPersonaje.rounds(personajeUno,boot1,contadorUsuario,contadorBoot);
+        contadorUsuario = round1.get(0);
+        contadorBoot    = round1.get(1);
+
+        model.put("round1",contadorUsuario + ":" + contadorBoot);
+        model.put("p1", personajeUno);
+        model.put("boot1", boot1);
+
+        request.getSession().setAttribute("contadoresPrimerRound", round1);
+        request.getSession().setAttribute("round1", contadorUsuario + ":" + contadorBoot);
+        request.getSession().setAttribute("personajeUno", personajeUno);
+        request.getSession().setAttribute("boot1", boot1);
+
+        List<Personaje> todosMenosElSeleccionado = new ArrayList<>();
+
+        for (Personaje p : listaDePersonajesElegidos){
+            if (!p.getId().equals(personajeUno.getId())){
+                todosMenosElSeleccionado.add(p);
+            }
+        }
+
+        model.put("personajes", todosMenosElSeleccionado);
+
+        return new ModelAndView("resultadoRoundUno", model);
+    }
+
+    @RequestMapping("/atacarRoundDos")
+    public ModelAndView atacarRoundDos(@RequestParam("personajeSeleccionado") String personajeSeleccionado,
+                                       @RequestParam("personajeBoot") String personajeBoot, HttpServletRequest request){
+        ModelMap model = new ModelMap();
+
+        Integer idPersonaje = Integer.parseInt(personajeSeleccionado);
+        Integer idBoot      = Integer.parseInt(personajeBoot);
+
+        Personaje personajeDos = servicioPersonaje.buscarPorId(idPersonaje);
+        Personaje boot2        = servicioPersonaje.buscarPorId(idBoot);
+
+        List<Integer> contadoresPrimerRound = (List<Integer>) request.getSession().getAttribute("contadoresPrimerRound");
+
+        Integer contadorUsuario = contadoresPrimerRound.get(0);
+        Integer contadorBoot    = contadoresPrimerRound.get(1);
+
+        List<Integer> round2 = servicioPersonaje.rounds(personajeDos,boot2,contadorUsuario,contadorBoot);
+        contadorUsuario = round2.get(0);
+        contadorBoot    = round2.get(1);
+
+        model.put("round2",contadorUsuario + ":" + contadorBoot);
+        model.put("p2", personajeDos);
+        model.put("boot2", boot2);
+
+        request.getSession().setAttribute("contadoresSegundoRound", round2);
+        request.getSession().setAttribute("round2", contadorUsuario + ":" + contadorBoot);
+        request.getSession().setAttribute("personajeDos", personajeDos);
+        request.getSession().setAttribute("boot2", boot2);
+
+        List<Personaje> todosMenosElSeleccionado = new ArrayList<>();
+        Personaje p1    = (Personaje) request.getSession().getAttribute("personajeUno");
+        Personaje boot1 = (Personaje) request.getSession().getAttribute("boot1");
+
+        for (Personaje p : listaDePersonajesElegidos){
+            if (!p.getId().equals(personajeDos.getId()) && !p.getId().equals(p1.getId())){
+                todosMenosElSeleccionado.add(p);
+            }
+        }
+
+        model.put("p1", p1);
+        model.put("boot1", boot1);
+        model.put("personajes", todosMenosElSeleccionado);
+
+        return new ModelAndView("resultadoRoundDos", model);
+    }
+
+    @RequestMapping("/atacarRoundTres")
+    public ModelAndView atacarRoundTres(@RequestParam("personajeSeleccionado") String personajeSeleccionado,
+                                       @RequestParam("personajeBoot") String personajeBoot, HttpServletRequest request){
+        ModelMap model = new ModelMap();
+
+        Integer idPersonaje = Integer.parseInt(personajeSeleccionado);
+        Integer idBoot      = Integer.parseInt(personajeBoot);
+
+        Personaje personajeTres = servicioPersonaje.buscarPorId(idPersonaje);
+        Personaje boot3         = servicioPersonaje.buscarPorId(idBoot);
+
+        List<Integer> contadoresSegundoRound = (List<Integer>) request.getSession().getAttribute("contadoresSegundoRound");
+
+        Integer contadorUsuario = contadoresSegundoRound.get(0);
+        Integer contadorBoot    = contadoresSegundoRound.get(1);
+
+        List<Integer> round3 = servicioPersonaje.rounds(personajeTres,boot3,contadorUsuario,contadorBoot);
+        contadorUsuario = round3.get(0);
+        contadorBoot    = round3.get(1);
+
+        model.put("round3",contadorUsuario + ":" + contadorBoot);
+        model.put("p3", personajeTres);
+        model.put("boot3", boot3);
+
+        request.getSession().setAttribute("contadoresTercerRound", round3);
+        request.getSession().setAttribute("round3", contadorUsuario + ":" + contadorBoot);
+        request.getSession().setAttribute("personajeTres", personajeTres);
+        request.getSession().setAttribute("boot3", boot3);
+
+        List<Personaje> todosMenosElSeleccionado = new ArrayList<>();
+        Personaje p1    = (Personaje) request.getSession().getAttribute("personajeUno");
+        Personaje boot1 = (Personaje) request.getSession().getAttribute("boot1");
+
+        Personaje p2    = (Personaje) request.getSession().getAttribute("personajeDos");
+        Personaje boot2 = (Personaje) request.getSession().getAttribute("boot2");
+
+        for (Personaje p : listaDePersonajesElegidos){
+            if (!p.getId().equals(personajeTres.getId()) && !p.getId().equals(p1.getId()) && !p.getId().equals(p2.getId())){
+                todosMenosElSeleccionado.add(p);
+            }
+        }
+
+        model.put("p1", p1);
+        model.put("boot1", boot1);
+        model.put("p2", p2);
+        model.put("boot2", boot2);
+        model.put("personajes", todosMenosElSeleccionado);
+
+        Usuario usuario     = servicioUsuario.buscarPorID((Integer) request.getSession().getAttribute("idUsuario"));
+        Nivel nivel         = servicioNivel.traerDatosDelNivel(usuario.getNivel().getId());
+        Billetera billetera = servicioBilletera.traerDatosBilletera(usuario);
+        String quienGana    = servicioPersonaje.quienGana(contadorUsuario, contadorBoot,billetera,request,nivel,usuario);
+
+        if(quienGana.equals("ganaste")){
+            model.put("ganador","<b>¡Ganaste!</b>");
+        }
+        else if(quienGana.equals("empate")){
+            model.put("empate","<b>Empate</b>");
+        }
+        else{
+            model.put("perdedor","<b>Perdiste</b>");
+        }
+
+        return new ModelAndView("resultadoRoundTres", model);
     }
 
     @RequestMapping(value = "/verResultados", method= RequestMethod.GET)
