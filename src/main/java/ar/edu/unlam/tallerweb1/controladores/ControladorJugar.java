@@ -404,9 +404,11 @@ public class ControladorJugar {
 
         if(quienGana.equals("ganaste")){
             model.put("ganador","<b>¡Ganaste!</b>");
+            model.put("monedas","1000");
         }
         else if(quienGana.equals("empate")){
             model.put("empate","<b>Empate</b>");
+            model.put("monedas","500");
         }
         else{
             model.put("perdedor","<b>Perdiste</b>");
