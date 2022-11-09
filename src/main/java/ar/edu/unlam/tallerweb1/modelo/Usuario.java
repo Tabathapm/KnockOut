@@ -34,7 +34,25 @@ public class Usuario {
 	private Boolean habilitado = true;
 	@DateTimeFormat(pattern = "dd-MM-yyyy hh:mm")
 	private Date ultimaConexion;
-	
+
+
+	public Usuario(Integer id,String email,String password,Boolean activo,String nombre,String apellido,String userName,Nivel nivel,Rol rol,Boolean habilitado){
+		this.id=id;
+		this.email=email;
+		this.password=password;
+		this.activo=activo;
+		this.nombre=nombre;
+		this.apellido=apellido;
+		this.userName=userName;
+		this.nivel=nivel;
+		this.rol=rol;
+		this.habilitado=habilitado;
+	}
+
+	public Usuario() {
+
+	}
+
 	public Integer getId() {
 		return id;
 	}

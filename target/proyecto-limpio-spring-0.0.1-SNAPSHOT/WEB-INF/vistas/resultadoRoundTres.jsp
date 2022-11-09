@@ -170,6 +170,9 @@
                       <h3>${ganador}</h3>
                       <img src="<c:url value="/images/winner.png" />" style="width: 13%;" class="p-2">
                     </div>
+                    <div style="display: flex;justify-content: center;align-items: center;">
+                      <span style="font-size: xx-large"><img src="<c:url value="/images/dollar.png" />" style="width: 13%;" class="p-2">+ ${monedas}</span>
+                    </div>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </b>
                 </span>
@@ -183,6 +186,9 @@
                     <div style="display: flex;justify-content: center;align-items: center;">
                       <h3>${empate}</h3>
                       <img src="<c:url value="/images/idk.png" />" style="width: 13%;" class="p-2">
+                    </div>
+                    <div style="display: flex;justify-content: center;align-items: center;">
+                      <span style="font-size: xx-large"><img src="<c:url value="/images/dollar.png" />" style="width: 13%;" class="p-2">+ ${monedas}</span>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </b>

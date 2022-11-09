@@ -56,7 +56,7 @@ public class ControladorIntercambio {
         return new ModelAndView("intercambio",model );
     }
     @RequestMapping(value = "/jugadorIntercambio")
-    public ModelAndView traerIntercambiableJugador(@RequestParam("id") Integer idJugador, HttpServletRequest request){
+    public ModelAndView traerIntercambiableJugador(@RequestParam("id") Integer idJugador){
 
         ModelMap model = new ModelMap();
 
@@ -99,7 +99,7 @@ public class ControladorIntercambio {
 
     }
     @RequestMapping(value = "/intercambioPersonajes")
-    public ModelAndView intercambiarPersonajes(@RequestParam("id") Integer idPersonaje, HttpServletRequest request){
+    public ModelAndView intercambiarPersonajes(@RequestParam("id") Integer idPersonaje){
 
         ModelMap model = new ModelMap();
         this.personajeMio = servicioPersonaje.traerPersonaje(idPersonaje);
