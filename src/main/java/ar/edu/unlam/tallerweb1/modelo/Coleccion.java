@@ -18,6 +18,16 @@ public class Coleccion {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Personaje> personajes;
 
+    public Coleccion(Integer id,Usuario usuario,List personajes){
+        this.id=id;
+        this.usuario=usuario;
+        this.personajes=personajes;
+    }
+
+    public Coleccion() {
+
+    }
+
     public Integer getId() {
         return id;
     }

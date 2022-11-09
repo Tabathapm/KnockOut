@@ -13,11 +13,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
 
-      /*body {
-          background-image:url( "<c:url value="/images/fondo1.png" />");
-                      background-repeat: no-repeat;
-                  }*/
-
       @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
       #team {
         background: #eee !important;
@@ -155,48 +150,6 @@
         <main>
 
           <div class="container py-3">
-
-            <c:if test="${not empty ganador}">
-              <div class="alert alert-success alert-dismissible fade show text-center" role="alert" style="width: 50%;margin-left: 25%;">
-                                            <span>
-                                                <b>
-                                                    <div style="display: flex;justify-content: center;align-items: center;">
-                                                        <h3>${ganador}</h3>
-                                                        <img src="<c:url value="/images/winner.png" />" style="width: 13%;" class="p-2">
-                                                    </div>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                </b>
-                                            </span>
-              </div>
-            </c:if>
-
-            <c:if test="${not empty empate}">
-              <div class="alert alert-success alert-dismissible fade show text-center" role="alert" style="width: 50%;margin-left: 25%;">
-                                            <span>
-                                                <b>
-                                                    <div style="display: flex;justify-content: center;align-items: center;">
-                                                        <h3>${empate}</h3>
-                                                        <img src="<c:url value="/images/idk.png" />" style="width: 13%;" class="p-2">
-                                                    </div>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                </b>
-                                            </span>
-              </div>
-            </c:if>
-
-            <c:if test="${not empty perdedor}">
-              <div class="alert alert-success alert-dismissible fade show text-center" role="alert" style="width: 50%;margin-left: 25%;">
-                                            <span>
-                                                <b>
-                                                    <div style="display: flex;justify-content: center;align-items: center;">
-                                                        <h3>${perdedor}</h3>
-                                                        <img src="<c:url value="/images/sad.png" />" style="width: 13%;" class="p-2">
-                                                    </div>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                                </b>
-                                            </span>
-              </div>
-            </c:if>
 
             <div class="row pb-5 mb-4">
               <c:if test="${not empty round1}">

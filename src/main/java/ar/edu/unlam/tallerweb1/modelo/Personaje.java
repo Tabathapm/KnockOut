@@ -27,6 +27,27 @@ public class Personaje {
     @ManyToMany
     private List<Caracteristica> caracteristica;
 
+    public Personaje(Integer id,String nombre,String descripcion,String imagen,Float monto,Boolean enVenta,
+                     Boolean enMiColeccion,Boolean intercambiable,Integer ataque,Integer defensa,List coleccion,List caracteristica){
+
+        this.id=id;
+        this.nombre=nombre;
+        this.descripcion=descripcion;
+        this.imagen=imagen;
+        this.monto=monto;
+        this.enVenta=enVenta;
+        this.enMiColeccion=enMiColeccion;
+        this.intercambiable=intercambiable;
+        this.ataque=ataque;
+        this.defensa=defensa;
+        this.coleccion=coleccion;
+        this.caracteristica=caracteristica;
+    }
+
+    public Personaje() {
+
+    }
+
     public Integer getId() {
         return id;
     }

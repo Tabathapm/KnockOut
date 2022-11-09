@@ -13,11 +13,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
 
-      /*body {
-          background-image:url( "<c:url value="/images/fondo1.png" />");
-                      background-repeat: no-repeat;
-                  }*/
-
       @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
       #team {
         background: #eee !important;
@@ -153,7 +148,6 @@
 
       <div id="layoutSidenav_content">
         <main>
-
           <div class="container py-3">
 
             <div class="row pb-5 mb-4">
@@ -429,9 +423,6 @@
                                 </div>
                               </div>
                             </div>
-<%--                            <div class="d-flex justify-content-center">--%>
-<%--                              <a href="seleccionPersonajeRoundTres?id=${personaje.id}" class="btn btn-primary" role="button" id="${personaje.id}">Seleccionar</a>--%>
-<%--                            </div>--%>
                           </div>
                         </div>
                       </div>

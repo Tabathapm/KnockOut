@@ -150,7 +150,6 @@
 
             <div id="layoutSidenav_content">
                 <main>
-
                     <div class="container py-3">
 
                         <section class="fondo">
