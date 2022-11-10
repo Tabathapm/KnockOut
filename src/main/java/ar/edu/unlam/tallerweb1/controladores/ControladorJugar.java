@@ -29,15 +29,18 @@ public class ControladorJugar {
     private ServicioNivel servicioNivel;
     private ServicioBilletera servicioBilletera;
     private List<Personaje> listaDePersonajesElegidos;
+    private List<Personaje> listDePersonajesElegidos;
 
     @Autowired
     public ControladorJugar(ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion,
-                            ServicioUsuario servicioUsuario,ServicioNivel servicioNivel, ServicioBilletera servicioBilletera){
+                            ServicioUsuario servicioUsuario,ServicioNivel servicioNivel, ServicioBilletera servicioBilletera,
+                            List<Personaje> listDePersonajesElegidos){
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
         this.servicioUsuario   = servicioUsuario;
         this.servicioNivel     = servicioNivel;
         this.servicioBilletera = servicioBilletera;
+        this.listDePersonajesElegidos = listDePersonajesElegidos;
     }
 
     @RequestMapping( "/Jugar")
