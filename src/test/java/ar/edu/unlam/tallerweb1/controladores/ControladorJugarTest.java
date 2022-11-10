@@ -35,7 +35,7 @@ public class ControladorJugarTest {
             "filántropo, playboy e ingenioso científico", "ironMan.jpg", 10000F,false,true,true,600,500,null,null);
     List<Personaje> listaDePersonajesElegidos = Arrays.asList(personaje1, personaje2, personaje3);
 
-    ControladorJugar controladorJugar = new ControladorJugar(servicioPersonaje,servicioColeccion,servicioUsuario,servicioNivel,servicioBilletera, listaDePersonajesElegidos);
+    ControladorJugar controladorJugar = new ControladorJugar(servicioPersonaje,servicioColeccion,servicioUsuario,servicioNivel,servicioBilletera);
 
     @Test
     public void testQueEnRoundUnoAtaque(){

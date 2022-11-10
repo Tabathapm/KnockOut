@@ -1,4 +1,3 @@
-
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.*;
@@ -31,17 +30,16 @@ public class ControladorJugar {
     private ServicioBilletera servicioBilletera;
     private List<Personaje> listaDePersonajesElegidos;
 
+
     @Autowired
     public ControladorJugar(ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion,
-                            ServicioUsuario servicioUsuario,ServicioNivel servicioNivel, ServicioBilletera servicioBilletera,List<Personaje> listaDePersonajesElegidos){
+                            ServicioUsuario servicioUsuario,ServicioNivel servicioNivel, ServicioBilletera servicioBilletera){
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
         this.servicioUsuario   = servicioUsuario;
         this.servicioNivel     = servicioNivel;
         this.servicioBilletera = servicioBilletera;
-        this.listaDePersonajesElegidos = listaDePersonajesElegidos;
     }
-
 
     @RequestMapping( "/Jugar")
     public ModelAndView irAJugar(HttpServletRequest request) {
@@ -491,7 +489,3 @@ public class ControladorJugar {
 
 
 }
-
-
-
-
