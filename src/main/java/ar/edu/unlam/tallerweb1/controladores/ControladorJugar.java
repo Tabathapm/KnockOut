@@ -1,3 +1,4 @@
+
 package ar.edu.unlam.tallerweb1.controladores;
 
 import ar.edu.unlam.tallerweb1.modelo.*;
@@ -29,19 +30,18 @@ public class ControladorJugar {
     private ServicioNivel servicioNivel;
     private ServicioBilletera servicioBilletera;
     private List<Personaje> listaDePersonajesElegidos;
-    private List<Personaje> listDePersonajesElegidos;
 
     @Autowired
     public ControladorJugar(ServicioPersonaje servicioPersonaje, ServicioColeccion servicioColeccion,
-                            ServicioUsuario servicioUsuario,ServicioNivel servicioNivel, ServicioBilletera servicioBilletera,
-                            List<Personaje> listDePersonajesElegidos){
+                            ServicioUsuario servicioUsuario,ServicioNivel servicioNivel, ServicioBilletera servicioBilletera,List<Personaje> listaDePersonajesElegidos){
         this.servicioPersonaje = servicioPersonaje;
         this.servicioColeccion = servicioColeccion;
         this.servicioUsuario   = servicioUsuario;
         this.servicioNivel     = servicioNivel;
         this.servicioBilletera = servicioBilletera;
-        this.listDePersonajesElegidos = listDePersonajesElegidos;
+        this.listaDePersonajesElegidos = listaDePersonajesElegidos;
     }
+
 
     @RequestMapping( "/Jugar")
     public ModelAndView irAJugar(HttpServletRequest request) {
@@ -354,7 +354,7 @@ public class ControladorJugar {
 
     @RequestMapping("/atacarRoundTres")
     public ModelAndView atacarRoundTres(@RequestParam("personajeSeleccionado") String personajeSeleccionado,
-                                       @RequestParam("personajeBoot") String personajeBoot, HttpServletRequest request){
+                                        @RequestParam("personajeBoot") String personajeBoot, HttpServletRequest request){
         ModelMap model = new ModelMap();
 
         Integer idPersonaje = Integer.parseInt(personajeSeleccionado);
@@ -422,11 +422,11 @@ public class ControladorJugar {
 
     @RequestMapping(value = "/verResultados", method= RequestMethod.GET)
     public ModelAndView verResultados(HttpServletRequest request, @RequestParam("personajeUno") String personajeElegidoUno,
-                                                                  @RequestParam("personajeDos") String personajeElegidoDos,
-                                                                  @RequestParam("personajeTres") String personajeElegidoTres,
-                                                                  @RequestParam("personajeBootUno") String personajeBootUno,
-                                                                  @RequestParam("personajeBootDos") String personajeBootDos,
-                                                                  @RequestParam("personajeBootTres") String personajeBootTres){
+                                      @RequestParam("personajeDos") String personajeElegidoDos,
+                                      @RequestParam("personajeTres") String personajeElegidoTres,
+                                      @RequestParam("personajeBootUno") String personajeBootUno,
+                                      @RequestParam("personajeBootDos") String personajeBootDos,
+                                      @RequestParam("personajeBootTres") String personajeBootTres){
 
         if(request.getSession().getAttribute("idUsuario") == null){
             return new ModelAndView("redirect:/login");
@@ -491,3 +491,7 @@ public class ControladorJugar {
 
 
 }
+
+
+
+
