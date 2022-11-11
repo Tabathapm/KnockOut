@@ -32,6 +32,9 @@
                         Intercambio
                 </a>
                 <%-- ------------------------ --%>
+                    <a class="nav-link " href="Marvel">
+                        Acerca de Marvel
+                    </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
