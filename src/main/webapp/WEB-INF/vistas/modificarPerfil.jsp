@@ -34,7 +34,10 @@
                       <input type="email" class="form-control" id="floatingEmailGrid" value="${usuario.email}" disabled>
                       <label for="floatingEmailGrid">Email</label>
                     </div>
-
+                    <div class="input-group p-2 d-flex align-items-center form-floating">
+                      <input type="password" class="form-control" name="passwordActual" placeholder="Password actual">
+                      <label for="floatingNivelGrid">Password actual</label>
+                    </div>
                     <div class="input-group p-2 d-flex align-items-center form-floating">
                       <input type="password" class="form-control" name="password" id="floatingNivelGrid" placeholder="Nueva password">
                       <label for="floatingNivelGrid">Nueva password</label>
@@ -47,8 +50,12 @@
                 </div>
               </div>
             </div>
+            <c:if test="${not empty error1}">
+              <h4><span class="text-danger">${error1}</span></h4>
+              <br>
+            </c:if>
             <c:if test="${not empty error}">
-              <h4><span>${error}</span></h4>
+              <h4><span class="text-danger">${error}</span></h4>
               <br>
             </c:if>
           </div>
