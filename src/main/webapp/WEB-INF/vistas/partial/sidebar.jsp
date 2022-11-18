@@ -17,6 +17,11 @@
                     Jugar
                 </a>
                 <%-- ------------------------ --%>
+                    <%-- ------------------------ --%>
+                    <a class="nav-link " href="Trivia">
+                        Trivia
+                    </a>
+                    <%-- ------------------------ --%>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTripulacion" aria-expanded="false" aria-controls="collapseTripulacion">
                     Comprar
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
