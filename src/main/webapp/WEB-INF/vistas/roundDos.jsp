@@ -342,20 +342,20 @@
                       <div class="text-white text-center nombre">
                         <h4 class="text-dark">${personaje.nombre}</h4>
                       </div>
-                      <div class="puntaje mt-2">
-                        <div class="fondoP d-flex">
-                          <img src="images/espadas.png" alt="" style="height: 50px;">
-                          <h4>${personaje.ataque}</h4>
-                        </div>
-                        <div class="fondoP d-flex">
-                          <img src="images/escudo.png" alt="" style="height: 50px;">
-                          <h4>${personaje.defensa}</h4>
-                        </div>
-                      </div>
+<%--                      <div class="puntaje mt-2">--%>
+<%--                        <div class="fondoP d-flex">--%>
+<%--                          <img src="images/espadas.png" alt="" style="height: 50px;">--%>
+<%--                          <h4>${personaje.ataque}</h4>--%>
+<%--                        </div>--%>
+<%--                        <div class="fondoP d-flex">--%>
+<%--                          <img src="images/escudo.png" alt="" style="height: 50px;">--%>
+<%--                          <h4>${personaje.defensa}</h4>--%>
+<%--                        </div>--%>
+<%--                      </div>--%>
                     </div>
 
                     <input name="personajeSeleccionado" value="${personaje.id}" type="hidden">
-                    <input name="personajeBoot" value="${personajeBoot.id}" type="hidden">
+                    <input name="personajeBoot" value="${personajeRandom.id}" type="hidden">
 
                     <div class="d-flex colvs" style="flex-direction: column;justify-content: inherit;">
                       <img src="images/imgVs.png" style="height: 100px;transform: scale(1.7);" class="mt-5 vs">
@@ -364,21 +364,21 @@
 
                     <div class="cartaIa">
                       <div class="borde">
-                        <img src="<c:url value="/images/personajes/${personajeBoot.imagen}" />" alt="">
+                        <img src="<c:url value="/images/personajes/${personajeRandom.imagen}" />" alt="">
                       </div>
                       <div class="text-white text-center nombre">
-                        <h4 class="text-dark">${personajeBoot.nombre}</h4>
+                        <h4 class="text-dark">${personajeRandom.nombre}</h4>
                       </div>
-                      <div class="puntaje mt-2">
-                        <div class="fondoP d-flex">
-                          <img src="images/espadas.png" alt="" style="height: 50px;">
-                          <h4>${personajeBoot.ataque}</h4>
-                        </div>
-                        <div class="fondoP d-flex">
-                          <img src="images/escudo.png" alt="" style="height: 50px;">
-                          <h4>${personajeBoot.defensa}</h4>
-                        </div>
-                      </div>
+<%--                      <div class="puntaje mt-2">--%>
+<%--                        <div class="fondoP d-flex">--%>
+<%--                          <img src="images/espadas.png" alt="" style="height: 50px;">--%>
+<%--                          <h4>${personajeRandom.ataque}</h4>--%>
+<%--                        </div>--%>
+<%--                        <div class="fondoP d-flex">--%>
+<%--                          <img src="images/escudo.png" alt="" style="height: 50px;">--%>
+<%--                          <h4>${personajeRandom.defensa}</h4>--%>
+<%--                        </div>--%>
+<%--                      </div>--%>
                     </div>
                   </form>
                 </c:if>

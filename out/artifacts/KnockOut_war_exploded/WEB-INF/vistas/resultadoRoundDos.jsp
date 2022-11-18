@@ -163,6 +163,54 @@
 
           <div class="container py-3">
 
+            <c:if test="${not empty ganador}">
+              <div class="alert alert-success alert-dismissible fade show text-center" role="alert" style="width: 50%;margin-left: 25%;">
+                <span>
+                  <b>
+                    <div style="display: flex;justify-content: center;align-items: center;">
+                      <h3>${ganador}</h3>
+                      <img src="<c:url value="/images/winner.png" />" style="width: 13%;" class="p-2">
+                    </div>
+                    <div style="display: flex;justify-content: center;align-items: center;">
+                      <span style="font-size: xx-large"><img src="<c:url value="/images/dollar.png" />" style="width: 13%;" class="p-2">+ ${monedas}</span>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </b>
+                </span>
+              </div>
+            </c:if>
+
+            <c:if test="${not empty empate}">
+              <div class="alert alert-success alert-dismissible fade show text-center" role="alert" style="width: 50%;margin-left: 25%;">
+                <span>
+                  <b>
+                    <div style="display: flex;justify-content: center;align-items: center;">
+                      <h3>${empate}</h3>
+                      <img src="<c:url value="/images/idk.png" />" style="width: 13%;" class="p-2">
+                    </div>
+                    <div style="display: flex;justify-content: center;align-items: center;">
+                      <span style="font-size: xx-large"><img src="<c:url value="/images/dollar.png" />" style="width: 13%;" class="p-2">+ ${monedas}</span>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </b>
+                </span>
+              </div>
+            </c:if>
+
+            <c:if test="${not empty perdedor}">
+              <div class="alert alert-success alert-dismissible fade show text-center" role="alert" style="width: 50%;margin-left: 25%;">
+                <span>
+                  <b>
+                    <div style="display: flex;justify-content: center;align-items: center;">
+                      <h3>${perdedor}</h3>
+                      <img src="<c:url value="/images/sad.png" />" style="width: 13%;" class="p-2">
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </b>
+                </span>
+              </div>
+            </c:if>
+
             <div class="row pb-5 mb-4">
               <div class="d-flex justify-content-evenly">
                 <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 pb-5">
@@ -281,55 +329,128 @@
                   </div>
                 </div>
               </div>
-              <section class="pt-5 pb-5 fondo1">
-                <div class="container misCartas">
-                  <div class="row pb-5 mb-4">
-                    <div>
-                      <h3 class="mb-3 pb-5 text-black text-center">Mis personajes,selecciona uno</h3>
-                    </div>
-                    <div class="d-flex justify-content-around">
-                      <%--    SE RECORRE LA LISTA     --%>
-                      <c:forEach items="${personajes}" var="personaje" >
+<%--              <section class="pt-5 pb-5 fondo1">--%>
+<%--                <div class="container misCartas">--%>
+<%--                  <div class="row pb-5 mb-4">--%>
+<%--                    <div>--%>
+<%--                      <h3 class="mb-3 pb-5 text-black text-center">Mis personajes,selecciona uno</h3>--%>
+<%--                    </div>--%>
+<%--                    <div class="d-flex justify-content-around">--%>
+<%--                      &lt;%&ndash;    SE RECORRE LA LISTA     &ndash;%&gt;--%>
+<%--                      <c:forEach items="${personajes}" var="personaje" >--%>
 
-                        <%--    POR CADA PERSONAJE SE CREA UNA TARJETA    --%>
-                        <div class="col-xs-12 col-sm-6 col-md-4" style="width: 25%;">
-                          <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-                            <div class="mainflip">
-                              <div class="frontside">
-                                <div class="card">
-                                  <div class="card-body text-center p-0" style="display: flex; align-items: center">
-                                    <img class=" img-fluid" src="<c:url value="/images/personajes/${personaje.imagen}" />" alt="card image">
+<%--                        &lt;%&ndash;    POR CADA PERSONAJE SE CREA UNA TARJETA    &ndash;%&gt;--%>
+<%--                        <div class="col-xs-12 col-sm-6 col-md-4" style="width: 25%;">--%>
+<%--                          <div class="image-flip" ontouchstart="this.classList.toggle('hover');">--%>
+<%--                            <div class="mainflip">--%>
+<%--                              <div class="frontside">--%>
+<%--                                <div class="card">--%>
+<%--                                  <div class="card-body text-center p-0" style="display: flex; align-items: center">--%>
+<%--                                    <img class=" img-fluid" src="<c:url value="/images/personajes/${personaje.imagen}" />" alt="card image">--%>
+<%--                                  </div>--%>
+<%--                                </div>--%>
+<%--                              </div>--%>
+<%--                              <div class="backside">--%>
+<%--                                <div class="card" style="height: 400px; width: 300px;">--%>
+<%--                                  <div class="card-body text-center mt-4" style="display: inline-grid;align-content: space-between;">--%>
+<%--                                    <h4 class="card-title">${personaje.nombre}</h4>--%>
+<%--                                    <ul class="list-inline d-flex justify-content-evenly">--%>
+<%--                                      <li class="list-inline-item pe-2">--%>
+<%--                                        <img src="images/espadas.png" alt="" style="height: 50px;">--%>
+<%--                                        <h4>${personaje.ataque}</h4>--%>
+<%--                                      </li>--%>
+<%--                                      <li class="list-inline-item">--%>
+<%--                                        <img src="images/escudo.png" alt="" style="height: 50px;">--%>
+<%--                                        <h4>${personaje.defensa}</h4>--%>
+<%--                                      </li>--%>
+<%--                                    </ul>--%>
+<%--                                  </div>--%>
+<%--                                </div>--%>
+<%--                              </div>--%>
+<%--                              <div class="d-flex justify-content-center">--%>
+<%--                                <a href="seleccionPersonajeRoundTres?id=${personaje.id}" class="btn btn-primary" role="button" id="${personaje.id}">Seleccionar</a>--%>
+<%--                              </div>--%>
+<%--                            </div>--%>
+<%--                          </div>--%>
+<%--                        </div>--%>
+<%--                      </c:forEach>--%>
+<%--                    </div>--%>
+<%--                  </div>--%>
+<%--                </div>--%>
+<%--              </section>--%>
+
+              <c:choose>
+                <c:when test="${not empty perdedor}"><!-- if condition -->
+                  <div class="d-flex justify-content-center">
+                    <a href="Jugar" class="btn btn-success w-75" role="button">
+                      Volver a jugar
+                    </a>
+                  </div>
+                </c:when>
+
+                <c:when test="${not empty ganador}"><!-- else if condition -->
+                  <div class="d-flex justify-content-center">
+                    <a href="Jugar" class="btn btn-success w-75" role="button">
+                      Volver a jugar
+                    </a>
+                  </div>
+                </c:when>
+
+                <c:otherwise> <!-- else condition -->
+                  <section class="pt-5 pb-5 fondo1">
+                    <div class="container misCartas">
+                      <div class="row pb-5 mb-4">
+                        <div>
+                          <h3 class="mb-3 pb-5 text-black text-center">Mis personajes,selecciona uno</h3>
+                        </div>
+                        <div class="d-flex justify-content-around">
+                            <%--    SE RECORRE LA LISTA     --%>
+                          <c:forEach items="${personajes}" var="personaje" >
+
+                            <%--    POR CADA PERSONAJE SE CREA UNA TARJETA    --%>
+                            <div class="col-xs-12 col-sm-6 col-md-4" style="width: 25%;">
+                              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                                <div class="mainflip">
+                                  <div class="frontside">
+                                    <div class="card">
+                                      <div class="card-body text-center p-0" style="display: flex; align-items: center">
+                                        <img class=" img-fluid" src="<c:url value="/images/personajes/${personaje.imagen}" />" alt="card image">
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="backside">
+                                    <div class="card" style="height: 400px; width: 300px;">
+                                      <div class="card-body text-center mt-4" style="display: inline-grid;align-content: space-between;">
+                                        <h4 class="card-title">${personaje.nombre}</h4>
+                                        <ul class="list-inline d-flex justify-content-evenly">
+                                          <li class="list-inline-item pe-2">
+                                            <img src="images/espadas.png" alt="" style="height: 50px;">
+                                            <h4>${personaje.ataque}</h4>
+                                          </li>
+                                          <li class="list-inline-item">
+                                            <img src="images/escudo.png" alt="" style="height: 50px;">
+                                            <h4>${personaje.defensa}</h4>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="d-flex justify-content-center">
+                                    <a href="seleccionPersonajeRoundTres?id=${personaje.id}" class="btn btn-primary" role="button" id="${personaje.id}">Seleccionar</a>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="backside">
-                                <div class="card" style="height: 400px; width: 300px;">
-                                  <div class="card-body text-center mt-4" style="display: inline-grid;align-content: space-between;">
-                                    <h4 class="card-title">${personaje.nombre}</h4>
-                                    <ul class="list-inline d-flex justify-content-evenly">
-                                      <li class="list-inline-item pe-2">
-                                        <img src="images/espadas.png" alt="" style="height: 50px;">
-                                        <h4>${personaje.ataque}</h4>
-                                      </li>
-                                      <li class="list-inline-item">
-                                        <img src="images/escudo.png" alt="" style="height: 50px;">
-                                        <h4>${personaje.defensa}</h4>
-                                      </li>
-                                    </ul>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="d-flex justify-content-center">
-                                <a href="seleccionPersonajeRoundTres?id=${personaje.id}" class="btn btn-primary" role="button" id="${personaje.id}">Seleccionar</a>
                               </div>
                             </div>
-                          </div>
+                          </c:forEach>
                         </div>
-                      </c:forEach>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </section>
+                  </section>
+                </c:otherwise>
+              </c:choose>
+
+
+
           </div>
           </div>
         </main>
