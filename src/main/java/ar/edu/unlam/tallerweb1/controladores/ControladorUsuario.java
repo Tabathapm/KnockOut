@@ -57,7 +57,7 @@ public class ControladorUsuario {
 
     }
     @RequestMapping("/modificarPerfil")
-    private ModelAndView modificar(@RequestParam("password")String nuevaPassword, HttpServletRequest request){
+    private ModelAndView modificar(@RequestParam("password")String nuevaPassword,@RequestParam("passwordActual")String actualPassword, HttpServletRequest request){
 
         Integer usuario_id = (Integer) request.getSession().getAttribute("idUsuario");
 
@@ -69,6 +69,12 @@ public class ControladorUsuario {
 //      --------------------------------
         Usuario usuario = servicioUsuario.buscarPorID(usuario_id);
 
+
+        if(!usuario.getPassword().equals(actualPassword)){
+            model.put("usuario", usuario);
+            model.put("error1", "Password actual incorrecta");
+            return new ModelAndView("modificarPerfil", model);
+        }
         if (usuario.getPassword().equals(nuevaPassword)){
             model.put("usuario", usuario);
             model.put("error", "La password tiene que ser diferente a la anterior");

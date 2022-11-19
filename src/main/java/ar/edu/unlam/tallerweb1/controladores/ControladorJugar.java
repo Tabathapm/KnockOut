@@ -21,7 +21,6 @@ import java.util.stream.Collectors;
 
 @Controller
 public class ControladorJugar {
-    //private ServicioJugar servicioJugar;
     private ServicioPersonaje servicioPersonaje;
     private ServicioColeccion servicioColeccion;
     private ServicioUsuario servicioUsuario;
@@ -196,8 +195,11 @@ public class ControladorJugar {
             }
         }
 
+        Personaje personajeRandom = (Personaje) request.getSession().getAttribute("random1");
+
         model.put("personajes", todosMenosElSeleccionado);
         model.put("personajeBoot", personajeBoot);
+        model.put("personajeRandom", personajeRandom);
 
         model.put("round1", request.getSession().getAttribute("round1"));
         model.put("p1", request.getSession().getAttribute("personajeUno"));
@@ -301,6 +303,13 @@ public class ControladorJugar {
 
         model.put("personajes", todosMenosElSeleccionado);
 
+        if (contadorBoot > contadorUsuario){
+            Personaje personajeRandom = servicioPersonaje.personajeRandom();
+            model.put("random1", personajeRandom);
+            request.getSession().setAttribute("random1", personajeRandom);
+            return new ModelAndView("primeroTiraElBoot", model);
+        }
+
         return new ModelAndView("resultadoRoundUno", model);
     }
 
@@ -346,6 +355,20 @@ public class ControladorJugar {
         model.put("p1", p1);
         model.put("boot1", boot1);
         model.put("personajes", todosMenosElSeleccionado);
+
+        Usuario usuario     = servicioUsuario.buscarPorID((Integer) request.getSession().getAttribute("idUsuario"));
+        Nivel nivel         = servicioNivel.traerDatosDelNivel(usuario.getNivel().getId());
+        Billetera billetera = servicioBilletera.traerDatosBilletera(usuario);
+        String quienGana    = servicioPersonaje.quienGana(contadorUsuario, contadorBoot,billetera,request,nivel,usuario);
+
+        if(quienGana.equals("ganaste")){
+            model.put("ganador","<b>¡Ganaste!</b>");
+            model.put("monedas","1000");
+        }
+
+        if(quienGana.equals("perdiste")){
+            model.put("perdedor","<b>Perdiste</b>");
+        }
 
         return new ModelAndView("resultadoRoundDos", model);
     }
