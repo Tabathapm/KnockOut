@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.all.min.js"></script>
     <style>
         main {
-            background: cadetblue;
+            background: #63a05f;
             padding: 0;
             margin: 0;
             text-align: center;

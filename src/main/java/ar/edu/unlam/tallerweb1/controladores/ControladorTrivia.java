@@ -28,7 +28,20 @@ public class ControladorTrivia {
         this.servicioBilletera = servicioBilletera;
         this.servicioUsuario=servicioUsuario;
     }
+    @RequestMapping( "/inicioTrivia")
+    public ModelAndView irATriviaInicio(HttpServletRequest request) {
+        //--------------------------------
+        Integer usuario_id = (Integer) request.getSession().getAttribute("idUsuario");
 
+        if(usuario_id == null){
+            return new ModelAndView("redirect:/login");
+        }
+        if(request.getSession().getAttribute("rol") == Rol.ADMIN){
+            return new ModelAndView("redirect:/inicio");
+        }
+
+        return new ModelAndView("inicioTrivia");
+    }
     @RequestMapping( "/Trivia")
     public ModelAndView irATrivia(HttpServletRequest request) {
         //--------------------------------

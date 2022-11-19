@@ -18,7 +18,7 @@
                 </a>
                 <%-- ------------------------ --%>
                     <%-- ------------------------ --%>
-                    <a class="nav-link " href="Trivia">
+                    <a class="nav-link " href="inicioTrivia">
                         Trivia
                     </a>
                     <%-- ------------------------ --%>

@@ -56,8 +56,6 @@ let  preguntas=[
 
 
 window.onload = function() {
-   // base_preguntas = readText("preguntas.json");
-    //interprete_bp = JSON.parse(base_preguntas);
     escogerPreguntaAleatoria();
 };
 
@@ -91,7 +89,7 @@ console.log(preguntas.length);
         }
     }
     if (contador == 4) {
-        //Aquí es donde el juego se reinicia
+
         if (mostrar_pantalla_juego_términado) {
             swal.fire({
                 title: "Juego finalizado",
@@ -125,20 +123,8 @@ function escogerPregunta(n) {
         select_id("puntaje").innerHTML = "";
     }
 
-    //style("imagen").objectFit = pregunta.objectFit;
     desordenarRespuestas(pregunta);
-    /*
-    if (pregunta.imagen) {
-        select_id("imagen").setAttribute("src", pregunta.imagen);
-        style("imagen").height = "200px";
-        style("imagen").width = "100%";
-    } else {
-        style("imagen").height = "0px";
-        style("imagen").width = "0px";
-        setTimeout(() => {
-            select_id("imagen").setAttribute("src", "");
-        }, 500);
-    }*/
+
 }
 
 function desordenarRespuestas(pregunta) {
@@ -195,15 +181,4 @@ function select_id(id) {
 function style(id) {
     return select_id(id).style;
 }
-/*
-function readText(ruta_local) {
-    var texto = null;
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", ruta_local, false);
-    xmlhttp.send();
-    if (xmlhttp.status == 200) {
-        texto = xmlhttp.responseText;
-    }
-    return texto;
-}
-*/
+
