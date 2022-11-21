@@ -15,6 +15,17 @@ public class Nivel {
     private Integer valorMax;
     private Integer valorActual;
 
+//    public Nivel(Integer id, Integer numero, Integer valorMax, Integer valorActual) {
+//        this.id = id;
+//        this.numero = numero;
+//        this.valorMax = valorMax;
+//        this.valorActual = valorActual;
+//    }
+//
+//    public Nivel() {
+//
+//    }
+
     public Integer getId() {
         return id;
     }
