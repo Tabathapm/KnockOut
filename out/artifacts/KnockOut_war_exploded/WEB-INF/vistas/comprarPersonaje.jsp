@@ -47,7 +47,22 @@
           </p>
         </header>
 
-        <div class="row pb-5 mb-4">
+        <form action="comprarPersonaje" method="get">
+          <label>Ordenar</label>
+          <div class="d-block d-flex">
+            <select id="order" name="order" class="form-select" style="width: 24%;">
+              <option selected value="default">Elige una opcion</option>
+              <option value="min">Menor precio a mayor precio</option>
+              <option value="max">Mayor precio a menor precio</option>
+              <option value="name">Por nombre</option>
+            </select>
+            <div class="ps-3">
+              <input type="submit" class="btn btn-success" value="Aplicar">
+            </div>
+          </div>
+        </form>
+
+        <div class="row pb-5 mt-4 mb-4">
           <%--    SE RECORRE LA LISTA     --%>
           <c:forEach items="${personajes}" var="personaje">
 
@@ -63,7 +78,7 @@
                     <br>
                     <div style="display: flex; justify-content: space-evenly;">
                       <a href="verMasPersonaje?id=${personaje.id} " class="btn btn-primary" role="button">Ver más</a>
-                      <button type="button" class="btn btn-success">Comprar</button>
+                      <a href="comprar?id=${personaje.id} " class="btn btn-primary" role="button">Comprar</a>
                     </div>
                   </div>
                 </div>
@@ -72,12 +87,19 @@
           </c:forEach>
         </div>
       </div>
+
     </main>
   </div>
 </div>
 
+<c:if test="${not empty error}">
+  <h4><span>${error}</span></h4>
+  <br>
+</c:if>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/homeDos.js"></script>
+<script src="js/select.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 </body>

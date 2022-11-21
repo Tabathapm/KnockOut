@@ -18,12 +18,35 @@ public class Personaje {
     private Boolean enMiColeccion;
 
     private Boolean intercambiable;
+    private Integer ataque;
+    private Integer defensa;
 
     @ManyToMany(mappedBy = "personajes", cascade = CascadeType.ALL)
     private List<Coleccion> coleccion;
 
     @ManyToMany
     private List<Caracteristica> caracteristica;
+
+    public Personaje(Integer id,String nombre,String descripcion,String imagen,Float monto,Boolean enVenta,
+                     Boolean enMiColeccion,Boolean intercambiable,Integer ataque,Integer defensa,List coleccion,List caracteristica){
+
+        this.id=id;
+        this.nombre=nombre;
+        this.descripcion=descripcion;
+        this.imagen=imagen;
+        this.monto=monto;
+        this.enVenta=enVenta;
+        this.enMiColeccion=enMiColeccion;
+        this.intercambiable=intercambiable;
+        this.ataque=ataque;
+        this.defensa=defensa;
+        this.coleccion=coleccion;
+        this.caracteristica=caracteristica;
+    }
+
+    public Personaje() {
+
+    }
 
     public Integer getId() {
         return id;
@@ -103,5 +126,21 @@ public class Personaje {
 
     public void setIntercambiable(Boolean intercambiable) {
         this.intercambiable = intercambiable;
+    }
+
+    public Integer getAtaque() {
+        return ataque;
+    }
+
+    public void setAtaque(Integer ataque) {
+        this.ataque = ataque;
+    }
+
+    public Integer getDefensa() {
+        return defensa;
+    }
+
+    public void setDefensa(Integer defensa) {
+        this.defensa = defensa;
     }
 }

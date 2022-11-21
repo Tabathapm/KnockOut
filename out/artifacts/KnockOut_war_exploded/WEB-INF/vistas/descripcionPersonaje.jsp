@@ -17,6 +17,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 
     <link href="css/verMas.css" rel="stylesheet" >
+    <style>
+        .ficha{
+            background-color: #d1caca;
+            border: 1px solid;
+            border-radius: 30px;
+            padding: 10px;
+            box-shadow: 13px 13px 21px -3px rgba(0,0,0,0.7);
+            -webkit-box-shadow: 13px 13px 21px -3px rgba(0,0,0,0.7);
+            -moz-box-shadow: 13px 13px 21px -3px rgba(0,0,0,0.7);
+        }
+    </style>
 </head>
 <body class="sb-nav-fixed">
 <%@include file="partial/navBar.jsp"%>
@@ -33,28 +44,25 @@
                 <a href="javascript:history.back()"> <img src="images/atras.png" style="height: 50px"> </a>
                 <section class="py-5 text-center">
                     <div class="container px-4 px-lg-5 my-5">
-                        <div class="row gx-4 gx-lg-5 align-items-center">
-                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="<c:url value="/images/personajes/${personaje.imagen}" />" alt="..." /></div>
+                        <div class="row gx-4 gx-lg-5 align-items-center ficha">
+                            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="<c:url value="/images/personajes/${personaje.imagen}" />" alt="..." style="border-radius: 10px"/></div>
                             <div class="col-md-6">
                                 <h1 class="display-5 fw-bolder">${personaje.nombre}</h1>
-                                <div class="fs-5 mb-5">
-                                    <span>$${personaje.monto}</span>
+                                <div class="fs-5 mb-5 d-flex justify-content-center align-items-center">
+                                    <img src="<c:url value="/images/dollar.png" />"style="width: 12%;" class="p-2">
+                                    <span>${personaje.monto}</span>
                                 </div>
                                 <p class="lead" style="font-weight: 600">${personaje.descripcion}</p>
                                 <h2 class="text-center m-5" style="font-weight: 400">Caracteristicas</h2>
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-6 col-md-4 text-center">
-                                            <i class="bi bi-patch-check-fill" style="font-size: 3.5rem;color: blue;"></i>
-                                            <h4 style="font-weight: 400">Superfuerza</h4>
+                                        <div class="col text-center">
+                                            <img src="<c:url value="/images/espadas.png" />"style="height: 72px;">
+                                            <h4 style="font-weight: 400">${personaje.ataque}</h4>
                                         </div>
-                                        <div class="col-6 col-md-4 text-center">
-                                            <i class="bi bi-patch-check-fill" style="font-size: 3.5rem;color: blue;"></i>
-                                            <h4 style="font-weight: 400">Superfuerza</h4>
-                                        </div>
-                                        <div class="col-6 col-md-4 text-center">
-                                            <i class="bi bi-patch-check-fill" style="font-size: 3.5rem;color: blue;"></i>
-                                            <h4 style="font-weight: 400">Superfuerza</h4>
+                                        <div class="col text-center">
+                                            <img src="<c:url value="/images/escudo.png" />"style="height: 72px;">
+                                            <h4 style="font-weight: 400">${personaje.defensa}</h4>
                                         </div>
                                     </div>
                                 </div>

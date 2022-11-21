@@ -13,7 +13,7 @@
                     Mi Colecci&oacute;n
                 </a>
                 <%-- ------------------------ --%>
-                <a class="nav-link " href="#">
+                <a class="nav-link " href="Jugar">
                     Jugar
                 </a>
                 <%-- ------------------------ --%>
@@ -28,7 +28,15 @@
                     </nav>
                 </div>
                 <%-- ------------------------ --%>
+                <a class="nav-link " href="seleccionJugadorIntercambio">
+                        Intercambio
+                </a>
+                <%-- ------------------------ --%>
             </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Logueado como:</div>
+            <span class="fw-bold">${usuario.userName}</span>
         </div>
     </nav>
 </div>

@@ -14,9 +14,9 @@
     <body>
         <img src="<c:url value="/images/fondo_registro.webp" />" style="width: 100%">
 
-        <section class="container-fluid w-100 d-flex justify-content-center align-items-center home" style="margin: -716px 0 310px 0;">
+        <section class="container-fluid w-100 d-flex justify-content-center align-items-center home" style="margin: -716px 0 -112px 0;">
             <div class="d-flex justify-content-center d-flex flex-row mt-4 botones">
-                <div class="row justify-content-center align-items-center" style="width: 56%;">
+                <div class="row justify-content-center align-items-center" style="width: 45%;">
                     <div class="col-auto bg-light p-5 rounded-3 shadow-lg">
                         <div class="d-flex align-items-center">
                             <img src="<c:url value="/images/logo.png" />" style="width: 14%; margin-right: 4%;">
@@ -26,7 +26,16 @@
                         </div>
                         <hr class="colorgraph">
 
-                        <form action="registrarUsuario" method="post" modelAttribute="usuario">
+                        <form action="registrarUsuario" method="post" modelAttribute="usuario" class="row">
+                            <div class="input-group p-2 d-flex align-items-center col">
+                                <input class="form-control" type="text" placeholder="Nombre" name="nombre">
+                            </div>
+                            <div class="input-group p-2 d-flex align-items-center col">
+                                <input class="form-control" type="text" placeholder="Apellido" name="apellido">
+                            </div>
+                            <div class="input-group p-2 d-flex align-items-center">
+                                <input class="form-control" type="text" placeholder="Nombre de Usuario" name="userName">
+                            </div>
                             <div class="input-group p-2 d-flex align-items-center">
                                 <input class="form-control" type="text" placeholder="Email" name="email">
                             </div>

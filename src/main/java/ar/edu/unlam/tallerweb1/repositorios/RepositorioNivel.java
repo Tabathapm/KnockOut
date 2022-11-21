@@ -7,4 +7,5 @@ public interface RepositorioNivel {
 
     Nivel crearNivel(Integer numeroDeNivel, Integer valorMax);
     Nivel traerDatosDelNivel(Integer id);
+    void modificar(Nivel nivel);
 }

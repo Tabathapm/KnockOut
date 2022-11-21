@@ -13,6 +13,15 @@ public class Billetera {
 
     @OneToOne
     private Usuario usuario;
+    public Billetera(Integer id,Float monto,Usuario usuario){
+        this.id=id;
+        this.monto=monto;
+        this.usuario=usuario;
+    }
+
+    public Billetera() {
+
+    }
 
     public Integer getId() {
         return id;

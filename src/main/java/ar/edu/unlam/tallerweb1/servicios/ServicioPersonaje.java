@@ -1,8 +1,8 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
-import ar.edu.unlam.tallerweb1.modelo.Coleccion;
-import ar.edu.unlam.tallerweb1.modelo.Personaje;
+import ar.edu.unlam.tallerweb1.modelo.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface ServicioPersonaje {
@@ -27,4 +27,12 @@ public interface ServicioPersonaje {
     List<Personaje> personajeOrdenadoMayorPrecio();
 
     List<Personaje> personajeOrdenadoAlfabeticamente();
+
+    List<Integer> rounds(Personaje personaje, Personaje boot, Integer contadorUsuario, Integer contadorBoot);
+
+    String quienGana(Integer contadorUsuario, Integer contadorBoot, Billetera billetera, HttpServletRequest request,
+                     Nivel nivel, Usuario usuario);
+
+    Personaje personajeRandom();
+
 }
