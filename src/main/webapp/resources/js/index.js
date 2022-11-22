@@ -81,7 +81,7 @@ function escogerPreguntaAleatoria() {
     } else {
         n = 0;
     }
-console.log(preguntas.length);
+
     while (contador == 5) {
         n++;
         if (n >= preguntas.length) {
@@ -95,7 +95,7 @@ console.log(preguntas.length);
                 title: "Juego finalizado",
                 text: "Puntuación: " + preguntas_correctas + "/" + (preguntas_hechas),
                 icon: 'success',
-                confirmButtonText: '<a href="triviaCheck?p=' + preguntas_correctas + '" style="text-decoration:none;color:white">OK</a>',
+                confirmButtonText: '<a href="triviaCheck?p=' + preguntas_correctas + '" style="text-decoration:none;color:white">Aceptar</a>',
             });
         }
         if (reiniciar_puntos_al_reiniciar_el_juego) {
