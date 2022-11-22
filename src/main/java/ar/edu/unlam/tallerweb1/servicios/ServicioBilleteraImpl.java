@@ -51,7 +51,10 @@ public class ServicioBilleteraImpl implements ServicioBilletera{
         Float montoVenta = monto - (monto * 0.2f);
         repoBilletera.sumarMonto(billetera,montoVenta);
     }
-
+    @Override
+    public void sumarMontoSinDescuento(Billetera billetera, Float monto) {
+        repoBilletera.sumarMonto(billetera,monto);
+    }
     @Override
     public Float limitarDecimales(Billetera billetera) {
         BigDecimal formatNumber = new BigDecimal(billetera.getMonto());

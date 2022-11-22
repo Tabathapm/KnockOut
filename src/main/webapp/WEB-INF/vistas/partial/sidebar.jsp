@@ -17,6 +17,11 @@
                     Jugar
                 </a>
                 <%-- ------------------------ --%>
+                    <%-- ------------------------ --%>
+                    <a class="nav-link " href="inicioTrivia">
+                        Trivia
+                    </a>
+                    <%-- ------------------------ --%>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTripulacion" aria-expanded="false" aria-controls="collapseTripulacion">
                     Comprar
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -32,6 +37,9 @@
                         Intercambio
                 </a>
                 <%-- ------------------------ --%>
+                    <a class="nav-link " href="Marvel">
+                        Acerca de Marvel
+                    </a>
             </div>
         </div>
         <div class="sb-sidenav-footer">
