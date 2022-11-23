@@ -253,7 +253,6 @@
 
               <div class="d-flex colvs" style="flex-direction: column;justify-content: space-evenly;">
                 <h3 style="margin-bottom: -435px;">Round 2</h3>
-<%--                <h3 style="margin-bottom: -516px;text-align: center;">${round2}</h3>--%>
                 <img src="<c:url value="/images/imgVs.png" />" style="height: 100px;transform: scale(1.7);" class="mt-5 vs">
               </div>
 

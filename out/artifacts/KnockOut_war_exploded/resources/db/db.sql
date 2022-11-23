@@ -82,3 +82,19 @@ values('Superman','superman_.jpg',false,'Superheroe nacido en el planeta de Kryp
 
 INSERT INTO usuario(activo,email,habilitado,password,rol,ultimaConexion,nivel_id)
 values (1,'test@gmail.com',1,'123',0,null,null);
+
+INSERT INTO comic(pdf, portada, titulo)
+VALUES
+('1_Civil_War_1.pdf', 'Civil_War_1_page-0001.jpg','Civil War #1'),
+('2_SheHulk_8.pdf', 'She-Hulk_8_page-0001.jpg', 'She-Hulk #8'),
+('3_Wolverine_42.pdf', 'Wolverine_42_page-0001.jpg', 'Wolverine #42'),
+('4_Amazing_SpiderMan_532.pdf', 'Amazing_Spider-Man_532_page-0001.jpg', 'Amazing Spider-Man #532'),
+('5_Civil_War_Front_Line_1.pdf', 'Civil War Front Line_1_page-0001.jpg', 'Civil War Front Line #1'),
+('6_Civil_War_2.pdf', 'Civil_War_2_page-0001.jpg', 'Civil War #2'),
+('7_Thunderbolts_103.pdf', 'Thunderbolts_103_page-0001.jpg', 'Thunderbolts #103'),
+('Moon_Knight_Vol_6_1_7.pdf', 'Moon Knight Vol 6 1-7_page-0001.jpg', 'Moon Knight'),
+('Nova_Vol_6_01.pdf', 'Nova - Vol. 6 - 01 - All-New, All-Different Marvel_page-0001.jpg', 'Nova - Vol. 6 - #01'),
+('Nova_Vol_6_02.pdf', 'Nova - Vol. 6 - 02 - All-New, All-Different Marvel_page-0001.jpg', 'Nova - Vol. 6 - #02');
+
+
+
