@@ -36,8 +36,6 @@
             <div class="container d-flex" style="justify-content:center;margin-top: 10rem">
                         <a href="marvelPersonajes" class="btn btn-primary" style="margin-right: 40px">Personajes</a>
 
-                        <a href="marvelComics" class="btn btn-primary"style="margin-right: 40px">Comics</a>
-
                         <a href="marvelSeries" class="btn btn-primary"style="margin-right: 40px">Series</a>
             </div>
         </main>

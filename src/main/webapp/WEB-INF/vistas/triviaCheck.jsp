@@ -32,7 +32,7 @@
         <main>
             <c:if test="${not empty puntaje && puntaje!=0}">
                 <div class="alert alert-success cuadro text-center" role="alert" style="padding: 50px">
-                    Se ha sumado :$ ${puntaje} a su cuenta
+                    Se ha sumado :<img src="<c:url value="/images/dollar.png" />" style="width: 5%" class="p-2"> ${puntaje} a su cuenta
                 </div>
             </c:if>
             <c:if test="${not empty puntaje && puntaje==0}">

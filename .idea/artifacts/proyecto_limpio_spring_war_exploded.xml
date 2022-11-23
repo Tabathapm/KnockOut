@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="KnockOut:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/KnockOut_war_exploded</output-path>
+  <artifact type="exploded-war" name="proyecto-limpio-spring:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/proyecto_limpio_spring_war_exploded</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="KnockOut" />
+          <element id="module-output" name="proyecto-limpio-spring" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.2.6.RELEASE" />
@@ -70,7 +70,7 @@
           <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.0" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="KnockOut/web/Web" />
+      <element id="javaee-facet-resources" facet="proyecto-limpio-spring/web/Web" />
     </root>
   </artifact>
 </component>

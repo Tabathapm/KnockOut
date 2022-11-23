@@ -51,6 +51,30 @@ let  preguntas=[
         "incorrecta1": "Ben Afleck",
         "incorrecta2": "Ryan Reynolds",
         "incorrecta3": "Robert Downey Jr\r"
+    },
+    {
+        "categoria": "Marvel",
+        "pregunta": " ¿Cómo se llama el martillo de Thor?",
+        "respuesta": "Mjolnir",
+        "incorrecta1": "Aesir",
+        "incorrecta2": "Vanir",
+        "incorrecta3": "Norn\r"
+    },
+    {
+        "categoria": "Marvel",
+        "pregunta": " ¿De qué está hecho el escudo del Capitán América?",
+        "respuesta": "Vibranio",
+        "incorrecta1": "Adamantium",
+        "incorrecta2": "prometeo",
+        "incorrecta3": "Carbonadio\r"
+    },
+    {
+        "categoria": "Cine",
+        "pregunta": " Un famoso director de estilo muy particular dirigió dos películas de Batman en los años 90, ¿de quién hablamos?",
+        "respuesta": "Tim Burton",
+        "incorrecta1": "Martin Scorsese",
+        "incorrecta2": "Steven Spielberg",
+        "incorrecta3": "Quentin Trantino\r"
     }
 ]
 
