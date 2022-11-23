@@ -329,55 +329,6 @@
                   </div>
                 </div>
               </div>
-<%--              <section class="pt-5 pb-5 fondo1">--%>
-<%--                <div class="container misCartas">--%>
-<%--                  <div class="row pb-5 mb-4">--%>
-<%--                    <div>--%>
-<%--                      <h3 class="mb-3 pb-5 text-black text-center">Mis personajes,selecciona uno</h3>--%>
-<%--                    </div>--%>
-<%--                    <div class="d-flex justify-content-around">--%>
-<%--                      &lt;%&ndash;    SE RECORRE LA LISTA     &ndash;%&gt;--%>
-<%--                      <c:forEach items="${personajes}" var="personaje" >--%>
-
-<%--                        &lt;%&ndash;    POR CADA PERSONAJE SE CREA UNA TARJETA    &ndash;%&gt;--%>
-<%--                        <div class="col-xs-12 col-sm-6 col-md-4" style="width: 25%;">--%>
-<%--                          <div class="image-flip" ontouchstart="this.classList.toggle('hover');">--%>
-<%--                            <div class="mainflip">--%>
-<%--                              <div class="frontside">--%>
-<%--                                <div class="card">--%>
-<%--                                  <div class="card-body text-center p-0" style="display: flex; align-items: center">--%>
-<%--                                    <img class=" img-fluid" src="<c:url value="/images/personajes/${personaje.imagen}" />" alt="card image">--%>
-<%--                                  </div>--%>
-<%--                                </div>--%>
-<%--                              </div>--%>
-<%--                              <div class="backside">--%>
-<%--                                <div class="card" style="height: 400px; width: 300px;">--%>
-<%--                                  <div class="card-body text-center mt-4" style="display: inline-grid;align-content: space-between;">--%>
-<%--                                    <h4 class="card-title">${personaje.nombre}</h4>--%>
-<%--                                    <ul class="list-inline d-flex justify-content-evenly">--%>
-<%--                                      <li class="list-inline-item pe-2">--%>
-<%--                                        <img src="images/espadas.png" alt="" style="height: 50px;">--%>
-<%--                                        <h4>${personaje.ataque}</h4>--%>
-<%--                                      </li>--%>
-<%--                                      <li class="list-inline-item">--%>
-<%--                                        <img src="images/escudo.png" alt="" style="height: 50px;">--%>
-<%--                                        <h4>${personaje.defensa}</h4>--%>
-<%--                                      </li>--%>
-<%--                                    </ul>--%>
-<%--                                  </div>--%>
-<%--                                </div>--%>
-<%--                              </div>--%>
-<%--                              <div class="d-flex justify-content-center">--%>
-<%--                                <a href="seleccionPersonajeRoundTres?id=${personaje.id}" class="btn btn-primary" role="button" id="${personaje.id}">Seleccionar</a>--%>
-<%--                              </div>--%>
-<%--                            </div>--%>
-<%--                          </div>--%>
-<%--                        </div>--%>
-<%--                      </c:forEach>--%>
-<%--                    </div>--%>
-<%--                  </div>--%>
-<%--                </div>--%>
-<%--              </section>--%>
 
               <c:choose>
                 <c:when test="${not empty perdedor}"><!-- if condition -->
@@ -448,8 +399,6 @@
                   </section>
                 </c:otherwise>
               </c:choose>
-
-
 
           </div>
           </div>

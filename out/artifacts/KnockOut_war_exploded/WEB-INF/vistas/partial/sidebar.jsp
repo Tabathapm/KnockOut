@@ -17,6 +17,11 @@
                     Jugar
                 </a>
                 <%-- ------------------------ --%>
+                    <%-- ------------------------ --%>
+                    <a class="nav-link " href="inicioTrivia">
+                        Trivia
+                    </a>
+                    <%-- ------------------------ --%>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTripulacion" aria-expanded="false" aria-controls="collapseTripulacion">
                     Comprar
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -31,6 +36,21 @@
                 <a class="nav-link " href="seleccionJugadorIntercambio">
                         Intercambio
                 </a>
+                <%-- ------------------------ --%>
+                    <a class="nav-link " href="Marvel">
+                        Acerca de Marvel
+                    </a>
+                <%-- ------------------------ --%>
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseComics" aria-expanded="false" aria-controls="collapseComics">
+                    Comics
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="collapseComics" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="descargarComicMarvel">Marvel</a>
+                        <a class="nav-link" href="descargarComicDC">DC</a>
+                    </nav>
+                </div>
                 <%-- ------------------------ --%>
             </div>
         </div>
