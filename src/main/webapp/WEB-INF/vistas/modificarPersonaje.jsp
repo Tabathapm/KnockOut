@@ -32,11 +32,6 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
       <div class="sb-sidenav-menu">
         <div class="nav">
-          <div class="sb-sidenav-menu-heading">Novedades</div>
-          <a class="nav-link" href="index.html">
-            <div class="sb-nav-link-icon"><i class="fas fa-external-link-square"></i></div>
-            Crear publicacion
-          </a>
           <div class="sb-sidenav-menu-heading">Administracion</div>
           <a class="nav-link" href="inicio">
             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
