@@ -23,13 +23,15 @@
         <button id="numbers" data-badge="${notificaciones.size()}"></button>
     </div>
     <div style="display:none" class="alert_list">
-        <ul class="unstyled">
+        <ul class="unstyled px-0">
             <c:if test="${empty notificaciones}">
-                <p class="text-center alert_li">Aún no hay notificaciones</p>
+                 <p class="text-center alert_li">Aún no hay notificaciones</p>
             </c:if>
             <c:forEach var="notificacion" items="${notificaciones}">
-                <p>${notificacion.asunto}</p>
-                <p>${notificacion.mensaje}</p>
+                <div class="border rounded-3 px-2 py-2 mb-2">
+                    <p><span class="fw-bold">Asunto: </span>${notificacion.asunto}</p>
+                    <p>${notificacion.mensaje}</p>
+                </div>
             </c:forEach>
             <!--<li data-alert_id="3" class="alert_li"><a href="#">Messaggio di notifica un po più lungo del normale</a> <br /><a href="#" class="turn_off_alert">turn off</a><div class="clearfix"></div></li>
         --></ul>
