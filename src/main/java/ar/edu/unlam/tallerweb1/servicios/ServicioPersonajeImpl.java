@@ -170,18 +170,18 @@ public class ServicioPersonajeImpl implements ServicioPersonaje {
             }
         } else if(contadorUsuario == contadorBoot){
             mensaje = "empate";
-            repoBilletera.sumarMonto(billetera, 500.0f);
-            request.getSession().setAttribute("billetera", billetera);
-            nivel.setValorActual(nivel.getValorActual() + 1);
-            if(nivel.getValorActual() > nivel.getValorMax()){
-                Nivel nivelNuevo = repoNivel.crearNivel(nivel.getNumero() + 1 , nivel.getValorMax() + 5);
-                usuario.setNivel(nivelNuevo);
-                repoUsuario.modificar(usuario);
-                request.getSession().setAttribute("nivel", nivelNuevo);
-            } else{
-                repoNivel.modificar(nivel);
-                request.getSession().setAttribute("nivel", nivel);
-            }
+//            repoBilletera.sumarMonto(billetera, 500.0f);
+//            request.getSession().setAttribute("billetera", billetera);
+//            nivel.setValorActual(nivel.getValorActual() + 1);
+//            if(nivel.getValorActual() > nivel.getValorMax()){
+//                Nivel nivelNuevo = repoNivel.crearNivel(nivel.getNumero() + 1 , nivel.getValorMax() + 5);
+//                usuario.setNivel(nivelNuevo);
+//                repoUsuario.modificar(usuario);
+//                request.getSession().setAttribute("nivel", nivelNuevo);
+//            } else{
+//                repoNivel.modificar(nivel);
+//                request.getSession().setAttribute("nivel", nivel);
+//            }
         } else{
             mensaje = "perdiste";
         }
