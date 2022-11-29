@@ -91,7 +91,6 @@ btn_correspondiente = [
     select_id("btn3"),
     select_id("btn4")
 ];
-let npreguntas = [];
 
 let preguntas_hechas = 0;
 let preguntas_correctas = 0;
@@ -106,12 +105,6 @@ function escogerPreguntaAleatoria() {
         n = 0;
     }
 
-    while (contador == 5) {
-        n++;
-        if (n >= preguntas.length) {
-            n = 0;
-        }
-    }
     if (contador == 4) {
 
         if (mostrar_pantalla_juego_términado) {
@@ -122,17 +115,13 @@ function escogerPreguntaAleatoria() {
                 confirmButtonText: '<a href="triviaCheck?p=' + preguntas_correctas + '" style="text-decoration:none;color:white">Aceptar</a>',
             });
         }
-        if (reiniciar_puntos_al_reiniciar_el_juego) {
-            preguntas_correctas = 0
-            preguntas_hechas = 0
-        }
-        npreguntas = [];
+
     }
-    npreguntas.push(n);
     preguntas_hechas++;
     total_preguntas++;
     contador++;
     escogerPregunta(n);
+    preguntas.splice(n,1);
 }
 
 function escogerPregunta(n) {
