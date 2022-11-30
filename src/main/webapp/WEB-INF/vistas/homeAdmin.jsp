@@ -13,14 +13,14 @@
     <title>Knock Out!</title>
 </head>
 <body class="sb-nav-fixed">
-<nav style="height: 40px!important;" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <img src="<c:url value="/images/logo.png" />" style="width: 2.5%; margin-left: 1%;margin-top: 5px">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <img src="<c:url value="/images/logo.png" />" style="width: 3%; margin-left: 1%;">
     <a class="navbar-brand ps-3">Knock Out!</a>
     <!-- Sidebar Toggle-->
     <!-- <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>-->
     <div class="d-flex justify-content-end w-100">
-        <img href="#" id="news" class="btn" src="<c:url value="/images/notificar.png" />" style="width: 4%; filter:invert(0.7)">
-        <button id="numbers" style="margin-top: 5px" data-badge="${notificaciones.size()}"></button>
+        <img href="#" id="news" class="btn" src="<c:url value="/images/notificar.png" />" style="width: 4.5%; filter:invert(0.7)">
+        <button id="numbers" data-badge="${notificaciones.size()}"></button>
     </div>
     <div style="display:none" class="alert_list">
         <ul class="unstyled px-0">

@@ -13,7 +13,7 @@
     <title>Knock Out!</title>
 </head>
 <body class="sb-nav-fixed">
-<nav style="height: 40px!important;" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <img src="<c:url value="/images/logo.png" />" style="width: 3%; margin-left: 1%;">
     <a class="navbar-brand ps-3">Knock Out!</a>
     <!-- Sidebar Toggle-->
@@ -23,13 +23,15 @@
         <button id="numbers" data-badge="${notificaciones.size()}"></button>
     </div>
     <div style="display:none" class="alert_list">
-        <ul class="unstyled">
+        <ul class="unstyled px-0">
             <c:if test="${empty notificaciones}">
-                <p class="text-center alert_li">Aún no hay notificaciones</p>
+                 <p class="text-center alert_li">Aún no hay notificaciones</p>
             </c:if>
             <c:forEach var="notificacion" items="${notificaciones}">
-                <p>${notificacion.asunto}</p>
-                <p>${notificacion.mensaje}</p>
+                <div class="border rounded-3 px-2 py-2 mb-2">
+                    <p><span class="fw-bold">Asunto: </span>${notificacion.asunto}</p>
+                    <p>${notificacion.mensaje}</p>
+                </div>
             </c:forEach>
             <!--<li data-alert_id="3" class="alert_li"><a href="#">Messaggio di notifica un po più lungo del normale</a> <br /><a href="#" class="turn_off_alert">turn off</a><div class="clearfix"></div></li>
         --></ul>
@@ -39,10 +41,8 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">Settings</a></li>
-                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="logout">Logout</a></li>
+                <li><a class="dropdown-item" href="logout">Cerrar sesión</a></li>
             </ul>
         </li>
     </ul>
@@ -73,7 +73,7 @@
     <h1  style="font-weight: 300" class="mt-4 mb-4">Control de usuarios</h1>
     <div class="row mb-4">
             <div class="col">
-            <div class="card mb-3" style="width: 18rem;">
+            <div class="card mb-3" style="width: 20rem;">
                 <div class="card-header">
                     Ranking <i class="fas fa-medal"></i>
                 </div>

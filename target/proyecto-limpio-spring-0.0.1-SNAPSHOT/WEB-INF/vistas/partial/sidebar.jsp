@@ -48,7 +48,7 @@
                 <div class="collapse" id="collapseComics" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="descargarComicMarvel">Marvel</a>
-                        <a class="nav-link" href="descargarComicDC">DC</a>
+<%--                        <a class="nav-link" href="descargarComicDC">DC</a>--%>
                     </nav>
                 </div>
                 <%-- ------------------------ --%>

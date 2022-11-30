@@ -10,7 +10,7 @@
   <title>Knock Out!</title>
 </head>
 <body class="sb-nav-fixed">
-<nav style="height: 40px!important;" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
   <img src="<c:url value="/images/logo.png" />" style="width: 3%; margin-left: 1%;">
   <a class="navbar-brand ps-3">Knock Out!</a>
   <!-- Sidebar Toggle-->
