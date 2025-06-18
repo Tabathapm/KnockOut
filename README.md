@@ -33,7 +33,7 @@ Asegúrate de tener instalados los siguientes componentes antes de comenzar:
 
 1. **Clonar el repositorio**:
     ```bash
-    git clone https://github.com/Tabathapm/Knockout.git
+    git clone https://github.com/Tabathapm/KnockOut.git
     cd knockout
     ```
 
@@ -69,3 +69,4 @@ Asegúrate de tener instalados los siguientes componentes antes de comenzar:
 ## Uso
 
 Una vez que la aplicación esté en funcionamiento, puedes acceder al sitio web a través de tu navegador web en la siguiente dirección: http://localhost:8080/knockout
+
