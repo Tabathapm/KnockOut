@@ -33,7 +33,7 @@ Asegúrate de tener instalados los siguientes componentes antes de comenzar:
 
 1. **Clonar el repositorio**:
     ```bash
-    git clone https://github.com/1cristianb/Knockout.git
+    git clone https://github.com/Tabathapm/Knockout.git
     cd knockout
     ```
 
